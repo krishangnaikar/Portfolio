@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ profile.name }} – Portfolio</title>
+
+    <!-- Tailwind (CDN, no build step) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: { extend: { borderRadius: { '2xl': '1rem' } } }
+      };
+    </script>
+
+    <!-- Lucide icons -->
+    <script defer src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Site JS -->
+    <script defer src="{{ url_for('static', filename='site.js') }}"></script>
+  </head>
+  <body class="bg-white text-neutral-900 selection:bg-neutral-900 selection:text-white dark:bg-neutral-950 dark:text-neutral-50">
+    <!-- Header / Nav -->
+    <header class="sticky top-0 z-20 backdrop-blur border-b border-neutral-200/60 dark:border-neutral-800/60 bg-white/60 dark:bg-neutral-950/60">
+      <nav class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
+        <a href="#home" class="font-semibold tracking-tight">{{ profile.name }}</a>
+        <div class="hidden sm:flex items-center gap-6">
+          <a href="#about" class="text-sm text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">About</a>
+          <a href="#skills" class="text-sm text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">Skills</a>
+          <a href="#experience" class="text-sm text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">Experience</a>
+          <a href="#projects" class="text-sm text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">Projects</a>
+          <a href="#education" class="text-sm text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">Education</a>
+          <a href="#certs" class="text-sm text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">Certs</a>
+          <a href="#contact" class="text-sm text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">Contact</a>
+        </div>
+        <div class="flex items-center gap-2">
+          <a href="{{ profile.github }}" target="_blank" rel="noreferrer" class="p-2 rounded-xl ring-1 ring-neutral-200 dark:ring-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-900" aria-label="GitHub">
+            <i data-lucide="github" class="w-4 h-4"></i>
+          </a>
+          <a href="{{ profile.linkedin }}" target="_blank" rel="noreferrer" class="p-2 rounded-xl ring-1 ring-neutral-200 dark:ring-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-900" aria-label="LinkedIn">
+            <i data-lucide="linkedin" class="w-4 h-4"></i>
+          </a>
+          <a href="{{ resume_url }}" class="hidden sm:inline-flex items-center gap-2 rounded-xl ring-1 ring-neutral-200 dark:ring-neutral-800 px-3 py-2 text-sm hover:bg-neutral-100 dark:hover:bg-neutral-900">
+            <i data-lucide="download" class="w-4 h-4"></i> Resume
+          </a>
+          <button id="theme-toggle" class="p-2 rounded-xl ring-1 ring-neutral-200 dark:ring-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-900" aria-label="Toggle theme">
+            <i data-lucide="moon" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <main id="home" class="max-w-6xl mx-auto px-4">
+      <!-- Hero / About -->
+      <section id="about" class="py-16 sm:py-24">
+        <div class="grid md:grid-cols-5 gap-8 items-center">
+          <div class="md:col-span-3">
+            <h1 class="text-3xl sm:text-5xl font-semibold leading-tight tracking-tight">
+              {{ profile.title }}
+            </h1>
+            <p class="mt-4 text-neutral-600 dark:text-neutral-300 max-w-2xl">
+              {{ profile.summary }}
+            </p>
+            <div class="mt-6 flex flex-wrap items-center gap-3 text-sm">
+              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1">
+                <i data-lucide="phone" class="w-3.5 h-3.5 mr-2"></i> {{ profile.phone }}
+              </span>
+              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1">
+                <i data-lucide="mail" class="w-3.5 h-3.5 mr-2"></i>
+                <a href="mailto:{{ profile.email }}">{{ profile.email }}</a>
+              </span>
+              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1">
+                <i data-lucide="github" class="w-3.5 h-3.5 mr-2"></i>
+                <a href="{{ profile.github }}" target="_blank" rel="noreferrer">GitHub</a>
+              </span>
+              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1">
+                <i data-lucide="linkedin" class="w-3.5 h-3.5 mr-2"></i>
+                <a href="{{ profile.linkedin }}" target="_blank" rel="noreferrer">LinkedIn</a>
+              </span>
+            </div>
+            <div class="mt-6 flex gap-3">
+              <a href="#projects" class="rounded-xl bg-black text-white dark:bg-white dark:text-black px-4 py-2 text-sm">See Projects</a>
+              <a href="{{ resume_url }}" class="rounded-xl ring-1 ring-neutral-300 dark:ring-neutral-800 px-4 py-2 text-sm">Download Resume</a>
+            </div>
+          </div>
+          <div class="md:col-span-2">
+            <div class="rounded-3xl border border-neutral-200 dark:border-neutral-800 p-5">
+              <div class="grid grid-cols-2 gap-3 text-xs">
+                {% for s in skills[0]['items'][:6] %}
+                  <div class="rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 px-3 py-2">{{ s }}</div>
+                {% endfor %}
+              </div>
+              <p class="text-[11px] text-neutral-500 dark:text-neutral-400 mt-3">Quick snapshot of core languages.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section id="skills" class="py-12 border-t border-neutral-200 dark:border-neutral-800">
+        <div class="flex items-center gap-3 mb-8">
+          <div class="p-2 rounded-2xl ring-1 ring-neutral-200 dark:ring-neutral-800">
+            <i data-lucide="code-2" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h2 class="text-xl sm:text-2xl font-semibold">Skills</h2>
+            <p class="text-sm text-neutral-500 dark:text-neutral-400">Languages, frameworks, tools & libraries</p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          {% for group in skills %}
+          <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5">
+            <h3 class="font-medium mb-3">{{ group.label }}</h3>
+            <div class="flex flex-wrap gap-2">
+              {% for item in group['items'] %}
+              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">{{ item }}</span>
+              {% endfor %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+
+      <!-- Experience -->
+      <section id="experience" class="py-12 border-top border-neutral-200 dark:border-neutral-800">
+        <div class="flex items-center gap-3 mb-8">
+          <div class="p-2 rounded-2xl ring-1 ring-neutral-200 dark:ring-neutral-800">
+            <i data-lucide="briefcase" class="w-5 h-5"></i>
+          </div>
+          <h2 class="text-xl sm:text-2xl font-semibold">Experience</h2>
+        </div>
+
+        <div class="space-y-6">
+          {% for exp in experiences %}
+          <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5">
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+              <h3 class="text-base sm:text-lg font-medium">
+                {{ exp.role }} · <span class="text-neutral-600 dark:text-neutral-300">{{ exp.company }}</span>
+              </h3>
+              <div class="text-sm text-neutral-500 dark:text-neutral-400">{{ exp.location }} • {{ exp.date }}</div>
+            </div>
+            <ul class="mt-3 list-disc pl-5 space-y-2 text-sm">
+              {% for b in exp.bullets %}<li>{{ b }}</li>{% endfor %}
+            </ul>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects" class="py-12 border-t border-neutral-200 dark:border-neutral-800">
+        <div class="flex items-center gap-3 mb-8">
+          <div class="p-2 rounded-2xl ring-1 ring-neutral-200 dark:ring-neutral-800">
+            <i data-lucide="star" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h2 class="text-xl sm:text-2xl font-semibold">Projects</h2>
+            <p class="text-sm text-neutral-500 dark:text-neutral-400">Selected work with code links</p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {% for p in projects %}
+          <a href="{{ p.link }}" target="_blank" rel="noreferrer" class="group block rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 hover:shadow-sm transition-shadow">
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <h3 class="font-medium group-hover:underline underline-offset-4 decoration-neutral-400">{{ p.name }}</h3>
+                <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">{{ p.year }}</p>
+              </div>
+              <i data-lucide="external-link" class="w-4 h-4 opacity-70"></i>
+            </div>
+            <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">{{ p.blurb }}</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              {% for t in p.tech %}
+              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">{{ t }}</span>
+              {% endfor %}
+            </div>
+          </a>
+          {% endfor %}
+        </div>
+
+        <div class="mt-6 text-sm">
+          <a href="{{ profile.github }}" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 underline decoration-neutral-400 underline-offset-4">
+            <i data-lucide="github" class="w-4 h-4"></i> See more on GitHub
+          </a>
+        </div>
+      </section>
+
+      <!-- Education -->
+      <section id="education" class="py-12 border-t border-neutral-200 dark:border-neutral-800">
+        <div class="flex items-center gap-3 mb-8">
+          <div class="p-2 rounded-2xl ring-1 ring-neutral-200 dark:ring-neutral-800">
+            <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+          </div>
+          <h2 class="text-xl sm:text-2xl font-semibold">Education</h2>
+        </div>
+
+        <div class="grid gap-6">
+          {% for ed in education %}
+          <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5">
+            <h3 class="font-medium">{{ ed.school }}</h3>
+            <p class="text-sm text-neutral-600 dark:text-neutral-300">{{ ed.degree }}</p>
+            <p class="text-sm text-neutral-500 dark:text-neutral-400">{{ ed.date }}</p>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+
+      <!-- Certifications -->
+      <section id="certs" class="py-12 border-t border-neutral-200 dark:border-neutral-800">
+        <div class="flex items-center gap-3 mb-8">
+          <div class="p-2 rounded-2xl ring-1 ring-neutral-200 dark:ring-neutral-800">
+            <i data-lucide="award" class="w-5 h-5"></i>
+          </div>
+          <h2 class="text-xl sm:text-2xl font-semibold">Certifications</h2>
+        </div>
+
+        <ul class="grid sm:grid-cols-2 gap-6">
+          {% for c in certifications %}
+          <li class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5">
+            <div class="font-medium">{{ c.name }}</div>
+            <div class="text-sm text-neutral-600 dark:text-neutral-300">{{ c.org }} • {{ c.year }}</div>
+          </li>
+          {% endfor %}
+        </ul>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="py-12 border-t border-neutral-200 dark:border-neutral-800">
+        <div class="flex items-center gap-3 mb-8">
+          <div class="p-2 rounded-2xl ring-1 ring-neutral-200 dark:ring-neutral-800">
+            <i data-lucide="mail" class="w-5 h-5"></i>
+          </div>
+        <div>
+          <h2 class="text-xl sm:text-2xl font-semibold">Contact</h2>
+          <p class="text-sm text-neutral-500 dark:text-neutral-400">Say hello or reach out for opportunities</p>
+        </div>
+        </div>
+
+        <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5">
+          <div class="flex flex-col sm:flex-row sm:items-center gap-3 text-sm">
+            <a href="mailto:{{ profile.email }}" class="inline-flex items-center gap-2 rounded-xl bg-black text-white dark:bg-white dark:text-black px-4 py-2">
+              <i data-lucide="mail" class="w-4 h-4"></i> Email Me
+            </a>
+            <a href="tel:{{ profile.phone | replace(' ', '') | replace('(', '') | replace(')', '') | replace('-', '') }}" class="inline-flex items-center gap-2 rounded-xl ring-1 ring-neutral-300 dark:ring-neutral-800 px-4 py-2">
+              <i data-lucide="phone" class="w-4 h-4"></i> Call/Text
+            </a>
+            <a href="{{ profile.linkedin }}" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 rounded-xl ring-1 ring-neutral-300 dark:ring-neutral-800 px-4 py-2">
+              <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
+            </a>
+            <a href="{{ profile.github }}" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 rounded-xl ring-1 ring-neutral-300 dark:ring-neutral-800 px-4 py-2">
+              <i data-lucide="github" class="w-4 h-4"></i> GitHub
+            </a>
+          </div>
+          <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-3">
+            *Some scraping projects are for educational purposes only.
+          </p>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="py-12 border-t border-neutral-200 dark:border-neutral-800 text-sm text-neutral-500 dark:text-neutral-400">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-2">
+          <p>© <span id="year"></span> {{ profile.name }}. All rights reserved.</p>
+          <a href="#home" class="hover:text-neutral-700 dark:hover:text-neutral-200">Back to top</a>
+        </div>
+      </footer>
+    </main>
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
