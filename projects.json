@@ -100,13 +100,13 @@
     "name": "Minecraft Redstone Qubit Simulator",
     "category": "Research and quantum computing",
     "status": "One-qubit build",
-    "blurb": "Classical stabilizer simulation built in redstone with X, Z, Hadamard, and measurement logic. Two-qubit entanglement is a planned extension.",
+    "blurb": "Classical one-qubit stabilizer simulation built in Minecraft redstone with X, Z, Hadamard, and measurement logic. Downloadable Minecraft Java world available in the repository. Two-qubit entanglement is a planned extension.",
     "tech": [
       "Minecraft",
       "Redstone",
       "Stabilizer simulation"
     ],
-    "link": null
+    "link": "https://github.com/krishangnaikar/Minecraft-Quantum-Simulator"
   },
   {
     "name": "ATS Scanner / ResuMaster",
