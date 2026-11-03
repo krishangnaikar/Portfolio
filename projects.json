@@ -1,0 +1,394 @@
+[
+  {
+    "name": "Multimodal Enterprise RAG",
+    "category": "AI and machine learning",
+    "status": "Prototype",
+    "blurb": "Local retrieval across text, images, audio, and video, with OCR, transcription, vector search, and knowledge graph exploration.",
+    "tech": [
+      "Python",
+      "Streamlit",
+      "Ollama",
+      "Qdrant"
+    ],
+    "link": "https://github.com/krishangnaikar/Multimodal-Enterprise-RAG"
+  },
+  {
+    "name": "Personal LLM Chatbot",
+    "category": "AI and machine learning",
+    "status": "Project",
+    "blurb": "Document ingestion and local-model chat through a Flask interface. Adapted from the credited Ollama/privateGPT projects.",
+    "tech": [
+      "Python",
+      "Flask",
+      "Ollama"
+    ],
+    "link": "https://github.com/krishangnaikar/LLMBot"
+  },
+  {
+    "name": "Image Classifier",
+    "category": "AI and machine learning",
+    "status": "Course project",
+    "blurb": "Flower classification with transfer learning, checkpoint saving, and top-K command-line prediction.",
+    "tech": [
+      "Python",
+      "PyTorch"
+    ],
+    "link": "https://github.com/krishangnaikar/Image-Classifier_FinalProject"
+  },
+  {
+    "name": "OS LLM Agent",
+    "category": "AI and machine learning",
+    "status": "Experiment",
+    "blurb": "Ollama agent and MCP tool-server experiments.",
+    "tech": [
+      "Python",
+      "Ollama",
+      "MCP"
+    ],
+    "link": "https://github.com/krishangnaikar/osllm"
+  },
+  {
+    "name": "OpenAI Desktop GUI",
+    "category": "AI and machine learning",
+    "status": "Project",
+    "blurb": "Tkinter desktop interface for entering prompts and displaying OpenAI responses.",
+    "tech": [
+      "Python",
+      "Tkinter",
+      "OpenAI"
+    ],
+    "link": "https://github.com/krishangnaikar/OpenAI_GUI_Project"
+  },
+  {
+    "name": "Transistor Fine-Tuning and Tool-Use Evaluation",
+    "category": "Research and quantum computing",
+    "status": "Research",
+    "blurb": "Study of vision-language models for transistor analysis and TCAD tool use, including base-versus-adapter comparisons, guided error analysis, and persistent-memory experiments. Results and limitations are tracked separately.",
+    "tech": [
+      "Python",
+      "PyTorch",
+      "VLMs",
+      "TCAD"
+    ],
+    "link": null
+  },
+  {
+    "name": "Qiskit ket_basis Visualization",
+    "category": "Research and quantum computing",
+    "status": "Merged contribution",
+    "blurb": "Added X, Y, and Z ket-basis options for state LaTeX visualization, with tests and a release note. Merged into Qiskit on October 22, 2026.",
+    "tech": [
+      "Python",
+      "Qiskit",
+      "Quantum computing"
+    ],
+    "link": "https://github.com/Qiskit/qiskit/pull/16868"
+  },
+  {
+    "name": "Qiskit Transpiler Optimization Investigation",
+    "category": "Research and quantum computing",
+    "status": "Investigation",
+    "blurb": "Reproduced a cancellation issue and compared a proposed fix across circuit families. Benchmarks identified both gate reductions and runtime overhead; the change is not presented as merged.",
+    "tech": [
+      "Python",
+      "Qiskit",
+      "Benchmarking"
+    ],
+    "link": null
+  },
+  {
+    "name": "Minecraft Redstone Qubit Simulator",
+    "category": "Research and quantum computing",
+    "status": "One-qubit build",
+    "blurb": "Classical stabilizer simulation built in redstone with X, Z, Hadamard, and measurement logic. Two-qubit entanglement is a planned extension.",
+    "tech": [
+      "Minecraft",
+      "Redstone",
+      "Stabilizer simulation"
+    ],
+    "link": null
+  },
+  {
+    "name": "ATS Scanner / ResuMaster",
+    "category": "Automation and developer tools",
+    "status": "Project",
+    "blurb": "Chrome extension that extracts job descriptions and fills a PartyRock resume-review workflow using saved resume text.",
+    "tech": [
+      "JavaScript",
+      "Chrome extension",
+      "PartyRock"
+    ],
+    "link": "https://github.com/krishangnaikar/ATS-Scanner"
+  },
+  {
+    "name": "Snake Programming Language",
+    "category": "Automation and developer tools",
+    "status": "Project",
+    "blurb": "Node.js interpreter with a lexer, recursive-descent parser, variables, conditionals, loops, and list operations.",
+    "tech": [
+      "JavaScript",
+      "Node.js",
+      "Interpreters"
+    ],
+    "link": "https://github.com/krishangnaikar/snake-lang"
+  },
+  {
+    "name": "Canvas Todos",
+    "category": "Automation and developer tools",
+    "status": "Local project",
+    "blurb": "Local dashboard combining school calendar feeds, todos, announcements, and manually added assignments without Canvas API tokens.",
+    "tech": [
+      "Python",
+      "HTML",
+      "Calendar feeds"
+    ],
+    "link": null
+  },
+  {
+    "name": "Claude CLI MCP Bridge",
+    "category": "Automation and developer tools",
+    "status": "Local project",
+    "blurb": "Stdio MCP server wrapping the local Claude CLI, with session continuation, configurable timeouts, and explicit tool permissions.",
+    "tech": [
+      "Python",
+      "MCP",
+      "CLI integration"
+    ],
+    "link": null
+  },
+  {
+    "name": "Python Revision History",
+    "category": "Automation and developer tools",
+    "status": "Prototype",
+    "blurb": "Per-document immutable snapshots, metadata, text comparisons, and restore-as-new-version behavior. In-memory storage is not thread-safe.",
+    "tech": [
+      "Python",
+      "difflib",
+      "Versioning"
+    ],
+    "link": null
+  },
+  {
+    "name": "Google Alert Automation",
+    "category": "Automation and developer tools",
+    "status": "Project",
+    "blurb": "Extracts links from Google Alert emails for follow-up processing.",
+    "tech": [
+      "Python",
+      "Email parsing"
+    ],
+    "link": "https://github.com/krishangnaikar/AlertAutomation"
+  },
+  {
+    "name": "College Info Scraper",
+    "category": "Automation and developer tools",
+    "status": "Educational project",
+    "blurb": "Collects college links and admissions-related data from websites.",
+    "tech": [
+      "Python",
+      "Web scraping"
+    ],
+    "link": "https://github.com/krishangnaikar/CollegeInfoScraper"
+  },
+  {
+    "name": "WhatsApp Scraping and Messaging",
+    "category": "Automation and developer tools",
+    "status": "Educational project",
+    "blurb": "Browser automation experiments for group information extraction and messaging workflows.",
+    "tech": [
+      "Python",
+      "Selenium"
+    ],
+    "link": "https://github.com/krishangnaikar/WhatsappScrapingMessaging"
+  },
+  {
+    "name": "PlaygroundAI Discord Bot",
+    "category": "Apps, web, and games",
+    "status": "Project",
+    "blurb": "Connects Discord commands with browser-driven AI image-generation workflows.",
+    "tech": [
+      "Python",
+      "Discord",
+      "Selenium"
+    ],
+    "link": "https://github.com/krishangnaikar/PlaygroundAIDiscordBot"
+  },
+  {
+    "name": "One Pace Player",
+    "category": "Apps, web, and games",
+    "status": "Project",
+    "blurb": "Electron video player with arc navigation, saved playback progress, and next-episode playback.",
+    "tech": [
+      "JavaScript",
+      "Electron"
+    ],
+    "link": "https://github.com/krishangnaikar/One-Pace-Player"
+  },
+  {
+    "name": "Streaming Video Downloader",
+    "category": "Apps, web, and games",
+    "status": "Educational project",
+    "blurb": "Python utilities for collecting streaming media links and offline download workflows.",
+    "tech": [
+      "Python"
+    ],
+    "link": "https://github.com/krishangnaikar/Download-Steaming-Videos"
+  },
+  {
+    "name": "Minecraft Mod",
+    "category": "Apps, web, and games",
+    "status": "Learning project",
+    "blurb": "Java modding experiments with custom items, blocks, crops, and ore generation.",
+    "tech": [
+      "Java",
+      "Minecraft"
+    ],
+    "link": "https://github.com/krishangnaikar/Minecraft-Mod"
+  },
+  {
+    "name": "Better Minescript",
+    "category": "Apps, web, and games",
+    "status": "Prototype",
+    "blurb": "Minecraft scripting and navigation tooling with world queries, movement, interactions, GUI, and rendering APIs. Long-route navigation and later source fixes remain unvalidated.",
+    "tech": [
+      "Python",
+      "Java",
+      "Fabric"
+    ],
+    "link": null
+  },
+  {
+    "name": "Minecraft Movement Mods",
+    "category": "Apps, web, and games",
+    "status": "Experiments",
+    "blurb": "Separate experiments in player locking, lunge swaps, sword knockback, and triple swapping, with behavior and debugging notes tracked per feature.",
+    "tech": [
+      "Java",
+      "Minecraft"
+    ],
+    "link": null
+  },
+  {
+    "name": "Tacos Website",
+    "category": "Apps, web, and games",
+    "status": "Project",
+    "blurb": "Flask restaurant website with home and menu pages and food imagery.",
+    "tech": [
+      "Python",
+      "Flask",
+      "HTML/CSS"
+    ],
+    "link": "https://github.com/krishangnaikar/TacosWebsite"
+  },
+  {
+    "name": "Risk Management",
+    "category": "Apps, web, and games",
+    "status": "Project",
+    "blurb": "Project and risk-register web interface with project editing and risk creation, editing, and deletion pages.",
+    "tech": [
+      "Python",
+      "Flask",
+      "HTML"
+    ],
+    "link": "https://github.com/krishangnaikar/riskManagement"
+  },
+  {
+    "name": "Web Backend",
+    "category": "Apps, web, and games",
+    "status": "Repository",
+    "blurb": "Python backend project organized around routers, data models, migrations, and shared utilities.",
+    "tech": [
+      "Python",
+      "SQL"
+    ],
+    "link": "https://github.com/krishangnaikar/web-backend"
+  },
+  {
+    "name": "Portfolio Website",
+    "category": "Apps, web, and games",
+    "status": "Project",
+    "blurb": "Flask portfolio with a shared project catalog and generated static HTML version.",
+    "tech": [
+      "Python",
+      "Flask",
+      "HTML/CSS"
+    ],
+    "link": "https://github.com/krishangnaikar/Portfolio"
+  },
+  {
+    "name": "Earlier Portfolio Website",
+    "category": "Apps, web, and games",
+    "status": "Archive",
+    "blurb": "Earlier personal portfolio site kept in a separate GitHub Pages repository.",
+    "tech": [
+      "HTML",
+      "SCSS"
+    ],
+    "link": "https://github.com/krishangnaikar/krishangnaikar.github.io"
+  },
+  {
+    "name": "Frontend Test Page",
+    "category": "Coursework and learning",
+    "status": "Experiment",
+    "blurb": "Small HTML frontend experiment.",
+    "tech": [
+      "HTML"
+    ],
+    "link": "https://github.com/krishangnaikar/test_frontend"
+  },
+  {
+    "name": "Learn Python",
+    "category": "Coursework and learning",
+    "status": "Learning repository",
+    "blurb": "Exercises covering syntax, classes, data structures, functions, exceptions, file I/O, and modules.",
+    "tech": [
+      "Python"
+    ],
+    "link": "https://github.com/krishangnaikar/learnpython"
+  },
+  {
+    "name": "AI Study Assistant - Model Layer",
+    "category": "Coursework and learning",
+    "status": "Course project in progress",
+    "blurb": "Java team-project contribution implementing query-session state, immutable responses, Observer notifications, and stale-result isolation. Full team GUI integration remains pending.",
+    "tech": [
+      "Java",
+      "Swing",
+      "Observer pattern",
+      "JUnit"
+    ],
+    "link": null
+  },
+  {
+    "name": "Photo Album Manager",
+    "category": "Coursework and learning",
+    "status": "Course project",
+    "blurb": "Java coursework focused on photo-album management and application design.",
+    "tech": [
+      "Java"
+    ],
+    "link": null
+  },
+  {
+    "name": "Robot Clone / Imitation Learning",
+    "category": "Concepts and plans",
+    "status": "Planning",
+    "blurb": "Exploration of personalized software behavior and physical imitation learning with wearable demonstration data. A robot has not been built.",
+    "tech": [
+      "Robotics",
+      "Imitation learning"
+    ],
+    "link": null
+  },
+  {
+    "name": "Matmul-Optimized Accelerator",
+    "category": "Concepts and plans",
+    "status": "Concept study",
+    "blurb": "Architecture study of systolic arrays, tiling, memory bandwidth, and data movement. RTL and FPGA implementation are proposed next steps.",
+    "tech": [
+      "Computer architecture",
+      "Matrix multiplication"
+    ],
+    "link": null
+  }
+]

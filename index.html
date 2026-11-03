@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{{ profile.name }} – Portfolio</title>
+    <title>Krishang Naikar – Portfolio</title>
 
     <!-- Tailwind (CDN, no build step) -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -18,13 +18,13 @@
     <script defer src="https://unpkg.com/lucide@latest"></script>
 
     <!-- Site JS -->
-    <script defer src="{{ url_for('static', filename='site.js') }}"></script>
+    <script defer src="static/site.js"></script>
   </head>
   <body class="bg-white text-neutral-900 selection:bg-neutral-900 selection:text-white dark:bg-neutral-950 dark:text-neutral-50">
     <!-- Header / Nav -->
     <header class="sticky top-0 z-20 backdrop-blur border-b border-neutral-200/60 dark:border-neutral-800/60 bg-white/60 dark:bg-neutral-950/60">
       <nav class="max-w-6xl mx-auto flex items-center justify-between px-4 py-3">
-        <a href="#home" class="font-semibold tracking-tight">{{ profile.name }}</a>
+        <a href="#home" class="font-semibold tracking-tight">Krishang Naikar</a>
         <div class="hidden sm:flex items-center gap-6">
           <a href="#about" class="text-sm text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">About</a>
           <a href="#skills" class="text-sm text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">Skills</a>
@@ -35,13 +35,13 @@
           <a href="#contact" class="text-sm text-neutral-600 hover:text-black dark:text-neutral-300 dark:hover:text-white">Contact</a>
         </div>
         <div class="flex items-center gap-2">
-          <a href="{{ profile.github }}" target="_blank" rel="noreferrer" class="p-2 rounded-xl ring-1 ring-neutral-200 dark:ring-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-900" aria-label="GitHub">
+          <a href="https://github.com/krishangnaikar" target="_blank" rel="noreferrer" class="p-2 rounded-xl ring-1 ring-neutral-200 dark:ring-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-900" aria-label="GitHub">
             <i data-lucide="github" class="w-4 h-4"></i>
           </a>
-          <a href="{{ profile.linkedin }}" target="_blank" rel="noreferrer" class="p-2 rounded-xl ring-1 ring-neutral-200 dark:ring-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-900" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/krishang-naikar-26aa6a255/" target="_blank" rel="noreferrer" class="p-2 rounded-xl ring-1 ring-neutral-200 dark:ring-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-900" aria-label="LinkedIn">
             <i data-lucide="linkedin" class="w-4 h-4"></i>
           </a>
-          <a href="{{ resume_url }}" class="hidden sm:inline-flex items-center gap-2 rounded-xl ring-1 ring-neutral-200 dark:ring-neutral-800 px-3 py-2 text-sm hover:bg-neutral-100 dark:hover:bg-neutral-900">
+          <a href="static/resume/Resume8-18-25.pdf" class="hidden sm:inline-flex items-center gap-2 rounded-xl ring-1 ring-neutral-200 dark:ring-neutral-800 px-3 py-2 text-sm hover:bg-neutral-100 dark:hover:bg-neutral-900">
             <i data-lucide="download" class="w-4 h-4"></i> Resume
           </a>
           <button id="theme-toggle" class="p-2 rounded-xl ring-1 ring-neutral-200 dark:ring-neutral-800 hover:bg-neutral-100 dark:hover:bg-neutral-900" aria-label="Toggle theme">
@@ -57,39 +57,49 @@
         <div class="grid md:grid-cols-5 gap-8 items-center">
           <div class="md:col-span-3">
             <h1 class="text-3xl sm:text-5xl font-semibold leading-tight tracking-tight">
-              {{ profile.title }}
+              Software Engineering Intern (AI/ML)
             </h1>
             <p class="mt-4 text-neutral-600 dark:text-neutral-300 max-w-2xl">
-              {{ profile.summary }}
+              Software Engineering Intern with experience in automation, data pipelines, and workflow integrations. Comfortable shipping in Python and Java; eager to build scalable developer tooling and AI-backed systems.
             </p>
             <div class="mt-6 flex flex-wrap items-center gap-3 text-sm">
               <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1">
-                <i data-lucide="phone" class="w-3.5 h-3.5 mr-2"></i> {{ profile.phone }}
+                <i data-lucide="phone" class="w-3.5 h-3.5 mr-2"></i> +1 (510) 870-7022
               </span>
               <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1">
                 <i data-lucide="mail" class="w-3.5 h-3.5 mr-2"></i>
-                <a href="mailto:{{ profile.email }}">{{ profile.email }}</a>
+                <a href="mailto:krishangnaikar7@gmail.com">krishangnaikar7@gmail.com</a>
               </span>
               <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1">
                 <i data-lucide="github" class="w-3.5 h-3.5 mr-2"></i>
-                <a href="{{ profile.github }}" target="_blank" rel="noreferrer">GitHub</a>
+                <a href="https://github.com/krishangnaikar" target="_blank" rel="noreferrer">GitHub</a>
               </span>
               <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1">
                 <i data-lucide="linkedin" class="w-3.5 h-3.5 mr-2"></i>
-                <a href="{{ profile.linkedin }}" target="_blank" rel="noreferrer">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/krishang-naikar-26aa6a255/" target="_blank" rel="noreferrer">LinkedIn</a>
               </span>
             </div>
             <div class="mt-6 flex gap-3">
               <a href="#projects" class="rounded-xl bg-black text-white dark:bg-white dark:text-black px-4 py-2 text-sm">See Projects</a>
-              <a href="{{ resume_url }}" class="rounded-xl ring-1 ring-neutral-300 dark:ring-neutral-800 px-4 py-2 text-sm">Download Resume</a>
+              <a href="static/resume/Resume8-18-25.pdf" class="rounded-xl ring-1 ring-neutral-300 dark:ring-neutral-800 px-4 py-2 text-sm">Download Resume</a>
             </div>
           </div>
           <div class="md:col-span-2">
             <div class="rounded-3xl border border-neutral-200 dark:border-neutral-800 p-5">
               <div class="grid grid-cols-2 gap-3 text-xs">
-                {% for s in skills[0]['items'][:6] %}
-                  <div class="rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 px-3 py-2">{{ s }}</div>
-                {% endfor %}
+
+                  <div class="rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 px-3 py-2">Java</div>
+
+                  <div class="rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 px-3 py-2">Python</div>
+
+                  <div class="rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 px-3 py-2">C/C++</div>
+
+                  <div class="rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 px-3 py-2">SQL (Postgres)</div>
+
+                  <div class="rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 px-3 py-2">JavaScript</div>
+
+                  <div class="rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 px-3 py-2">HTML/CSS</div>
+
               </div>
               <p class="text-[11px] text-neutral-500 dark:text-neutral-400 mt-3">Quick snapshot of core languages.</p>
             </div>
@@ -110,16 +120,87 @@
         </div>
 
         <div class="grid md:grid-cols-2 gap-6">
-          {% for group in skills %}
+
           <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5">
-            <h3 class="font-medium mb-3">{{ group.label }}</h3>
+            <h3 class="font-medium mb-3">Languages</h3>
             <div class="flex flex-wrap gap-2">
-              {% for item in group['items'] %}
-              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">{{ item }}</span>
-              {% endfor %}
+
+              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Java</span>
+
+              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Python</span>
+
+              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">C/C++</span>
+
+              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">SQL (Postgres)</span>
+
+              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">JavaScript</span>
+
+              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">HTML/CSS</span>
+
             </div>
           </div>
-          {% endfor %}
+
+          <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5">
+            <h3 class="font-medium mb-3">Frameworks</h3>
+            <div class="flex flex-wrap gap-2">
+
+              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Flask</span>
+
+              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">FastAPI</span>
+
+            </div>
+          </div>
+
+          <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5">
+            <h3 class="font-medium mb-3">Tools</h3>
+            <div class="flex flex-wrap gap-2">
+
+              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Git</span>
+
+              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Docker</span>
+
+              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Google Cloud Platform</span>
+
+              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">VS Code</span>
+
+              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">PyCharm</span>
+
+              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">IntelliJ</span>
+
+              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Eclipse</span>
+
+              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Ollama</span>
+
+              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">IDE Extension Development</span>
+
+            </div>
+          </div>
+
+          <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5">
+            <h3 class="font-medium mb-3">Libraries</h3>
+            <div class="flex flex-wrap gap-2">
+
+              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Pandas</span>
+
+              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">NumPy</span>
+
+              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Matplotlib</span>
+
+              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">PyTorch</span>
+
+              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Undetected Chromedriver</span>
+
+              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Selenium</span>
+
+              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Discord.py</span>
+
+              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">LangChain</span>
+
+              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">OpenAI</span>
+
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -133,19 +214,43 @@
         </div>
 
         <div class="space-y-6">
-          {% for exp in experiences %}
+
           <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5">
             <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
               <h3 class="text-base sm:text-lg font-medium">
-                {{ exp.role }} · <span class="text-neutral-600 dark:text-neutral-300">{{ exp.company }}</span>
+                Java &amp; Python Developer · <span class="text-neutral-600 dark:text-neutral-300">Zentroq</span>
               </h3>
-              <div class="text-sm text-neutral-500 dark:text-neutral-400">{{ exp.location }} • {{ exp.date }}</div>
+              <div class="text-sm text-neutral-500 dark:text-neutral-400">Fremont, CA • Nov 2023 – Present</div>
             </div>
             <ul class="mt-3 list-disc pl-5 space-y-2 text-sm">
-              {% for b in exp.bullets %}<li>{{ b }}</li>{% endfor %}
+              <li>Integrated with two construction-industry APIs using Java.</li><li>Built Java data pipelines processing large datasets into PostgreSQL.</li><li>Automated large-scale web scraping with Python to enrich customer databases.</li>
             </ul>
           </div>
-          {% endfor %}
+
+          <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5">
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+              <h3 class="text-base sm:text-lg font-medium">
+                Software Engineer Intern · <span class="text-neutral-600 dark:text-neutral-300">TrueNil</span>
+              </h3>
+              <div class="text-sm text-neutral-500 dark:text-neutral-400">Fremont, CA • Nov 2023 – May 2024</div>
+            </div>
+            <ul class="mt-3 list-disc pl-5 space-y-2 text-sm">
+              <li>Collaborated with engineers to resolve codebase issues and improve reliability.</li><li>Supported a ChatGPT-based product to ensure smooth functionality.</li>
+            </ul>
+          </div>
+
+          <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5">
+            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
+              <h3 class="text-base sm:text-lg font-medium">
+                Co-Founder · <span class="text-neutral-600 dark:text-neutral-300">Gradachiever</span>
+              </h3>
+              <div class="text-sm text-neutral-500 dark:text-neutral-400">Fremont, CA • 2021</div>
+            </div>
+            <ul class="mt-3 list-disc pl-5 space-y-2 text-sm">
+              <li>Designed automation programs to streamline workflows and surface opportunities.</li><li>Aggregated college data (scores, tuition, addresses) from multiple sources.</li><li>Integrated third-party platforms via data feeds and APIs.</li>
+            </ul>
+          </div>
+
         </div>
       </section>
 
@@ -157,32 +262,637 @@
           </div>
           <div>
             <h2 class="text-xl sm:text-2xl font-semibold">Projects</h2>
-            <p class="text-sm text-neutral-500 dark:text-neutral-400">Selected work with code links</p>
+            <p class="text-sm text-neutral-500 dark:text-neutral-400">Research, software, coursework, and ideas - with status and source links where available</p>
           </div>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {% for p in projects %}
-          <a href="{{ p.link }}" target="_blank" rel="noreferrer" class="group block rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 hover:shadow-sm transition-shadow">
-            <div class="flex items-start justify-between gap-3">
-              <div>
-                <h3 class="font-medium group-hover:underline underline-offset-4 decoration-neutral-400">{{ p.name }}</h3>
-                <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">{{ p.year }}</p>
+        <p class="mb-8 text-sm text-neutral-600 dark:text-neutral-300">34 projects and investigations. Local work has no public source link. Concepts and plans are labeled separately.</p>
+
+        <div class="mb-10">
+          <h3 class="text-lg font-semibold mb-4">AI and machine learning</h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Prototype</p>
+              <h4 class="font-semibold">Multimodal Enterprise RAG</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Local retrieval across text, images, audio, and video, with OCR, transcription, vector search, and knowledge graph exploration.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Python</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Streamlit</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Ollama</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Qdrant</span>
+
               </div>
-              <i data-lucide="external-link" class="w-4 h-4 opacity-70"></i>
-            </div>
-            <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">{{ p.blurb }}</p>
-            <div class="mt-4 flex flex-wrap gap-2">
-              {% for t in p.tech %}
-              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">{{ t }}</span>
-              {% endfor %}
-            </div>
-          </a>
-          {% endfor %}
+
+              <a href="https://github.com/krishangnaikar/Multimodal-Enterprise-RAG" target="_blank" rel="noreferrer" class="mt-auto text-sm underline underline-offset-4">View source <span aria-hidden="true">&rarr;</span><span class="sr-only"> for Multimodal Enterprise RAG</span></a>
+
+            </article>
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Project</p>
+              <h4 class="font-semibold">Personal LLM Chatbot</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Document ingestion and local-model chat through a Flask interface. Adapted from the credited Ollama/privateGPT projects.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Python</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Flask</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Ollama</span>
+
+              </div>
+
+              <a href="https://github.com/krishangnaikar/LLMBot" target="_blank" rel="noreferrer" class="mt-auto text-sm underline underline-offset-4">View source <span aria-hidden="true">&rarr;</span><span class="sr-only"> for Personal LLM Chatbot</span></a>
+
+            </article>
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Course project</p>
+              <h4 class="font-semibold">Image Classifier</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Flower classification with transfer learning, checkpoint saving, and top-K command-line prediction.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Python</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">PyTorch</span>
+
+              </div>
+
+              <a href="https://github.com/krishangnaikar/Image-Classifier_FinalProject" target="_blank" rel="noreferrer" class="mt-auto text-sm underline underline-offset-4">View source <span aria-hidden="true">&rarr;</span><span class="sr-only"> for Image Classifier</span></a>
+
+            </article>
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Experiment</p>
+              <h4 class="font-semibold">OS LLM Agent</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Ollama agent and MCP tool-server experiments.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Python</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Ollama</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">MCP</span>
+
+              </div>
+
+              <a href="https://github.com/krishangnaikar/osllm" target="_blank" rel="noreferrer" class="mt-auto text-sm underline underline-offset-4">View source <span aria-hidden="true">&rarr;</span><span class="sr-only"> for OS LLM Agent</span></a>
+
+            </article>
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Project</p>
+              <h4 class="font-semibold">OpenAI Desktop GUI</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Tkinter desktop interface for entering prompts and displaying OpenAI responses.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Python</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Tkinter</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">OpenAI</span>
+
+              </div>
+
+              <a href="https://github.com/krishangnaikar/OpenAI_GUI_Project" target="_blank" rel="noreferrer" class="mt-auto text-sm underline underline-offset-4">View source <span aria-hidden="true">&rarr;</span><span class="sr-only"> for OpenAI Desktop GUI</span></a>
+
+            </article>
+
+          </div>
         </div>
 
+        <div class="mb-10">
+          <h3 class="text-lg font-semibold mb-4">Research and quantum computing</h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Research</p>
+              <h4 class="font-semibold">Transistor Fine-Tuning and Tool-Use Evaluation</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Study of vision-language models for transistor analysis and TCAD tool use, including base-versus-adapter comparisons, guided error analysis, and persistent-memory experiments. Results and limitations are tracked separately.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Python</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">PyTorch</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">VLMs</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">TCAD</span>
+
+              </div>
+
+              <p class="mt-auto text-xs text-neutral-500 dark:text-neutral-400">No public repository</p>
+
+            </article>
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Merged contribution</p>
+              <h4 class="font-semibold">Qiskit ket_basis Visualization</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Added X, Y, and Z ket-basis options for state LaTeX visualization, with tests and a release note. Merged into Qiskit on October 22, 2026.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Python</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Qiskit</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Quantum computing</span>
+
+              </div>
+
+              <a href="https://github.com/Qiskit/qiskit/pull/16868" target="_blank" rel="noreferrer" class="mt-auto text-sm underline underline-offset-4">View source <span aria-hidden="true">&rarr;</span><span class="sr-only"> for Qiskit ket_basis Visualization</span></a>
+
+            </article>
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Investigation</p>
+              <h4 class="font-semibold">Qiskit Transpiler Optimization Investigation</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Reproduced a cancellation issue and compared a proposed fix across circuit families. Benchmarks identified both gate reductions and runtime overhead; the change is not presented as merged.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Python</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Qiskit</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Benchmarking</span>
+
+              </div>
+
+              <p class="mt-auto text-xs text-neutral-500 dark:text-neutral-400">No public repository</p>
+
+            </article>
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">One-qubit build</p>
+              <h4 class="font-semibold">Minecraft Redstone Qubit Simulator</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Classical stabilizer simulation built in redstone with X, Z, Hadamard, and measurement logic. Two-qubit entanglement is a planned extension.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Minecraft</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Redstone</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Stabilizer simulation</span>
+
+              </div>
+
+              <p class="mt-auto text-xs text-neutral-500 dark:text-neutral-400">No public repository</p>
+
+            </article>
+
+          </div>
+        </div>
+
+        <div class="mb-10">
+          <h3 class="text-lg font-semibold mb-4">Automation and developer tools</h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Project</p>
+              <h4 class="font-semibold">ATS Scanner / ResuMaster</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Chrome extension that extracts job descriptions and fills a PartyRock resume-review workflow using saved resume text.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">JavaScript</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Chrome extension</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">PartyRock</span>
+
+              </div>
+
+              <a href="https://github.com/krishangnaikar/ATS-Scanner" target="_blank" rel="noreferrer" class="mt-auto text-sm underline underline-offset-4">View source <span aria-hidden="true">&rarr;</span><span class="sr-only"> for ATS Scanner / ResuMaster</span></a>
+
+            </article>
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Project</p>
+              <h4 class="font-semibold">Snake Programming Language</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Node.js interpreter with a lexer, recursive-descent parser, variables, conditionals, loops, and list operations.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">JavaScript</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Node.js</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Interpreters</span>
+
+              </div>
+
+              <a href="https://github.com/krishangnaikar/snake-lang" target="_blank" rel="noreferrer" class="mt-auto text-sm underline underline-offset-4">View source <span aria-hidden="true">&rarr;</span><span class="sr-only"> for Snake Programming Language</span></a>
+
+            </article>
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Local project</p>
+              <h4 class="font-semibold">Canvas Todos</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Local dashboard combining school calendar feeds, todos, announcements, and manually added assignments without Canvas API tokens.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Python</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">HTML</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Calendar feeds</span>
+
+              </div>
+
+              <p class="mt-auto text-xs text-neutral-500 dark:text-neutral-400">No public repository</p>
+
+            </article>
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Local project</p>
+              <h4 class="font-semibold">Claude CLI MCP Bridge</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Stdio MCP server wrapping the local Claude CLI, with session continuation, configurable timeouts, and explicit tool permissions.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Python</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">MCP</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">CLI integration</span>
+
+              </div>
+
+              <p class="mt-auto text-xs text-neutral-500 dark:text-neutral-400">No public repository</p>
+
+            </article>
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Prototype</p>
+              <h4 class="font-semibold">Python Revision History</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Per-document immutable snapshots, metadata, text comparisons, and restore-as-new-version behavior. In-memory storage is not thread-safe.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Python</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">difflib</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Versioning</span>
+
+              </div>
+
+              <p class="mt-auto text-xs text-neutral-500 dark:text-neutral-400">No public repository</p>
+
+            </article>
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Project</p>
+              <h4 class="font-semibold">Google Alert Automation</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Extracts links from Google Alert emails for follow-up processing.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Python</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Email parsing</span>
+
+              </div>
+
+              <a href="https://github.com/krishangnaikar/AlertAutomation" target="_blank" rel="noreferrer" class="mt-auto text-sm underline underline-offset-4">View source <span aria-hidden="true">&rarr;</span><span class="sr-only"> for Google Alert Automation</span></a>
+
+            </article>
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Educational project</p>
+              <h4 class="font-semibold">College Info Scraper</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Collects college links and admissions-related data from websites.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Python</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Web scraping</span>
+
+              </div>
+
+              <a href="https://github.com/krishangnaikar/CollegeInfoScraper" target="_blank" rel="noreferrer" class="mt-auto text-sm underline underline-offset-4">View source <span aria-hidden="true">&rarr;</span><span class="sr-only"> for College Info Scraper</span></a>
+
+            </article>
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Educational project</p>
+              <h4 class="font-semibold">WhatsApp Scraping and Messaging</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Browser automation experiments for group information extraction and messaging workflows.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Python</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Selenium</span>
+
+              </div>
+
+              <a href="https://github.com/krishangnaikar/WhatsappScrapingMessaging" target="_blank" rel="noreferrer" class="mt-auto text-sm underline underline-offset-4">View source <span aria-hidden="true">&rarr;</span><span class="sr-only"> for WhatsApp Scraping and Messaging</span></a>
+
+            </article>
+
+          </div>
+        </div>
+
+        <div class="mb-10">
+          <h3 class="text-lg font-semibold mb-4">Apps, web, and games</h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Project</p>
+              <h4 class="font-semibold">PlaygroundAI Discord Bot</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Connects Discord commands with browser-driven AI image-generation workflows.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Python</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Discord</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Selenium</span>
+
+              </div>
+
+              <a href="https://github.com/krishangnaikar/PlaygroundAIDiscordBot" target="_blank" rel="noreferrer" class="mt-auto text-sm underline underline-offset-4">View source <span aria-hidden="true">&rarr;</span><span class="sr-only"> for PlaygroundAI Discord Bot</span></a>
+
+            </article>
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Project</p>
+              <h4 class="font-semibold">One Pace Player</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Electron video player with arc navigation, saved playback progress, and next-episode playback.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">JavaScript</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Electron</span>
+
+              </div>
+
+              <a href="https://github.com/krishangnaikar/One-Pace-Player" target="_blank" rel="noreferrer" class="mt-auto text-sm underline underline-offset-4">View source <span aria-hidden="true">&rarr;</span><span class="sr-only"> for One Pace Player</span></a>
+
+            </article>
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Educational project</p>
+              <h4 class="font-semibold">Streaming Video Downloader</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Python utilities for collecting streaming media links and offline download workflows.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Python</span>
+
+              </div>
+
+              <a href="https://github.com/krishangnaikar/Download-Steaming-Videos" target="_blank" rel="noreferrer" class="mt-auto text-sm underline underline-offset-4">View source <span aria-hidden="true">&rarr;</span><span class="sr-only"> for Streaming Video Downloader</span></a>
+
+            </article>
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Learning project</p>
+              <h4 class="font-semibold">Minecraft Mod</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Java modding experiments with custom items, blocks, crops, and ore generation.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Java</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Minecraft</span>
+
+              </div>
+
+              <a href="https://github.com/krishangnaikar/Minecraft-Mod" target="_blank" rel="noreferrer" class="mt-auto text-sm underline underline-offset-4">View source <span aria-hidden="true">&rarr;</span><span class="sr-only"> for Minecraft Mod</span></a>
+
+            </article>
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Prototype</p>
+              <h4 class="font-semibold">Better Minescript</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Minecraft scripting and navigation tooling with world queries, movement, interactions, GUI, and rendering APIs. Long-route navigation and later source fixes remain unvalidated.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Python</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Java</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Fabric</span>
+
+              </div>
+
+              <p class="mt-auto text-xs text-neutral-500 dark:text-neutral-400">No public repository</p>
+
+            </article>
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Experiments</p>
+              <h4 class="font-semibold">Minecraft Movement Mods</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Separate experiments in player locking, lunge swaps, sword knockback, and triple swapping, with behavior and debugging notes tracked per feature.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Java</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Minecraft</span>
+
+              </div>
+
+              <p class="mt-auto text-xs text-neutral-500 dark:text-neutral-400">No public repository</p>
+
+            </article>
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Project</p>
+              <h4 class="font-semibold">Tacos Website</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Flask restaurant website with home and menu pages and food imagery.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Python</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Flask</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">HTML/CSS</span>
+
+              </div>
+
+              <a href="https://github.com/krishangnaikar/TacosWebsite" target="_blank" rel="noreferrer" class="mt-auto text-sm underline underline-offset-4">View source <span aria-hidden="true">&rarr;</span><span class="sr-only"> for Tacos Website</span></a>
+
+            </article>
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Project</p>
+              <h4 class="font-semibold">Risk Management</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Project and risk-register web interface with project editing and risk creation, editing, and deletion pages.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Python</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Flask</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">HTML</span>
+
+              </div>
+
+              <a href="https://github.com/krishangnaikar/riskManagement" target="_blank" rel="noreferrer" class="mt-auto text-sm underline underline-offset-4">View source <span aria-hidden="true">&rarr;</span><span class="sr-only"> for Risk Management</span></a>
+
+            </article>
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Repository</p>
+              <h4 class="font-semibold">Web Backend</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Python backend project organized around routers, data models, migrations, and shared utilities.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Python</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">SQL</span>
+
+              </div>
+
+              <a href="https://github.com/krishangnaikar/web-backend" target="_blank" rel="noreferrer" class="mt-auto text-sm underline underline-offset-4">View source <span aria-hidden="true">&rarr;</span><span class="sr-only"> for Web Backend</span></a>
+
+            </article>
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Project</p>
+              <h4 class="font-semibold">Portfolio Website</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Flask portfolio with a shared project catalog and generated static HTML version.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Python</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Flask</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">HTML/CSS</span>
+
+              </div>
+
+              <a href="https://github.com/krishangnaikar/Portfolio" target="_blank" rel="noreferrer" class="mt-auto text-sm underline underline-offset-4">View source <span aria-hidden="true">&rarr;</span><span class="sr-only"> for Portfolio Website</span></a>
+
+            </article>
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Archive</p>
+              <h4 class="font-semibold">Earlier Portfolio Website</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Earlier personal portfolio site kept in a separate GitHub Pages repository.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">HTML</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">SCSS</span>
+
+              </div>
+
+              <a href="https://github.com/krishangnaikar/krishangnaikar.github.io" target="_blank" rel="noreferrer" class="mt-auto text-sm underline underline-offset-4">View source <span aria-hidden="true">&rarr;</span><span class="sr-only"> for Earlier Portfolio Website</span></a>
+
+            </article>
+
+          </div>
+        </div>
+
+        <div class="mb-10">
+          <h3 class="text-lg font-semibold mb-4">Coursework and learning</h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Experiment</p>
+              <h4 class="font-semibold">Frontend Test Page</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Small HTML frontend experiment.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">HTML</span>
+
+              </div>
+
+              <a href="https://github.com/krishangnaikar/test_frontend" target="_blank" rel="noreferrer" class="mt-auto text-sm underline underline-offset-4">View source <span aria-hidden="true">&rarr;</span><span class="sr-only"> for Frontend Test Page</span></a>
+
+            </article>
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Learning repository</p>
+              <h4 class="font-semibold">Learn Python</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Exercises covering syntax, classes, data structures, functions, exceptions, file I/O, and modules.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Python</span>
+
+              </div>
+
+              <a href="https://github.com/krishangnaikar/learnpython" target="_blank" rel="noreferrer" class="mt-auto text-sm underline underline-offset-4">View source <span aria-hidden="true">&rarr;</span><span class="sr-only"> for Learn Python</span></a>
+
+            </article>
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Course project in progress</p>
+              <h4 class="font-semibold">AI Study Assistant - Model Layer</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Java team-project contribution implementing query-session state, immutable responses, Observer notifications, and stale-result isolation. Full team GUI integration remains pending.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Java</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Swing</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Observer pattern</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">JUnit</span>
+
+              </div>
+
+              <p class="mt-auto text-xs text-neutral-500 dark:text-neutral-400">No public repository</p>
+
+            </article>
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Course project</p>
+              <h4 class="font-semibold">Photo Album Manager</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Java coursework focused on photo-album management and application design.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Java</span>
+
+              </div>
+
+              <p class="mt-auto text-xs text-neutral-500 dark:text-neutral-400">No public repository</p>
+
+            </article>
+
+          </div>
+        </div>
+
+        <div class="mb-10">
+          <h3 class="text-lg font-semibold mb-4">Concepts and plans</h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Planning</p>
+              <h4 class="font-semibold">Robot Clone / Imitation Learning</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Exploration of personalized software behavior and physical imitation learning with wearable demonstration data. A robot has not been built.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Robotics</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Imitation learning</span>
+
+              </div>
+
+              <p class="mt-auto text-xs text-neutral-500 dark:text-neutral-400">No public repository</p>
+
+            </article>
+
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">Concept study</p>
+              <h4 class="font-semibold">Matmul-Optimized Accelerator</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">Architecture study of systolic arrays, tiling, memory bandwidth, and data movement. RTL and FPGA implementation are proposed next steps.</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Computer architecture</span>
+
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">Matrix multiplication</span>
+
+              </div>
+
+              <p class="mt-auto text-xs text-neutral-500 dark:text-neutral-400">No public repository</p>
+
+            </article>
+
+          </div>
+        </div>
+
+
         <div class="mt-6 text-sm">
-          <a href="{{ profile.github }}" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 underline decoration-neutral-400 underline-offset-4">
+          <a href="https://github.com/krishangnaikar" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 underline decoration-neutral-400 underline-offset-4">
             <i data-lucide="github" class="w-4 h-4"></i> See more on GitHub
           </a>
         </div>
@@ -198,13 +908,13 @@
         </div>
 
         <div class="grid gap-6">
-          {% for ed in education %}
+
           <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5">
-            <h3 class="font-medium">{{ ed.school }}</h3>
-            <p class="text-sm text-neutral-600 dark:text-neutral-300">{{ ed.degree }}</p>
-            <p class="text-sm text-neutral-500 dark:text-neutral-400">{{ ed.date }}</p>
+            <h3 class="font-medium">San José State University</h3>
+            <p class="text-sm text-neutral-600 dark:text-neutral-300">B.S., Computer Science (Undergraduate)</p>
+            <p class="text-sm text-neutral-500 dark:text-neutral-400">Aug 2024 – May 2027</p>
           </div>
-          {% endfor %}
+
         </div>
       </section>
 
@@ -218,12 +928,27 @@
         </div>
 
         <ul class="grid sm:grid-cols-2 gap-6">
-          {% for c in certifications %}
+
           <li class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5">
-            <div class="font-medium">{{ c.name }}</div>
-            <div class="text-sm text-neutral-600 dark:text-neutral-300">{{ c.org }} • {{ c.year }}</div>
+            <div class="font-medium">Google Cybersecurity Professional Certificate</div>
+            <div class="text-sm text-neutral-600 dark:text-neutral-300">Coursera • 2024</div>
           </li>
-          {% endfor %}
+
+          <li class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5">
+            <div class="font-medium">Introduction to Self-Driving Cars</div>
+            <div class="text-sm text-neutral-600 dark:text-neutral-300">Coursera • 2024</div>
+          </li>
+
+          <li class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5">
+            <div class="font-medium">Machine Learning Specialization</div>
+            <div class="text-sm text-neutral-600 dark:text-neutral-300">Coursera • 2022</div>
+          </li>
+
+          <li class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5">
+            <div class="font-medium">AI Programming with Python</div>
+            <div class="text-sm text-neutral-600 dark:text-neutral-300">Udacity • 2020</div>
+          </li>
+
         </ul>
       </section>
 
@@ -241,16 +966,16 @@
 
         <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5">
           <div class="flex flex-col sm:flex-row sm:items-center gap-3 text-sm">
-            <a href="mailto:{{ profile.email }}" class="inline-flex items-center gap-2 rounded-xl bg-black text-white dark:bg-white dark:text-black px-4 py-2">
+            <a href="mailto:krishangnaikar7@gmail.com" class="inline-flex items-center gap-2 rounded-xl bg-black text-white dark:bg-white dark:text-black px-4 py-2">
               <i data-lucide="mail" class="w-4 h-4"></i> Email Me
             </a>
-            <a href="tel:{{ profile.phone | replace(' ', '') | replace('(', '') | replace(')', '') | replace('-', '') }}" class="inline-flex items-center gap-2 rounded-xl ring-1 ring-neutral-300 dark:ring-neutral-800 px-4 py-2">
+            <a href="tel:+15108707022" class="inline-flex items-center gap-2 rounded-xl ring-1 ring-neutral-300 dark:ring-neutral-800 px-4 py-2">
               <i data-lucide="phone" class="w-4 h-4"></i> Call/Text
             </a>
-            <a href="{{ profile.linkedin }}" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 rounded-xl ring-1 ring-neutral-300 dark:ring-neutral-800 px-4 py-2">
+            <a href="https://www.linkedin.com/in/krishang-naikar-26aa6a255/" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 rounded-xl ring-1 ring-neutral-300 dark:ring-neutral-800 px-4 py-2">
               <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
             </a>
-            <a href="{{ profile.github }}" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 rounded-xl ring-1 ring-neutral-300 dark:ring-neutral-800 px-4 py-2">
+            <a href="https://github.com/krishangnaikar" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 rounded-xl ring-1 ring-neutral-300 dark:ring-neutral-800 px-4 py-2">
               <i data-lucide="github" class="w-4 h-4"></i> GitHub
             </a>
           </div>
@@ -263,7 +988,7 @@
       <!-- Footer -->
       <footer class="py-12 border-t border-neutral-200 dark:border-neutral-800 text-sm text-neutral-500 dark:text-neutral-400">
         <div class="flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p>© <span id="year"></span> {{ profile.name }}. All rights reserved.</p>
+          <p>© <span id="year"></span> Krishang Naikar. All rights reserved.</p>
           <a href="#home" class="hover:text-neutral-700 dark:hover:text-neutral-200">Back to top</a>
         </div>
       </footer>

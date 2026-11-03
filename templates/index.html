@@ -157,29 +157,35 @@
           </div>
           <div>
             <h2 class="text-xl sm:text-2xl font-semibold">Projects</h2>
-            <p class="text-sm text-neutral-500 dark:text-neutral-400">Selected work with code links</p>
+            <p class="text-sm text-neutral-500 dark:text-neutral-400">Research, software, coursework, and ideas - with status and source links where available</p>
           </div>
         </div>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {% for p in projects %}
-          <a href="{{ p.link }}" target="_blank" rel="noreferrer" class="group block rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 hover:shadow-sm transition-shadow">
-            <div class="flex items-start justify-between gap-3">
-              <div>
-                <h3 class="font-medium group-hover:underline underline-offset-4 decoration-neutral-400">{{ p.name }}</h3>
-                <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5">{{ p.year }}</p>
+        <p class="mb-8 text-sm text-neutral-600 dark:text-neutral-300">{{ projects|length }} projects and investigations. Local work has no public source link. Concepts and plans are labeled separately.</p>
+        {% for category in project_categories %}
+        <div class="mb-10">
+          <h3 class="text-lg font-semibold mb-4">{{ category }}</h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for p in projects if p.category == category %}
+            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
+              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">{{ p.status }}</p>
+              <h4 class="font-semibold">{{ p.name }}</h4>
+              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">{{ p.blurb }}</p>
+              <div class="mt-4 mb-5 flex flex-wrap gap-2">
+                {% for t in p.tech %}
+                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">{{ t }}</span>
+                {% endfor %}
               </div>
-              <i data-lucide="external-link" class="w-4 h-4 opacity-70"></i>
-            </div>
-            <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">{{ p.blurb }}</p>
-            <div class="mt-4 flex flex-wrap gap-2">
-              {% for t in p.tech %}
-              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">{{ t }}</span>
-              {% endfor %}
-            </div>
-          </a>
-          {% endfor %}
+              {% if p.link %}
+              <a href="{{ p.link }}" target="_blank" rel="noreferrer" class="mt-auto text-sm underline underline-offset-4">View source <span aria-hidden="true">&rarr;</span><span class="sr-only"> for {{ p.name }}</span></a>
+              {% else %}
+              <p class="mt-auto text-xs text-neutral-500 dark:text-neutral-400">No public repository</p>
+              {% endif %}
+            </article>
+            {% endfor %}
+          </div>
         </div>
+        {% endfor %}
 
         <div class="mt-6 text-sm">
           <a href="{{ profile.github }}" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 underline decoration-neutral-400 underline-offset-4">

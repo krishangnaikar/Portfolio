@@ -77,57 +77,12 @@ certifications = [
     {"name": "AI Programming with Python", "org": "Udacity", "year": "2020"},
 ]
 
-projects = [
-    {
-        "name": "Snake – Toy Programming Language",
-        "year": "2024",
-        "blurb": "Custom Python-inspired language with lexer, parser, interpreter, modules, and rich error reporting.",
-        "tech": ["JavaScript", "Node.js"],
-        "link": "https://github.com/krishangnaikar/snake-lang",
-    },
-    {
-        "name": "Personal LLM Chatbot",
-        "year": "2024",
-        "blurb": "Local LLM chatbot (Ollama + Mistral) with Flask backend and responsive web UI; supports PDF/Doc ingestion.",
-        "tech": ["Python", "Flask", "LLM", "Ollama"],
-        "link": "https://github.com/krishangnaikar/LLMBot",
-    },
-    {
-        "name": "WhatsApp Scraping & Messaging (Edu)",
-        "year": "2023",
-        "blurb": "Automated extraction of group phone numbers and batch messaging.",
-        "tech": ["Python", "Selenium"],
-        "link": "https://github.com/krishangnaikar/WhatsappScrapingMessaging",
-    },
-    {
-        "name": "PlaygroundAI Discord Bot",
-        "year": "2023",
-        "blurb": "Discord bot with /imagine that fetches AI images from playgroundai.com prompts.",
-        "tech": ["Python", "Discord API", "Web Scraping"],
-        "link": "https://github.com/krishangnaikar/PlaygroundAIDiscordBot",
-    },
-    {
-        "name": "College Info Automation",
-        "year": "2023",
-        "blurb": "Scraped SAT/ACT percentiles, tuition, and addresses across college sites.",
-        "tech": ["Python", "Selenium"],
-        "link": "https://github.com/krishangnaikar/CollegeInfoScraper",
-    },
-    {
-        "name": "Streaming Video Download (Edu)",
-        "year": "2023",
-        "blurb": "Collected Azure Media streaming links and automated offline downloads.",
-        "tech": ["Python"],
-        "link": "https://github.com/krishangnaikar/Download-Steaming-Videos",
-    },
-    {
-        "name": "Image Classifier (Udacity Final)",
-        "year": "2020",
-        "blurb": "PyTorch image classification CLI with tuning and inference utilities.",
-        "tech": ["Python", "PyTorch"],
-        "link": "https://github.com/krishangnaikar/Image-Classifier_FinalProject",
-    },
-]
+# Shared by the Flask page and the generated static export.
+import json
+from pathlib import Path
+
+projects = json.loads(Path(__file__).with_name("projects.json").read_text())
+project_categories = list(dict.fromkeys(p["category"] for p in projects))
 
 
 @app.route("/")
@@ -142,6 +97,7 @@ def index():
         education=education,
         certifications=certifications,
         projects=projects,
+        project_categories=project_categories,
         resume_url=resume_url,
     )
 
