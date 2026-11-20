@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#111923" />
-  <title>Menu | Krishang Naikar</title>
-  <link rel="stylesheet" href="static/game-ui.css?v=20261120b" />
+  <title>Settings | Krishang Naikar</title>
+  <link rel="stylesheet" href="static/game-ui.css?v=20261120h" />
 </head>
 <body class="inner-page settings-page-body">
   <main class="settings-page">
@@ -13,7 +13,7 @@
       <div class="settings-titlebar">
         <span class="settings-rule" aria-hidden="true"></span>
         <h1 id="settings-title">Menu</h1>
-        <a class="settings-close" href="index.html" aria-label="Close menu and return to lobby">×</a>
+        <a class="settings-close" href="index.html" aria-label="Close menu and return home">×</a>
       </div>
       <div class="settings-actions">
         <button type="button" class="settings-action" id="settings-toggle" aria-expanded="false" aria-controls="settings-preferences">Settings</button>
@@ -21,11 +21,11 @@
           <label class="settings-pref-row"><span>Reduce motion<small>Turn off interface movement and transitions.</small></span><input class="settings-switch" type="checkbox" data-preference="reduced-motion" aria-label="Reduce motion" /></label>
           <label class="settings-pref-row"><span>High contrast<small>Strengthen text and panel contrast.</small></span><input class="settings-switch" type="checkbox" data-preference="high-contrast" aria-label="High contrast" /></label>
         </div>
-        <a class="settings-action" href="mailto:krishangnaikar7@gmail.com?subject=Portfolio%20inquiry">Player Support</a>
+        <a class="settings-action" href="mailto:krishangnaikar7@gmail.com?subject=Portfolio%20inquiry">Contact</a>
         <a class="settings-action" href="about.html">About</a>
-        <a class="settings-action return-action" href="{{ url_for('index') }}" aria-label="Return to portfolio lobby">Exit to Desktop</a>
+        <a class="settings-action return-action" href="{{ url_for('index') }}" aria-label="Return to portfolio lobby">Back to Home</a>
       </div>
-      <p class="settings-version">PORTFOLIO MENU // 01</p>
+      <p class="settings-version">PORTFOLIO SETTINGS</p>
     </section>
   </main>
   <script src="static/game-settings.js"></script>
