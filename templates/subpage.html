@@ -18,8 +18,24 @@
         <p>{{ page_intro }}</p>
       </div>
       {% if page_type == "projects" %}
-      <div id="project-collection" data-source="projects.json"></div>
-      <script src="{{ url_for('static', filename='project-collection.js') }}?v=20261120c" defer></script>
+      {% set ns = namespace(categories=[]) %}
+      {% for item in projects %}{% if item.category not in ns.categories %}{% set ns.categories = ns.categories + [item.category] %}{% endif %}{% endfor %}
+      <div class="collection-overview">
+        {% for category in ns.categories %}
+        {% set items = projects | selectattr("category", "equalto", category) | list %}
+        <details class="collection-category" name="project-category"{% if loop.first %} open{% endif %}>
+          <summary class="category-header"><span class="category-emblem" aria-hidden="true">{{ "%02d"|format(loop.index) }}</span><span class="category-title-wrap"><strong>{{ category }}</strong><small>{{ items|length }} PROJECTS / COLLECTION</small></span><span class="category-expand" aria-hidden="true">+</span></summary>
+          <div class="category-project-grid">
+            {% for item in items %}
+            <details class="collection-project" name="project-item">
+              <summary class="project-tile-summary"><span class="project-glyph" aria-hidden="true">{{ item.name[:2]|upper }}</span><span class="project-tile-text"><strong>{{ item.name }}</strong><small>{{ item.status }}</small></span><span class="project-open-mark" aria-hidden="true">+</span></summary>
+              <div class="project-detail-panel"><p class="project-detail-label">PROJECT INTEL / {{ "%02d"|format(loop.index) }}</p><p>{{ item.blurb }}</p><p class="project-detail-label">LOADOUT / TOOLS</p><div class="detail-tags">{% for tag in item.tech %}<span>{{ tag }}</span>{% endfor %}</div>{% if item.link %}<a class="detail-link" href="{{ item.link }}" target="_blank" rel="noreferrer">Open project / contribution ↗</a>{% else %}<span class="project-private">No public repository available</span>{% endif %}</div>
+            </details>
+            {% endfor %}
+          </div>
+        </details>
+        {% endfor %}
+      </div>
       {% elif page_type == "research" %}
       <div class="select-list">
         {% for item in projects %}
