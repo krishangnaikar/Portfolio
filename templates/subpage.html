@@ -3,91 +3,96 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0b0d10" />
+  <meta name="theme-color" content="#13202b" />
   <title>{{ page_title }} | {{ profile.name }}</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='game-ui.css') }}?v=20261120k" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='minecraft-portfolio.css') }}?v=20261120a" />
 </head>
-<body class="inner-page">
-  {% include "partials/game-header.html" %}
-  <div class="subpage-layout">
-    {% include "partials/game-nav.html" %}
-    <main class="subpage-content{% if page_type == 'projects' %} project-collection-page{% endif %}">
-      <div class="page-heading">
-        <p class="page-kicker">{{ page_label }}</p>
-        <h1>{{ page_title }}</h1>
-        <p>{{ page_intro }}</p>
-      </div>
-      {% if page_type == "projects" %}
-      {% set ns = namespace(categories=[]) %}
-      {% for item in projects %}{% if item.category not in ns.categories %}{% set ns.categories = ns.categories + [item.category] %}{% endif %}{% endfor %}
-      <div id="project-collection" data-source="projects.json">
-        <div class="collection-fallback">
-          <div class="collection-category-grid">
-            {% for category in ns.categories %}
-            {% set items = projects | selectattr("category", "equalto", category) | list %}
-            <details class="collection-category">
-              <summary class="category-header"><span class="category-emblem" aria-hidden="true">{{ "%02d"|format(loop.index) }}</span><span class="category-title-wrap"><strong>{{ category }}</strong><small>{{ items|length }} PROJECTS</small></span><span class="category-expand" aria-hidden="true">+</span></summary>
-              <div class="category-project-grid">
-                {% for item in items %}
-                <a class="fallback-project-link" href="#project-{{ projects.index(item) + 1 }}"><span class="project-glyph" aria-hidden="true">{{ item.name[:2]|upper }}</span><span class="project-tile-text"><strong>{{ item.name }}</strong><small>{{ item.status }}</small></span><span class="project-open-mark" aria-hidden="true">+</span></a>
-                {% endfor %}
-              </div>
-            </details>
-            {% endfor %}
-          </div>
-          <aside class="project-inspection fallback-inspection">
-            <div class="inspection-idle"><span class="idle-mark" aria-hidden="true">＋</span><p class="inspection-label">PROJECT DETAILS</p><h2>Select a project</h2><p>Select a project tile to see its details and source here.</p></div>
-            {% for item in projects %}
-            <article class="fallback-preview" id="project-{{ loop.index }}">
-              <div class="inspection-banner"><span class="inspection-kicker">{{ item.category }} / {{ item.status }}</span><span class="inspection-mark" aria-hidden="true">{{ item.name[:2]|upper }}</span><h2>{{ item.name }}</h2></div>
-              <div class="inspection-content"><p class="inspection-label">PROJECT OVERVIEW</p><p class="inspection-description">{{ item.blurb }}</p><p class="inspection-label tools-label">TOOLS & TECHNOLOGIES</p><div class="detail-tags">{% for tag in item.tech %}<span>{{ tag }}</span>{% endfor %}</div>{% if item.link %}<a class="inspection-link" href="{{ item.link }}" target="_blank" rel="noreferrer">VIEW PROJECT / CONTRIBUTION <span aria-hidden="true">↗</span></a>{% else %}<span class="inspection-private">No public repository available</span>{% endif %}</div>
-            </article>
-            {% endfor %}
+<body class="mc-portfolio">
+<div class="mc-site">
+  <header class="mc-topbar">
+    <a class="mc-wordmark" href="{{ url_for('index') }}" aria-label="Krishang Naikar home">KN</a>
+    <span class="mc-topbar-note">{{ page_label }}</span>
+    <a class="mc-quickview" href="{{ url_for('recruiter') }}">Recruiter Quick View</a>
+  </header>
+  <main class="mc-page">
+    <section class="mc-screen{% if page_type == 'projects' %} mc-screen--wide{% endif %}">
+      <div class="mc-screen-heading"><span></span><h1>{% if page_type == 'projects' %}Select World{% elif page_type == 'experience' %}Play Multiplayer{% elif page_type == 'skills' %}Advancements{% elif page_type == 'research' %}Research Projects{% else %}Player Profile{% endif %}</h1><span></span></div>
+      <p class="mc-screen-intro">{{ page_intro }}</p>
+
+      {% if page_type == "projects" or page_type == "research" %}
+      <div id="project-collection" data-projects="{{ projects|tojson|forceescape }}" data-initial-filter="{{ 'Research & Ideas' if page_type == 'research' else '' }}">
+        <div class="mc-world-toolbar">
+          <label><span class="sr-only">Search projects</span><input class="mc-input" type="search" placeholder="Search worlds and projects" data-world-search /></label>
+          <label><span class="sr-only">Filter by project area</span><select class="mc-select" data-world-filter><option value="">All project areas</option>{% for category in project_categories or [] %}<option value="{{ category }}">{{ category }}</option>{% endfor %}</select></label>
+          <span class="mc-world-count" data-world-count>{{ projects|length }} worlds</span>
+        </div>
+        <div class="mc-world-browser">
+          <section class="mc-world-list" aria-label="Project worlds">
+            <div class="mc-world-list__heading">Available Worlds</div>
+            <div class="mc-world-list__items" data-world-list>
+              {% for item in projects %}
+              <a class="mc-world-row mc-fallback-row" href="#project-preview-{{ loop.index }}">
+                <span class="mc-world-icon" aria-hidden="true">{{ item.name[:2]|upper }}</span>
+                <span class="mc-world-copy"><strong>{{ item.name }}</strong><small>{{ item.category }} · {{ item.status }}</small></span>
+                <span class="mc-world-mark" aria-hidden="true">›</span>
+              </a>
+              {% endfor %}
+            </div>
+          </section>
+          <aside class="mc-world-details" aria-live="polite">
+            <div class="mc-world-details__heading">World Details</div>
+            <div class="mc-world-details__body">
+              <div class="mc-world-empty"><div><strong>Select a world</strong>Choose a project from the list to view its description, tools, and source.</div></div>
+              {% for item in projects %}
+              <article class="mc-fallback-preview" id="project-preview-{{ loop.index }}">
+                <h2>{{ item.name }}</h2>
+                <p class="mc-world-details__meta">{{ item.category }} · {{ item.status }}</p>
+                <p class="mc-world-details__description">{{ item.blurb }}</p>
+                <h3 class="mc-world-details__section">Tools &amp; Technologies</h3>
+                <div class="mc-world-tags">{% for tag in item.tech %}<span class="mc-world-tag">{{ tag }}</span>{% endfor %}</div>
+                {% if item.link %}<a class="mc-world-link" href="{{ item.link }}" target="_blank" rel="noreferrer">Open Project ↗</a>{% else %}<p class="mc-world-details__meta">No public repository available.</p>{% endif %}
+              </article>
+              {% endfor %}
+            </div>
           </aside>
         </div>
       </div>
-      <script src="{{ url_for('static', filename='project-collection.js') }}?v=20261120k" defer></script>
-      {% elif page_type == "research" %}
-      <div class="select-list">
-        {% for item in projects %}
-        <details class="select-card">
-          <summary><span class="select-number">{{ "%02d"|format(loop.index) }}</span><span><strong class="select-title">{{ item.name }}</strong><small class="select-meta">{{ item.status }} // {{ item.category }}</small></span><span class="select-toggle" aria-hidden="true">+</span></summary>
-          <div class="select-detail">
-            <p>{{ item.blurb }}</p>
-            <div class="detail-tags">{% for tag in item.tech %}<span>{{ tag }}</span>{% endfor %}</div>
-            {% if item.link %}<a class="detail-link" href="{{ item.link }}" target="_blank" rel="noreferrer">View project / contribution ↗</a>{% else %}<span class="select-meta">No public repository</span>{% endif %}
-          </div>
-        </details>
-        {% endfor %}
-      </div>
+      <script src="{{ url_for('static', filename='project-collection.js') }}?v=20261120a" defer></script>
+
       {% elif page_type == "experience" %}
-      <div class="select-list">
+      <div class="mc-server-list" aria-label="Work and research experience">
         {% for item in experiences %}
-        <details class="select-card">
-          <summary><span class="select-number">{{ "%02d"|format(loop.index) }}</span><span><strong class="select-title">{{ item.company }}</strong><small class="select-meta">{{ item.role }} // {{ item.date }} // {{ item.location }}</small></span><span class="select-toggle" aria-hidden="true">+</span></summary>
-          <div class="select-detail"><ul>{% for bullet in item.bullets %}<li>{{ bullet }}</li>{% endfor %}</ul></div>
+        <details class="mc-server-row">
+          <summary><span class="mc-server-icon" aria-hidden="true">{{ item.company[:1]|upper }}</span><span class="mc-server-name"><strong>{{ item.company }}</strong><small>{{ item.role }} · {{ item.date }}</small></span><span class="mc-server-status">Experience</span></summary>
+          <div class="mc-server-details"><p>{{ item.location }}</p><ul>{% for bullet in item.bullets %}<li>{{ bullet }}</li>{% endfor %}</ul></div>
         </details>
         {% endfor %}
       </div>
+
       {% elif page_type == "skills" %}
-      <div class="skill-grid">
+      <div class="mc-achievement-grid">
         {% for group in skills %}
-        <section class="skill-panel"><h2>{{ group.label }}</h2><div class="detail-tags">{% for item in group["items"] %}<span>{{ item }}</span>{% endfor %}</div></section>
+        <article class="mc-achievement"><span class="mc-achievement-icon" aria-hidden="true">{{ "%02d"|format(loop.index) }}</span><h2>{{ group.label }}</h2><p>{{ group.items|join(" · ") }}</p></article>
         {% endfor %}
       </div>
-      {% elif page_type == "about" %}
-      <div class="option-grid">
-        <a class="option-card" href="#profile"><strong>ABOUT ME</strong><span>Profile summary and focus</span></a>
-        <a class="option-card" href="#education"><strong>EDUCATION</strong><span>Degree and expected graduation</span></a>
-        <a class="option-card" href="#certifications"><strong>CERTIFICATIONS</strong><span>Professional learning</span></a>
-        <a class="option-card" href="#contact"><strong>CONTACT</strong><span>Ways to connect</span></a>
-      </div>
-      <section class="subsection" id="profile"><h2>Profile</h2><p>{{ profile.summary }}</p></section>
-      <section class="subsection" id="education"><h2>Education</h2>{% for item in education %}<p><strong>{{ item.school }}</strong><br />{{ item.degree }}<br />{{ item.date }}</p>{% endfor %}</section>
-      <section class="subsection" id="certifications"><h2>Certifications</h2>{% for item in certifications %}<p><strong>{{ item.name }}</strong><br />{{ item.org }} // {{ item.year }}</p>{% endfor %}</section>
-      <section class="subsection" id="contact"><h2>Connect</h2><div class="contact-grid"><a class="contact-link" href="mailto:{{ profile.email }}">EMAIL <span>↗</span></a><a class="contact-link" href="{{ profile.github }}" target="_blank" rel="noreferrer">GITHUB <span>↗</span></a><a class="contact-link" href="{{ profile.linkedin }}" target="_blank" rel="noreferrer">LINKEDIN <span>↗</span></a></div></section>
+      {% if education %}
+      <h2 class="mc-world-details__section">Education</h2><ul class="mc-cert-list">{% for item in education %}<li><strong>{{ item.school }}</strong><br />{{ item.degree }} · {{ item.date }}</li>{% endfor %}</ul>
       {% endif %}
-    </main>
-  </div>
+      {% if certifications %}
+      <h2 class="mc-world-details__section">Certifications</h2><ul class="mc-cert-list">{% for item in certifications %}<li><strong>{{ item.name }}</strong> · {{ item.org }}{% if item.year %} · {{ item.year }}{% endif %}</li>{% endfor %}</ul>
+      {% endif %}
+
+      {% elif page_type == "about" %}
+      <div class="mc-profile-layout">
+        <section class="mc-profile-panel"><h2>Player Profile</h2><p>{{ profile.summary }}</p><p><strong>Location:</strong> {{ profile.location }}<br /><strong>Focus:</strong> AI/ML, software engineering, automation, and quantum computing.</p><div class="mc-profile-links"><a href="{{ profile.github }}" target="_blank" rel="noreferrer">GitHub profile ↗</a><a href="{{ profile.linkedin }}" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="mailto:{{ profile.email }}">Email Krishang</a><a href="{{ url_for('recruiter') }}">Recruiter Quick View</a></div></section>
+        <section class="mc-profile-panel"><h2>Education &amp; Learning</h2>{% for item in education %}<p><strong>{{ item.school }}</strong><br />{{ item.degree }} · {{ item.date }}</p>{% endfor %}<h3 class="mc-world-details__section">Recent credentials</h3><ul class="mc-cert-list">{% for item in certifications %}<li>{{ item.name }} · {{ item.org }}</li>{% endfor %}</ul></section>
+      </div>
+      {% endif %}
+
+      <div class="mc-done-row"><a class="mc-done" href="{{ url_for('index') }}">Done</a></div>
+    </section>
+  </main>
+  <footer class="mc-footer"><span>{{ profile.name }}</span><a class="mc-social-link" href="{{ url_for('index') }}">Back to Main Menu</a></footer>
+</div>
 </body>
 </html>
