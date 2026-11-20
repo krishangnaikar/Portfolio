@@ -9,6 +9,7 @@ ROUTES = {
     "/research": "research.html",
     "/skills": "skills.html",
     "/about": "about.html",
+    "/settings": "settings.html",
     "/recruiter": "recruiter.html",
 }
 

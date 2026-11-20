@@ -6,7 +6,7 @@ def test_home_has_separate_page_navigation():
     assert response.status_code == 200
     html = response.get_data(as_text=True)
     assert app.profile['name'] in html
-    for path in ('/projects', '/experience', '/research', '/skills', '/about', '/recruiter'):
+    for path in ('/projects', '/experience', '/research', '/skills', '/about', '/settings', '/recruiter'):
         assert path in html
 
 
@@ -18,6 +18,7 @@ def test_each_portfolio_section_is_a_separate_page():
         '/research': ('Research &amp; Ideas', 'Transistor Fine-Tuning and Tool-Use Evaluation'),
         '/skills': ('Skills', 'Languages'),
         '/about': ('About', 'San José State University'),
+        '/settings': ('Menu', 'Player Support'),
         '/recruiter': ('Recruiter Quick View', app.profile['email']),
     }
     for path, markers in expected.items():
@@ -31,7 +32,7 @@ def test_each_portfolio_section_is_a_separate_page():
 def test_static_pages_are_generated_for_each_route():
     from pathlib import Path
     root = Path(app.__file__).parent
-    for filename in ('index.html', 'projects.html', 'experience.html', 'research.html', 'skills.html', 'about.html', 'recruiter.html'):
+    for filename in ('index.html', 'projects.html', 'experience.html', 'research.html', 'skills.html', 'about.html', 'settings.html', 'recruiter.html'):
         html = (root / filename).read_text()
         assert '{{' not in html and '{%' not in html
         if filename == 'recruiter.html':

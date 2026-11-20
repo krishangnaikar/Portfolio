@@ -194,5 +194,14 @@ def about_page():
         certifications=certifications,
     )
 
+@app.route("/settings")
+def settings_page():
+    return render_template(
+        "settings.html",
+        profile=profile,
+        page_label="OPTIONS / MENU",
+    )
+
+
 if __name__ == "__main__":
     app.run(debug=True)
