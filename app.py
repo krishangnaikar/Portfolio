@@ -129,6 +129,7 @@ def projects_page():
         page_intro="Choose a project world to see what it does, the tools behind it, and where to explore the source.",
         page_type="projects",
         projects=projects,
+        project_categories=project_categories,
     )
 
 
@@ -161,6 +162,7 @@ def research_page():
         page_intro="Explore research, investigations, and concepts from the project list.",
         page_type="research",
         projects=research_projects,
+        project_categories=project_categories,
     )
 
 
