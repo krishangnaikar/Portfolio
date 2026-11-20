@@ -24,23 +24,7 @@
         <a href="{{ url_for('settings_page') }}" class="menu-link"><strong>OPTIONS</strong><small>SETTINGS / SUPPORT</small></a>
         <p class="menu-foot">KRISHANG NAIKAR<br />SOFTWARE / AI / SYSTEMS</p>
       </aside>
-      <div class="center-stage">
-        <div class="stage-watermark" aria-hidden="true">KN</div>
-        <p class="stage-overline">PERSONAL PORTFOLIO // FREMONT, CALIFORNIA</p>
-        <h1 class="stage-title">KRISHANG<span>NAIKAR</span></h1>
-        <p class="stage-role">{{ profile.title }} <b>//</b> AI, ML &amp; SYSTEMS</p>
-        <p class="stage-summary">{{ profile.summary }}</p>
-        <div class="stage-actions">
-          <a href="{{ url_for('projects_page') }}" class="stage-button stage-button-primary">EXPLORE PROJECTS <span aria-hidden="true">▶</span></a>
-          <a href="{{ url_for('experience_page') }}" class="stage-button">VIEW EXPERIENCE <span aria-hidden="true">↗</span></a>
-        </div>
-        <div class="stage-bottom"><span>SOFTWARE ENGINEERING</span><i aria-hidden="true"></i><span>RESEARCH / PRODUCT / IDEAS</span></div>
-        <svg class="stage-emblem" viewBox="0 0 220 250" fill="none" aria-hidden="true">
-          <path class="emblem-accent" d="M12 20h72L50 116H0zM135 20h73l-52 96h-70zM52 132h88l-43 78H10z"/>
-          <path d="M110 17 19 229M178 18 88 230M31 116h150M46 176h107"/>
-        </svg>
-      </div>
-      <aside class="quick-panel">
+      <div class="center-stage"><div class="stage-watermark" aria-hidden="true">KN</div><div class="lobby-spotlight"><article class="player-card" aria-label="Krishang Naikar, student player card"><div class="player-card-art"><img src="{{ url_for('static', filename='player-card.svg') }}" alt="Student silhouette against a Paris sunset with an Eiffel Tower, crescent moon, and city lights" /><span class="player-card-level">SJSU // CLASS OF 2028</span><span class="player-card-ready">READY</span></div><div class="player-card-meta"><strong>Krishang Naikar</strong><span>Student</span><small>Computer Science // San José State University</small></div></article><div class="stage-copy"><p class="stage-overline">PERSONAL PORTFOLIO // FREMONT, CALIFORNIA</p><h1 class="stage-title">KRISHANG<span>NAIKAR</span></h1><p class="stage-role">{{ profile.title }} <b>//</b> AI, ML &amp; SYSTEMS</p><p class="stage-summary">{{ profile.summary }}</p><div class="stage-actions"><a href="{{ url_for('projects_page') }}" class="stage-button stage-button-primary">EXPLORE PROJECTS <span aria-hidden="true">▶</span></a><a href="{{ url_for('experience_page') }}" class="stage-button">VIEW EXPERIENCE <span aria-hidden="true">↗</span></a></div><div class="stage-bottom"><span>SOFTWARE ENGINEERING</span><i aria-hidden="true"></i><span>RESEARCH / PRODUCT / IDEAS</span></div></div></div><svg class="stage-emblem" viewBox="0 0 220 250" fill="none" aria-hidden="true"><path class="emblem-accent" d="M12 20h72L50 116H0zM135 20h73l-52 96h-70zM52 132h88l-43 78H10z"/><path d="M110 17 19 229M178 18 88 230M31 116h150M46 176h107"/></svg></div><aside class="quick-panel">
         <div class="quick-overline"><span>FAST ACCESS</span><span>RECRUITER</span></div>
         <h2>RECRUITER<br />QUICK VIEW</h2>
         <p class="quick-copy">A clean, scan-friendly summary of experience, skills, education, and selected work.</p>

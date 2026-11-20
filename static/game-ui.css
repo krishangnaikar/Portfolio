@@ -138,3 +138,18 @@ body.high-contrast{--v-muted:#fff;--v-border:rgba(255,255,255,.42)}
 body.high-contrast .subpage-content{background:#11152f}
 body.reduced-motion *,body.reduced-motion *::before,body.reduced-motion *::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 @media(max-width:560px){.settings-titlebar{gap:14px;margin-bottom:26px}.settings-page{min-height:calc(100vh - 66px);padding:24px 18px 42px}.settings-action{min-height:62px;font-size:1rem}}
+
+.lobby-spotlight{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.18fr) minmax(215px,.72fr);align-items:center;gap:clamp(18px,3vw,38px);width:100%}
+.stage-copy{min-width:0}
+.player-card{width:min(100%,300px);justify-self:center;overflow:hidden;border:1px solid rgba(255,249,238,.72);background:#24204c;box-shadow:0 24px 60px rgba(12,12,35,.42);position:relative}
+.player-card::before{content:"";position:absolute;z-index:3;inset:10px;border:1px solid rgba(255,249,238,.65);pointer-events:none}
+.player-card-art{position:relative;aspect-ratio:3/4.35;overflow:hidden;background:linear-gradient(180deg,#344078,#8b5b99 45%,#f4a183)}
+.player-card-art img{display:block;width:100%;height:100%;object-fit:cover}
+.player-card-level{position:absolute;top:20px;left:50%;transform:translateX(-50%);padding:.32rem .6rem;border:1px solid rgba(255,249,238,.68);background:rgba(30,27,69,.5);color:#fff9ee;font:700 .62rem 'Barlow Condensed',sans-serif;letter-spacing:.12em;white-space:nowrap}
+.player-card-ready{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;min-height:34px;background:#f0ca74;color:#28234f;font:800 .9rem 'Inter',sans-serif;letter-spacing:.08em}
+.player-card-meta{min-height:86px;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:.75rem .8rem .85rem;text-align:center;background:linear-gradient(125deg,#282653,#382957)}
+.player-card-meta strong{color:#f0ca74;font:700 1.05rem 'Inter',sans-serif;letter-spacing:.035em}
+.player-card-meta span{margin-top:.18rem;color:#fff9ee;font:500 .9rem 'Inter',sans-serif}
+.player-card-meta small{margin-top:.42rem;color:#d1c9db;font:600 .58rem 'Barlow Condensed',sans-serif;letter-spacing:.07em;text-transform:uppercase}
+@media(max-width:1100px){.lobby-spotlight{grid-template-columns:minmax(0,1fr) minmax(190px,.66fr);gap:16px}.player-card{max-width:250px}.stage-title{font-size:clamp(3.5rem,7vw,6rem)}}
+@media(max-width:720px){.lobby-spotlight{grid-template-columns:minmax(0,1fr);gap:20px}.player-card{grid-row:1;width:min(100%,260px)}.stage-copy{grid-row:2}.center-stage{min-height:0;padding:22px 18px 32px}.stage-watermark{top:25%;right:0}.stage-title{font-size:clamp(3.2rem,15vw,5rem)}.stage-summary{font-size:.86rem}.stage-emblem{right:3%;bottom:3%;width:25%;opacity:.55}}
