@@ -1,108 +1,94 @@
 (() => {
   const root = document.querySelector("#project-collection");
   if (!root) return;
+
   const escapeHtml = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
   }[char]));
   const slug = (value) => String(value).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
   let projects = [];
-  let activeCategory = "";
-  let activeProject = "";
-  let searchTerm = "";
-  let openCategories = new Set();
+  try { projects = JSON.parse(root.dataset.projects || "[]"); } catch { projects = []; }
+  const searchInput = root.querySelector("[data-world-search]");
+  const filterSelect = root.querySelector("[data-world-filter]");
+  const list = root.querySelector("[data-world-list]");
+  const details = root.querySelector(".mc-world-details__body");
+  const count = root.querySelector("[data-world-count]");
+  if (!searchInput || !filterSelect || !list || !details || !count) return;
 
-  const categories = () => [...new Set(projects.map((p) => p.category))];
-  const findProject = (id) => projects.find((p) => slug(p.name) === id);
-  const readUrl = () => {
-    const params = new URLSearchParams(location.search);
-    const categoryId = params.get("category");
-    activeCategory = categories().find((category) => slug(category) === categoryId) || "";
-    activeProject = params.get("project") || "";
-    if (categoryId && activeCategory) openCategories.add(activeCategory);
-    if (activeProject) {
-      const project = findProject(activeProject);
-      if (project) {
-        activeCategory = project.category;
-        openCategories.add(project.category);
-      }
+  const categories = [...new Set(projects.map((project) => project.category))];
+  const params = new URLSearchParams(location.search);
+  let filter = root.dataset.initialFilter || "";
+  const queryCategory = categories.find((category) => slug(category) === params.get("category"));
+  if (queryCategory) filter = queryCategory;
+  let selected = projects.find((project) => slug(project.name) === params.get("project")) || null;
+  let search = "";
+
+  const renderDetail = () => {
+    if (!selected) {
+      details.innerHTML = '<div class="mc-world-empty"><div><strong>Select a world</strong>Choose a project from the list to view its description, tools, and source.</div></div>';
+      return;
     }
-  };
-  const writeUrl = (push = true) => {
-    const params = new URLSearchParams(location.search);
-    if (activeCategory) params.set("category", slug(activeCategory));
-    else params.delete("category");
-    if (activeProject) params.set("project", activeProject);
-    else params.delete("project");
-    history[push ? "pushState" : "replaceState"]({}, "", location.pathname + (params.size ? "?" + params : ""));
-  };
-
-  function render() {
-    const cats = categories();
-    if (!cats.includes(activeCategory)) activeCategory = "";
-    const chosen = findProject(activeProject);
-    if (chosen) openCategories.add(chosen.category);
-    const filteredByCategory = new Map(cats.map((cat) => [cat, projects.filter((p) =>
-      p.category === cat && (p.name + " " + p.status + " " + p.blurb + " " + p.tech.join(" ")).toLowerCase().includes(searchTerm)
-    )]));
-    if (chosen && !filteredByCategory.get(chosen.category)?.some((p) => slug(p.name) === activeProject)) activeProject = "";
-    const selected = findProject(activeProject);
-    const totalVisible = [...filteredByCategory.values()].reduce((sum, items) => sum + items.length, 0);
-    root.innerHTML = `
-      <div class="collection-toolbar">
-        <label class="collection-search"><span aria-hidden="true">⌕</span><input type="search" aria-label="Search projects" placeholder="Search projects" value="${escapeHtml(searchTerm)}"></label>
-        <span class="collection-count">${projects.length} PROJECTS / ${cats.length} CATEGORIES</span>
-      </div>
-      <div class="collection-layout">
-        <section class="collection-category-grid" aria-label="Project categories">
-          ${cats.map((cat, i) => {
-            const items = filteredByCategory.get(cat) || [];
-            return `<details class="collection-category" data-category-panel="${escapeHtml(cat)}" ${openCategories.has(cat) ? "open" : ""}>
-              <summary class="category-header"><span class="category-emblem" aria-hidden="true">${String(i + 1).padStart(2, "0")}</span><span class="category-title-wrap"><strong>${escapeHtml(cat)}</strong><small>${projects.filter((p) => p.category === cat).length} PROJECTS</small></span><span class="category-expand" aria-hidden="true">+</span></summary>
-              <div class="category-project-grid">
-                ${items.length ? items.map((p, n) => `<button class="project-skin ${slug(p.name) === activeProject ? "is-selected" : ""}" data-project="${slug(p.name)}" data-project-category="${escapeHtml(cat)}" aria-pressed="${slug(p.name) === activeProject}">
-                  <span class="skin-art" aria-hidden="true"><span class="skin-glyph">${escapeHtml(p.name.slice(0, 2).toUpperCase())}</span><span class="skin-lines"></span></span>
-                  <span class="skin-label"><strong>${escapeHtml(p.name)}</strong><small>${escapeHtml(p.status)}</small></span><span class="skin-number">${String(n + 1).padStart(2, "0")}</span>
-                </button>`).join("") : '<p class="collection-empty">No projects match this search.</p>'}
-              </div>
-            </details>`;
-          }).join("")}
-        </section>
-        <aside class="project-inspection${selected ? " is-arriving" : ""}" aria-live="polite">
-          ${selected ? `
-            <div class="inspection-banner"><span class="inspection-kicker">${escapeHtml(selected.category)} / ${escapeHtml(selected.status)}</span><span class="inspection-mark" aria-hidden="true">${escapeHtml(selected.name.slice(0, 2).toUpperCase())}</span><h2>${escapeHtml(selected.name)}</h2></div>
-            <div class="inspection-content"><p class="inspection-label">PROJECT OVERVIEW</p><p class="inspection-description">${escapeHtml(selected.blurb)}</p><p class="inspection-label tools-label">TOOLS & TECHNOLOGIES</p><div class="detail-tags">${selected.tech.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}</div>
-            ${selected.link ? `<a class="inspection-link" href="${escapeHtml(selected.link)}" target="_blank" rel="noreferrer">VIEW PROJECT / CONTRIBUTION <span aria-hidden="true">↗</span></a>` : '<span class="inspection-private">No public repository available</span>'}
-            </div>
-          ` : `<div class="inspection-idle"><span class="idle-mark" aria-hidden="true">＋</span><p class="inspection-label">PROJECT DETAILS / ${totalVisible} PROJECTS</p><h2>Select a project</h2><p>Select a project tile to see its details and source here.</p></div>`}
-        </aside>
+    details.innerHTML = `
+      <div class="mc-world-details__selected">
+        <div class="mc-world-details__meta">${escapeHtml(selected.category)} · ${escapeHtml(selected.status)}</div>
+        <h2>${escapeHtml(selected.name)}</h2>
+        <p class="mc-world-details__description">${escapeHtml(selected.blurb)}</p>
+        <h3 class="mc-world-details__section">Tools &amp; Technologies</h3>
+        <div class="mc-world-tags">${(selected.tech || []).map((tag) => `<span class="mc-world-tag">${escapeHtml(tag)}</span>`).join("")}</div>
+        ${selected.link ? `<a class="mc-world-link" href="${escapeHtml(selected.link)}" target="_blank" rel="noreferrer">Open Project ↗</a>` : '<p class="mc-world-details__meta">No public repository available.</p>'}
       </div>`;
-    root.querySelectorAll("[data-category-panel]").forEach((panel) => panel.addEventListener("toggle", () => {
-      if (panel.open) openCategories.add(panel.dataset.categoryPanel);
-      else openCategories.delete(panel.dataset.categoryPanel);
-    }));
-    root.querySelector(".collection-search").addEventListener("input", (event) => {
-      searchTerm = event.target.value.toLowerCase().trim();
-      render();
-      const input = root.querySelector(".collection-search input");
-      input.focus();
-      input.setSelectionRange(input.value.length, input.value.length);
-    });
-    root.querySelectorAll("[data-project]").forEach((button) => button.addEventListener("click", () => {
-      activeCategory = button.dataset.projectCategory;
-      openCategories.add(activeCategory);
-      activeProject = activeProject === button.dataset.project ? "" : button.dataset.project;
-      render();
-      writeUrl();
-    }));
-  }
+  };
 
-  fetch(root.dataset.source || "projects.json")
-    .then((response) => { if (!response.ok) throw new Error("Project catalog could not be loaded."); return response.json(); })
-    .then((data) => {
-      projects = data;
-      readUrl();
+  const render = () => {
+    const visible = projects.filter((project) => {
+      const matchesCategory = !filter || project.category === filter;
+      const searchable = [project.name, project.category, project.status, project.blurb, ...(project.tech || [])].join(" ").toLowerCase();
+      return matchesCategory && searchable.includes(search);
+    });
+    if (selected && !visible.includes(selected)) selected = null;
+    count.textContent = `${visible.length} of ${projects.length} projects`;
+    list.innerHTML = visible.length ? visible.map((project, index) => {
+      const isSelected = selected?.name === project.name;
+      return `<button class="mc-world-row${isSelected ? " is-selected" : ""}" type="button" data-world="${escapeHtml(slug(project.name))}" aria-pressed="${isSelected}" style="animation-delay:${Math.min(index * 18, 180)}ms">
+        <span class="mc-world-icon" aria-hidden="true">${escapeHtml(project.name.slice(0, 2).toUpperCase())}</span>
+        <span class="mc-world-copy"><strong>${escapeHtml(project.name)}</strong><small>${escapeHtml(project.category)} · ${escapeHtml(project.status)}</small></span>
+        <span class="mc-world-mark" aria-hidden="true">›</span>
+      </button>`;
+    }).join("") : '<p class="mc-world-empty">No projects match this search.</p>';
+    renderDetail();
+    list.querySelectorAll("[data-world]").forEach((button) => button.addEventListener("click", () => {
+      selected = projects.find((project) => slug(project.name) === button.dataset.world) || null;
       render();
-    })
-    .catch(() => { root.innerHTML = '<p class="collection-error">The project collection could not be loaded. Please refresh the page.</p>'; });
-  window.addEventListener("popstate", () => { readUrl(); render(); });
+      const next = new URLSearchParams(location.search);
+      if (selected) next.set("project", slug(selected.name));
+      else next.delete("project");
+      if (filter) next.set("category", slug(filter));
+      else next.delete("category");
+      history.pushState({}, "", location.pathname + (next.size ? "?" + next : ""));
+    }));
+  };
+
+  filterSelect.value = filter;
+  searchInput.value = search;
+  filterSelect.addEventListener("change", () => {
+    filter = filterSelect.value;
+    render();
+    const next = new URLSearchParams(location.search);
+    if (filter) next.set("category", slug(filter));
+    else next.delete("category");
+    history.replaceState({}, "", location.pathname + (next.size ? "?" + next : ""));
+  });
+  searchInput.addEventListener("input", () => { search = searchInput.value.toLowerCase().trim(); render(); });
+  window.addEventListener("popstate", () => {
+    const current = new URLSearchParams(location.search);
+    filter = categories.find((category) => slug(category) === current.get("category")) || "";
+    selected = projects.find((project) => slug(project.name) === current.get("project")) || null;
+    filterSelect.value = filter;
+    render();
+  });
+
+  if (selected && !categories.includes(filter)) filter = selected.category;
+  filterSelect.value = filter;
+  render();
 })();
