@@ -61,7 +61,7 @@
   },
   {
     "name": "Transistor Fine-Tuning and Tool-Use Evaluation",
-    "category": "Research and quantum computing",
+    "category": "Research & Ideas",
     "status": "Research",
     "blurb": "Research evaluating vision-language models on transistor analysis and TCAD tool use. The study compares a base model with adapter fine-tuning, examines guided error analysis, and explores persistent memory as part of the workflow. Experiments use Python, PyTorch, VLMs, and TCAD; results and limitations are recorded separately so the evaluation is not presented as more conclusive than it is.",
     "tech": [
@@ -74,7 +74,7 @@
   },
   {
     "name": "Qiskit ket_basis Visualization",
-    "category": "Research and quantum computing",
+    "category": "Research & Ideas",
     "status": "Merged contribution",
     "blurb": "A merged contribution to Qiskit that adds X, Y, and Z ket-basis choices to quantum-state LaTeX visualization. The change includes tests and a release note, and was merged on October 22, 2026. It uses Python and Qiskit's quantum-computing visualization code.",
     "tech": [
@@ -86,7 +86,7 @@
   },
   {
     "name": "Qiskit Transpiler Optimization Investigation",
-    "category": "Research and quantum computing",
+    "category": "Research & Ideas",
     "status": "Investigation",
     "blurb": "An investigation into a circuit-cancellation issue in Qiskit's transpiler. After reproducing the behavior, the proposed change was compared across circuit families; benchmarking recorded both gate reductions and the runtime overhead. This remains an investigation and is not represented as a merged contribution.",
     "tech": [
@@ -98,7 +98,7 @@
   },
   {
     "name": "Minecraft Redstone Qubit Simulator",
-    "category": "Research and quantum computing",
+    "category": "Research & Ideas",
     "status": "One-qubit build",
     "blurb": "A Minecraft Java world that models a classical one-qubit stabilizer workflow using redstone logic. The build demonstrates X, Z, Hadamard, and measurement operations and is available to download from the repository. Two-qubit entanglement is a planned extension, not part of the current build.",
     "tech": [
@@ -371,7 +371,7 @@
   },
   {
     "name": "Robot Clone / Imitation Learning",
-    "category": "Concepts and plans",
+    "category": "Research & Ideas",
     "status": "Planning",
     "blurb": "A planning-stage concept exploring personalized software behavior alongside physical imitation learning from wearable demonstration data. The idea has not been built into a robot; robotics and imitation learning describe the proposed direction.",
     "tech": [
@@ -382,7 +382,7 @@
   },
   {
     "name": "Matmul-Optimized Accelerator",
-    "category": "Concepts and plans",
+    "category": "Research & Ideas",
     "status": "Concept study",
     "blurb": "A computer-architecture concept study about accelerating matrix multiplication. It examines systolic arrays, tiling, memory bandwidth, and data movement as design considerations; RTL and FPGA implementation are proposed next steps, not completed deliverables.",
     "tech": [
