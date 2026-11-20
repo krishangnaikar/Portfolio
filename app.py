@@ -127,8 +127,8 @@ def projects_page():
         profile=profile,
         active_page="projects",
         page_label="PLAY / PROJECT SELECTION",
-        page_title="Select Project",
-        page_intro="Choose a project to inspect its status, tools, summary, and source link.",
+        page_title="Project Collection",
+        page_intro="Choose a category to browse the project collection, then select a project to inspect its full brief, tools, and source.",
         page_type="projects",
         projects=projects,
     )
