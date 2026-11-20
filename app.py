@@ -126,9 +126,9 @@ def projects_page():
         "subpage.html",
         profile=profile,
         active_page="projects",
-        page_label="COLLECTION / PROJECTS",
-        page_title="Project Collection",
-        page_intro="Choose a category to browse the project collection, then select a project to inspect its full brief, tools, and source.",
+        page_label="PROJECTS / PORTFOLIO",
+        page_title="Projects",
+        page_intro="Browse a category, select a project, and review its overview, tools, status, and source.",
         page_type="projects",
         projects=projects,
     )
@@ -140,7 +140,7 @@ def experience_page():
         "subpage.html",
         profile=profile,
         active_page="experience",
-        page_label="MULTIPLAYER / EXPERIENCE",
+        page_label="EXPERIENCE / CAREER",
         page_title="Experience",
         page_intro="Select a role to review the work, team, and time period.",
         page_type="experience",
@@ -152,13 +152,13 @@ def experience_page():
 def research_page():
     research_projects = [
         p for p in projects
-        if p["category"] in ("Research and quantum computing", "Concepts and plans")
+        if p["category"] == "Research & Ideas"
     ]
     return render_template(
         "subpage.html",
         profile=profile,
         active_page="research",
-        page_label="SIDE QUESTS / RESEARCH",
+        page_label="RESEARCH & IDEAS",
         page_title="Research & Ideas",
         page_intro="Research, investigations, and concepts with status clearly labeled.",
         page_type="research",
@@ -172,7 +172,7 @@ def skills_page():
         "subpage.html",
         profile=profile,
         active_page="skills",
-        page_label="COLLECTION / SKILLS",
+        page_label="SKILLS",
         page_title="Skills",
         page_intro="Browse the languages, frameworks, tools, and libraries in the current portfolio.",
         page_type="skills",
@@ -186,7 +186,7 @@ def about_page():
         "subpage.html",
         profile=profile,
         active_page="about",
-        page_label="OPTIONS / ABOUT",
+        page_label="ABOUT / PROFILE",
         page_title="About",
         page_intro="A quick profile, education, certifications, and ways to get in touch.",
         page_type="about",
@@ -199,7 +199,7 @@ def settings_page():
     return render_template(
         "settings.html",
         profile=profile,
-        page_label="OPTIONS / MENU",
+        page_label="SETTINGS",
     )
 
 
