@@ -26,3 +26,5 @@ The exporter writes `index.html`, `projects.html`, `experience.html`, `research.
 ## Catalog scope (November 3, 2026)
 
 34 entries cover public project repositories and documented local work. The GitHub profile configuration repository is not a separate software project. The generic `agent` fork is not claimed as original work. Qiskit is represented by the specific merged contribution and a separate optimization investigation, not by claiming authorship of the SDK. Private repositories and personal storage repositories are excluded. A repository listing or historical note establishes scope; it does not establish that every project currently runs.
+
+The title screen uses the vanilla cubemap faces from [Aarav Ghai’s portfolio](https://github.com/ghaiaarav/portfolio/tree/main/public/panorama). The CSS renderer respects system and portfolio reduced-motion preferences.

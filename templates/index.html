@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#13202b" />
   <title>{{ profile.name }} | Portfolio</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='minecraft-portfolio.css') }}?v=20261120b" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='minecraft-portfolio.css') }}?v=panorama1" />
 </head>
-<body class="mc-portfolio">
+<body class="mc-portfolio"><div class="sky-view" aria-hidden="true"><div class="sky-cube"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
 <div class="mc-site">
   <header class="mc-topbar">
     <a class="mc-wordmark" href="{{ url_for('index') }}" aria-label="Krishang Naikar home">KN</a>
@@ -20,7 +20,7 @@
       <section class="mc-main-menu" aria-labelledby="home-title">
         <div class="mc-title-area">
           <span class="mc-title-mark">PERSONAL PORTFOLIO</span>
-          <span class="mc-splash">building something cool!</span>
+          <span class="mc-splash">One qubit at a time!</span>
           <h1 class="mc-title" id="home-title">{{ profile.name }}</h1>
           <p class="mc-subtitle">Computer Science Student · AI/ML Researcher</p>
         </div>
@@ -43,7 +43,7 @@
             </a>
           </div>
         </nav>
-        <p class="mc-menu-meta">Building software across AI, automation, quantum computing, and apps.</p>
+        <p class="mc-menu-meta">Explore my transistor research, Qiskit contribution, and software projects.</p>
         <div class="mc-home-social" aria-label="External profiles">
           <a class="mc-social-link" href="{{ profile.github }}" target="_blank" rel="noreferrer">GitHub ↗</a>
           <a class="mc-social-link" href="{{ profile.linkedin }}" target="_blank" rel="noreferrer">LinkedIn ↗</a>
@@ -52,12 +52,12 @@
 
       <aside class="mc-player-card" aria-label="Player preview">
         <img class="mc-player-model" src="{{ url_for('static', filename='krishang-player.svg') }}" alt="Voxel avatar wearing Krishang’s Minecraft skin" />
-        <div class="mc-player-caption"><span>PLAYER PROFILE</span><strong>KRISHANG NAIKAR</strong><small>Student · Builder</small></div>
+        
       </aside>
     </div>
   </main>
 
   <footer class="mc-footer"><span>San José State University · Fremont, California</span><span>Portfolio · 2026</span></footer>
 </div>
-</body>
+<script src="{{ url_for('static', filename='game-settings.js') }}"></script></body>
 </html>

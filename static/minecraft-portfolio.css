@@ -17,7 +17,7 @@
 }
 *{box-sizing:border-box}
 html{min-height:100%;background:#11151c}
-body.mc-portfolio{margin:0;min-height:100vh;color:var(--mc-text);background:#11151c url('/static/minecraft-world.svg') center/cover fixed no-repeat;font:16px/1.5 Arial,Helvetica,sans-serif}
+body.mc-portfolio{margin:0;min-height:100vh;color:var(--mc-text);background:#11151c url('minecraft-world.svg') center/cover fixed no-repeat;font:16px/1.5 Arial,Helvetica,sans-serif}
 body.mc-portfolio::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(9,14,25,.28),rgba(8,11,18,.55) 52%,rgba(8,11,16,.76)),radial-gradient(ellipse at center,transparent 20%,rgba(0,0,0,.42) 100%)}
 .mc-site{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column}
 .mc-topbar{min-height:54px;padding:10px clamp(16px,4vw,52px);display:flex;justify-content:space-between;align-items:center;gap:16px;background:linear-gradient(180deg,rgba(10,12,16,.83),rgba(10,12,16,.26));border-bottom:1px solid rgba(255,255,255,.18)}
@@ -130,3 +130,33 @@ body.mc-portfolio::before{content:"";position:fixed;inset:0;z-index:0;pointer-ev
 @media(max-width:620px){.mc-topbar-note{display:none}.mc-home-screen{padding:32px 16px 40px}.mc-home-layout{grid-template-columns:1fr}.mc-title{font-size:clamp(1.2rem,6vw,1.8rem)}.mc-splash{right:-18px;top:-8px;font-size:.65rem}.mc-player-card{min-height:180px}.mc-player-model{height:190px}.mc-screen{padding:17px 11px}.mc-world-toolbar{grid-template-columns:1fr 1fr}.mc-world-count{grid-column:1/-1}.mc-screen-heading{gap:7px}.mc-screen-heading h1{font-size:.8rem}.mc-achievement-grid,.mc-options-grid{grid-template-columns:1fr}.mc-server-details{padding-left:16px}.mc-footer{flex-direction:column;align-items:center;text-align:center}}
 body.reduced-motion *,body.reduced-motion *::before,body.reduced-motion *::after{animation:none!important;scroll-behavior:auto!important;transition:none!important}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
 body.high-contrast .mc-screen,body.high-contrast .mc-profile-panel,body.high-contrast .mc-achievement{background:rgba(0,0,0,.97);border-color:#fff}
+
+/* Six inward-facing planes meet around the camera at the screen centre. */
+.sky-view {
+  --radius: 82vmax;
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  perspective: 60vmax;
+  background: #647a92 url('panorama/0.webp') center / cover;
+}
+.sky-view::after { content: ''; position: absolute; inset: 0; background: linear-gradient(#08122133, #07122322 54%, #03090ebe); }
+.sky-cube { position: absolute; left: 50%; top: 50%; transform-style: preserve-3d; animation: mc-look 160s linear infinite; }
+.sky-cube i { position: absolute; left: calc(-1 * var(--radius)); top: calc(-1 * var(--radius)); width: calc(2 * var(--radius) + 1px); height: calc(2 * var(--radius) + 1px); background-size: 100% 100%; backface-visibility: hidden; }
+.sky-cube i:nth-child(1) { background-image: url('panorama/0.webp'); transform: rotateY(0deg) translateZ(calc(-1 * var(--radius))); }
+.sky-cube i:nth-child(2) { background-image: url('panorama/1.webp'); transform: rotateY(-90deg) translateZ(calc(-1 * var(--radius))); }
+.sky-cube i:nth-child(3) { background-image: url('panorama/2.webp'); transform: rotateY(180deg) translateZ(calc(-1 * var(--radius))); }
+.sky-cube i:nth-child(4) { background-image: url('panorama/3.webp'); transform: rotateY(90deg) translateZ(calc(-1 * var(--radius))); }
+.sky-cube i:nth-child(5) { background-image: url('panorama/4.webp'); transform: rotateX(90deg) translateZ(calc(-1 * var(--radius))); }
+.sky-cube i:nth-child(6) { background-image: url('panorama/5.webp'); transform: rotateX(-90deg) translateZ(calc(-1 * var(--radius))); }
+@keyframes mc-look { from { transform: translateZ(60vmax) rotateX(-4deg) rotateY(0deg); } to { transform: translateZ(60vmax) rotateX(-4deg) rotateY(360deg); } }
+.sky-cube { transform: translateZ(60vmax) rotateX(-4deg); }
+@media (prefers-reduced-motion: reduce) { .sky-cube { animation: none !important; } }
+.mc-home-screen .mc-player-card { background: transparent; border: 0; justify-content: center; padding: 0; }
+.mc-home-screen .mc-title { text-transform: uppercase; color: #ecece8; text-shadow: 0 2px #989893, 0 4px #777773, 0 6px #494946, 3px 9px #222; }
+@media (min-width: 1000px) {
+  .mc-home-layout { position: relative; display: block; }
+  .mc-main-menu { width: min(44vw,500px); margin: auto; }
+  .mc-player-card { position: absolute; width: 22%; right: 0; top: 50%; transform: translateY(-50%); }
+}
