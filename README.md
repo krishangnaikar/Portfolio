@@ -1,8 +1,8 @@
 # Krishang Naikar - Portfolio
 
-A Flask portfolio with a game lobby landing page and separate screens for Projects, Experience, Research & Ideas, Skills, About, and a dedicated Options menu. Each screen has its own interactions and navigation. The Recruiter Quick View remains available as a concise, print-friendly page at `/recruiter`.
+A Flask portfolio with a menu-inspired landing page and separate screens for Projects, Experience, Skills, About, and Settings. Projects are organized by topic, including a combined Research & Ideas category. Selecting a project opens its detailed overview, tools, status, and source in a panel beside the category grid. The Recruiter Quick View remains available as a concise, print-friendly page at `/recruiter`.
 
-Project content is maintained in `projects.json`; category and status labels distinguish research, contributions, software projects, coursework, and concepts. Public repository links are included where available. Local projects have no source link; private repository details are not published.
+Project content is maintained in `projects.json`; category and status labels describe the work directly. Public repository links are included where available. Local projects have no source link; private repository details are not published.
 
 ## Run locally
 
@@ -19,7 +19,7 @@ Edit `projects.json` or the matching data in `app.py`, then regenerate the stati
 python export_static.py
 ```
 
-The exporter writes `index.html`, `projects.html`, `experience.html`, `research.html`, `skills.html`, `about.html`, `settings.html`, and `recruiter.html`. Relative asset and page links support hosting under a repository subpath.
+The exporter writes `index.html`, `projects.html`, `experience.html`, `research.html`, `skills.html`, `about.html`, `settings.html`, and `recruiter.html`. The `research.html` page remains available as a direct view of the Research & Ideas category; the main navigation leads to Projects. Relative asset and page links support hosting under a repository subpath.
 
 ## Catalog scope (November 3, 2026)
 
