@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5f2">
+  <title>{{ profile.name }} | Recruiter Quick View</title>
+  <style>
+    *{box-sizing:border-box} :root{--ink:#17191d;--muted:#61656c;--line:#d8d9dc;--red:#e93f4d;--paper:#f6f5f2}
+    body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.6 Inter,Arial,sans-serif}
+    .page{max-width:1060px;margin:auto;padding:36px 28px 64px}
+    header{display:flex;justify-content:space-between;align-items:center;gap:18px;padding-bottom:18px;border-bottom:2px solid var(--ink)}
+    .brand{font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+    header a,.links a{color:var(--ink);text-decoration:none}header a{font-size:13px;font-weight:700}
+    header a:hover,.links a:hover{color:var(--red)}
+    .hero{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:end;padding:44px 0 30px;border-bottom:1px solid var(--line)}
+    .eyebrow,.label{color:var(--red);font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase}
+    h1{margin:8px 0 0;font-size:clamp(38px,7vw,68px);line-height:.98;letter-spacing:-.055em}
+    .role{margin:12px 0 0;font-size:17px;font-weight:700}
+    .summary{max-width:680px;margin:18px 0 0;color:var(--muted)}
+    .hero-actions{display:flex;flex-direction:column;gap:8px}
+    .button{display:inline-flex;justify-content:center;align-items:center;min-height:42px;padding:0 14px;border:1px solid var(--ink);font-size:12px;font-weight:800;letter-spacing:.05em;text-decoration:none}
+    .button.primary{background:var(--ink);color:white}.button.primary:hover{background:var(--red);border-color:var(--red)}
+    .links{display:flex;flex-wrap:wrap;gap:15px;margin-top:14px;font-size:13px;font-weight:700}
+    .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:22px 0 34px;background:var(--line);border:1px solid var(--line)}
+    .fact{padding:14px 16px;background:var(--paper)}.fact strong{display:block;font-size:14px}.fact span{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+    .columns{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(260px,.65fr);gap:34px}
+    section{margin:0 0 30px}h2{margin:0 0 14px;padding-bottom:8px;border-bottom:1px solid var(--ink);font-size:14px;letter-spacing:.12em;text-transform:uppercase}
+    .item{margin:0 0 18px}.item-head{display:flex;justify-content:space-between;gap:14px}.item h3{margin:0;font-size:15px}.item time{color:var(--muted);font-size:12px;white-space:nowrap}
+    .sub{margin:2px 0 5px;color:var(--muted);font-size:13px}.item ul{margin:7px 0 0;padding-left:18px}.item li{margin:3px 0;font-size:13px}
+    .chips{display:flex;flex-wrap:wrap;gap:6px}.chip{padding:4px 8px;border:1px solid var(--line);font-size:11px}
+    .project{padding:12px 0;border-bottom:1px solid var(--line)}.project:last-child{border-bottom:0}.project h3{display:flex;justify-content:space-between;gap:10px;margin:0;font-size:14px}.project h3 a{color:var(--red);text-decoration:none;font-size:12px;white-space:nowrap}.project p{margin:5px 0;color:var(--muted);font-size:12px}
+    .education,.cert{margin:0 0 14px}.education strong,.cert strong{display:block;font-size:13px}.education span,.cert span{color:var(--muted);font-size:12px}
+    .footer{margin-top:30px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:11px}
+    @media(max-width:720px){.page{padding:22px 18px 46px}.hero{grid-template-columns:1fr;align-items:start;padding-top:32px}.hero-actions{flex-direction:row;flex-wrap:wrap}.columns{grid-template-columns:1fr;gap:8px}.facts{grid-template-columns:1fr}.fact{display:flex;justify-content:space-between;gap:12px}.item-head{display:block}.item time{display:block}.role{font-size:15px}}
+    @media print{body{background:white}.page{max-width:none;padding:0}.hero{padding:24px 0}.button{display:none}a{color:inherit}.columns{gap:24px}.item{break-inside:avoid}.footer{margin-top:12px}}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header><span class="brand">{{ profile.name }} / Recruiter View</span><a href="{{ url_for('index') }}">Back to full portfolio ↗</a></header>
+    <div class="hero">
+      <div>
+        <div class="eyebrow">Quick profile / Fremont, CA</div>
+        <h1>{{ profile.name }}</h1>
+        <p class="role">{{ profile.title }}</p>
+        <p class="summary">{{ profile.summary }}</p>
+        <div class="links"><a href="mailto:{{ profile.email }}">Email</a><a href="{{ profile.github }}" target="_blank" rel="noreferrer">GitHub</a><a href="{{ profile.linkedin }}" target="_blank" rel="noreferrer">LinkedIn</a></div>
+      </div>
+      <div class="hero-actions"><a class="button primary" href="{{ resume_url }}">Download resume</a><a class="button" href="{{ url_for('index') }}#projects">Full project portfolio</a></div>
+    </div>
+    <div class="facts">
+      <div class="fact"><strong>{{ education[0].school }}</strong><span>University</span></div>
+      <div class="fact"><strong>{{ education[0].degree }}</strong><span>Program</span></div>
+      <div class="fact"><strong>{{ education[0].date }}</strong><span>Education</span></div>
+    </div>
+    <div class="columns">
+      <div>
+        <section><h2>Experience</h2>
+          {% for exp in experiences %}
+          <article class="item"><div class="item-head"><h3>{{ exp.role }} / {{ exp.company }}</h3><time>{{ exp.date }}</time></div><p class="sub">{{ exp.location }}</p><ul>{% for bullet in exp.bullets %}<li>{{ bullet }}</li>{% endfor %}</ul></article>
+          {% endfor %}
+        </section>
+        <section><h2>Selected projects</h2>
+          {% for project in featured_projects %}
+          <article class="project"><h3>{{ project.name }}{% if project.link %}<a href="{{ project.link }}" target="_blank" rel="noreferrer">View ↗</a>{% endif %}</h3><p>{{ project.blurb }}</p><div class="chips">{% for tech in project.tech %}<span class="chip">{{ tech }}</span>{% endfor %}</div></article>
+          {% endfor %}
+        </section>
+      </div>
+      <aside>
+        <section><h2>Technical skills</h2>
+          {% for group in skills %}<div class="item"><h3>{{ group.label }}</h3><div class="chips">{% for item in group['items'] %}<span class="chip">{{ item }}</span>{% endfor %}</div></div>{% endfor %}
+        </section>
+        <section><h2>Education</h2>{% for ed in education %}<div class="education"><strong>{{ ed.school }}</strong><span>{{ ed.degree }}<br>{{ ed.date }}</span></div>{% endfor %}</section>
+        <section><h2>Certifications</h2>{% for cert in certifications %}<div class="cert"><strong>{{ cert.name }}</strong><span>{{ cert.org }} / {{ cert.year }}</span></div>{% endfor %}</section>
+      </aside>
+    </div>
+    <div class="footer">Recruiter quick view / Print or save as PDF from your browser.</div>
+  </div>
+</body>
+</html>
