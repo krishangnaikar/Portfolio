@@ -4,44 +4,43 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#11151d" />
-  <title>{{ profile.name }} | Portfolio Lobby</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='game-ui.css') }}?v=20261120b" />
+  <title>{{ profile.name }} | Portfolio</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='game-ui.css') }}?v=20261120h" />
 </head>
 <body>
   <header><div class="game-header">
     <a class="brand-link" href="{{ url_for('index') }}"><span class="brand-mark" aria-hidden="true"></span>{{ profile.name }}</a>
-    <span class="header-mode">PORTFOLIO LOBBY // FREMONT, CA</span>
+    <span class="header-mode">PORTFOLIO / FREMONT, CA</span>
     <a class="header-recruiter" href="{{ url_for('recruiter') }}">RECRUITER QUICK VIEW <span aria-hidden="true">↗</span></a>
   </div></header>
   <main id="home">
-    <section class="game-lobby" aria-label="Portfolio game lobby">
+    <section class="game-lobby" aria-label="Portfolio home">
       <nav class="lobby-topnav" aria-label="Main menu">
-        <a class="is-active" href="{{ url_for('index') }}">Play</a>
+        <a class="is-active" href="{{ url_for('index') }}">Home</a>
         <a href="{{ url_for('projects_page') }}">Projects</a>
         <a href="{{ url_for('experience_page') }}">Experience</a>
-        <a href="{{ url_for('research_page') }}">Research</a>
-        <a href="{{ url_for('skills_page') }}">Collection</a>
+        <a href="{{ url_for('skills_page') }}">Skills</a>
         <a href="{{ url_for('about_page') }}">About</a>
         <a class="nav-settings" href="{{ url_for('settings_page') }}" aria-label="Open settings menu">Settings ⚙</a>
       </nav>
       <div class="lobby-main">
         <aside class="lobby-mode" aria-label="Featured portfolio mode">
-          <p class="mode-kicker">SELECT A MODE // 01</p>
-          <h2>Project<br />Select</h2>
+          <p class="mode-kicker">FEATURED PROJECT // 01</p>
+          <h2>Featured<br />Work</h2>
           <p>Explore software, AI, systems, and research projects from the current portfolio.</p>
           <a class="mode-button" href="{{ url_for('projects_page') }}">Browse projects <span aria-hidden="true">▶</span></a>
           <nav class="mode-subnav" aria-label="More portfolio sections">
-            <a href="{{ url_for('experience_page') }}">Experience // Teams</a>
-            <a href="{{ url_for('research_page') }}">Research // Side quests</a>
-            <a href="{{ url_for('skills_page') }}">Skills // Collection</a>
+            <a href="{{ url_for('experience_page') }}">Experience // Career</a>
+            <a href="{{ url_for('projects_page', category='research-ideas') }}">Projects // Research & Ideas</a>
+            <a href="{{ url_for('skills_page') }}">Skills // Technologies</a>
           </nav>
         </aside>
-        <section class="lobby-center" aria-label="Player party">
-          <div class="party-label"><span>PARTY // 01 OF 05</span><span>READY TO QUEUE</span></div>
+        <section class="lobby-center" aria-label="Portfolio profile">
+          <div class="party-label"><span>PROFILE / 01</span><span>OPEN TO OPPORTUNITIES</span></div>
           <div class="party-lineup">
-            <div class="party-slot empty" aria-label="Open party slot"></div>
-            <div class="party-slot empty" aria-label="Open party slot"></div>
-            <article class="party-slot is-player" aria-label="Player card: Krishang Naikar, Student">
+            <div class="party-slot empty" aria-label="Additional profile slot"></div>
+            <div class="party-slot empty" aria-label="Additional profile slot"></div>
+            <article class="party-slot is-player" aria-label="Profile card: Krishang Naikar, Student">
               <div class="player-card-art">
                 <img src="{{ url_for('static', filename='player-card.svg') }}" alt="Paris at sunset with an Eiffel Tower, crescent moon, and student silhouette" />
                 <span class="player-card-level">SJSU // CLASS OF 2028</span>
@@ -53,8 +52,8 @@
                 <small>Computer Science // SJSU</small>
               </div>
             </article>
-            <div class="party-slot empty" aria-label="Open party slot"></div>
-            <div class="party-slot empty" aria-label="Open party slot"></div>
+            <div class="party-slot empty" aria-label="Additional profile slot"></div>
+            <div class="party-slot empty" aria-label="Additional profile slot"></div>
           </div>
           <p class="lobby-center-foot">SOFTWARE ENGINEERING // AI, ML &amp; SYSTEMS</p>
         </section>
