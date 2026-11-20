@@ -20,6 +20,7 @@
       {% if page_type == "projects" %}
       {% set ns = namespace(categories=[]) %}
       {% for item in projects %}{% if item.category not in ns.categories %}{% set ns.categories = ns.categories + [item.category] %}{% endif %}{% endfor %}
+      <div id="project-collection" data-source="projects.json">
       <div class="collection-overview">
         {% for category in ns.categories %}
         {% set items = projects | selectattr("category", "equalto", category) | list %}
@@ -36,6 +37,8 @@
         </details>
         {% endfor %}
       </div>
+      </div>
+      <script src="{{ url_for('static', filename='project-collection.js') }}?v=20261120d" defer></script>
       {% elif page_type == "research" %}
       <div class="select-list">
         {% for item in projects %}
