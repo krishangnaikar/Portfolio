@@ -3,12 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#17183a" />
-  <title>Menu | {{ profile.name }}</title>
+  <meta name="theme-color" content="#111923" />
+  <title>Menu | Krishang Naikar</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='game-ui.css') }}" />
 </head>
 <body class="inner-page settings-page-body">
-  {% include "partials/game-header.html" %}
   <main class="settings-page">
     <section class="settings-shell" aria-labelledby="settings-title">
       <div class="settings-titlebar">
@@ -19,18 +18,12 @@
       <div class="settings-actions">
         <button type="button" class="settings-action" id="settings-toggle" aria-expanded="false" aria-controls="settings-preferences">Settings</button>
         <div class="settings-preferences" id="settings-preferences" hidden>
-          <label class="settings-pref-row">
-            <span>Reduce motion<small>Turn off interface movement and transitions.</small></span>
-            <input class="settings-switch" type="checkbox" data-preference="reduced-motion" aria-label="Reduce motion" />
-          </label>
-          <label class="settings-pref-row">
-            <span>High contrast<small>Strengthen text and panel contrast.</small></span>
-            <input class="settings-switch" type="checkbox" data-preference="high-contrast" aria-label="High contrast" />
-          </label>
+          <label class="settings-pref-row"><span>Reduce motion<small>Turn off interface movement and transitions.</small></span><input class="settings-switch" type="checkbox" data-preference="reduced-motion" aria-label="Reduce motion" /></label>
+          <label class="settings-pref-row"><span>High contrast<small>Strengthen text and panel contrast.</small></span><input class="settings-switch" type="checkbox" data-preference="high-contrast" aria-label="High contrast" /></label>
         </div>
         <a class="settings-action" href="mailto:{{ profile.email }}?subject=Portfolio%20inquiry">Player Support</a>
         <a class="settings-action" href="{{ url_for('about_page') }}">About</a>
-        <a class="settings-action return-action" href="{{ url_for('index') }}">Return to Lobby</a>
+        <a class="settings-action return-action" href="{{ url_for('index') }}" aria-label="Return to portfolio lobby">Exit to Desktop</a>
       </div>
       <p class="settings-version">PORTFOLIO MENU // 01</p>
     </section>
