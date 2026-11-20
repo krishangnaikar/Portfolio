@@ -1,4 +1,5 @@
 import { MetadataRoute } from "next";
+export const dynamic = "force-static";
 import { getBlogPosts } from "@/lib/content";
 import { SITE_URL } from "@/lib/site";
 

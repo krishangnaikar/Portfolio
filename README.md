@@ -8,7 +8,7 @@ A Minecraft-themed personal portfolio, built as a Next.js app. The layout, GUI a
 npm install
 npm run dev      # http://localhost:3000
 npm test         # unit tests
-npm run build    # production build
+npm run build    # static export to ./out
 ```
 
 ## Editing content
@@ -24,3 +24,16 @@ npm run build    # production build
 | Canonical site URL | `lib/site.ts` |
 | Social preview image | add `app/opengraph-image.png` |
 | Minecraft skin | `public/skins/steve.png` |
+
+## Deploying to Cloudflare Pages
+
+This is a static export (`output: "export"`). In the Cloudflare Pages project settings use:
+
+| Setting | Value |
+|---|---|
+| Framework preset | None (or Next.js static export) |
+| Build command | `npm run build` |
+| Build output directory | `out` |
+| Environment variable | `NODE_VERSION` = `22` (a `.node-version` file also sets this) |
+
+`public/recruiter.html` is served at `/recruiter.html`.

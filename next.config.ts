@@ -1,8 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Lets a second server (e.g. `next dev` beside `next start`) use its own build folder.
-  distDir: process.env.NEXT_DIST_DIR || ".next",
+  // Static export: `npm run build` writes the site to ./out, which Cloudflare Pages serves as-is.
+  output: "export",
+  images: { unoptimized: true },
+  trailingSlash: false,
   reactStrictMode: true,
   transpilePackages: ["skinview3d"],
 };
