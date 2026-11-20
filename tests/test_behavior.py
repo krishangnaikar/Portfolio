@@ -34,7 +34,10 @@ def test_static_pages_are_generated_for_each_route():
     for filename in ('index.html', 'projects.html', 'experience.html', 'research.html', 'skills.html', 'about.html', 'recruiter.html'):
         html = (root / filename).read_text()
         assert '{{' not in html and '{%' not in html
-        assert 'static/game-ui.css' in html
+        if filename == 'recruiter.html':
+            assert 'Recruiter Quick View' in html
+        else:
+            assert 'static/game-ui.css' in html
 
 
 def test_unknown_page_returns_404():
