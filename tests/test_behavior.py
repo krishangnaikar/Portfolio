@@ -35,3 +35,26 @@ def test_local_projects_do_not_render_empty_links():
     assert 'No public repository' in html
     assert 'Merged contribution' in html
     assert 'Concepts and plans' in html
+
+
+def test_recruiter_quick_view_renders_selected_information():
+    response = app.app.test_client().get('/recruiter')
+    assert response.status_code == 200
+    text = response.get_data(as_text=True)
+    assert app.profile['name'] in text
+    assert 'Recruiter Quick View' in text
+    assert app.education[0]['school'] in text
+    assert 'Multimodal Enterprise RAG' in text
+    assert 'Qiskit ket_basis Visualization' in text
+    assert app.profile['github'] in text
+
+
+def test_static_recruiter_page_is_available():
+    from pathlib import Path
+    path = Path(app.__file__).with_name('recruiter.html')
+    assert path.exists()
+    text = path.read_text()
+    assert 'Recruiter Quick View' in text
+    assert 'href="index.html"' in text
+    assert '{{' not in text
+    assert '{%' not in text
