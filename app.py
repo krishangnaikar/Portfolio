@@ -43,7 +43,7 @@ experiences = [
         "company": "TrueNil",
         "role": "Software Engineer Intern",
         "location": "Fremont, CA",
-        "date": "Nov 2023 – May 2024",
+        "date": "Nov 2023 – Present",
         "bullets": [
             "Collaborated with engineers to resolve codebase issues and improve reliability.",
             "Supported a ChatGPT-based product to ensure smooth functionality.",
@@ -66,7 +66,7 @@ education = [
     {
         "school": "San José State University",
         "degree": "B.S., Computer Science (Undergraduate)",
-        "date": "Aug 2024 – May 2027",
+        "date": "Aug 2024 – May 2028",
     }
 ]
 
@@ -101,6 +101,26 @@ def index():
         resume_url=resume_url,
     )
 
+
+@app.route("/recruiter")
+def recruiter():
+    resume_url = url_for("static", filename="resume/Resume8-18-25.pdf")
+    featured_names = {
+        "Multimodal Enterprise RAG",
+        "Transistor Fine-Tuning and Tool-Use Evaluation",
+        "Qiskit ket_basis Visualization",
+    }
+    featured_projects = [p for p in projects if p["name"] in featured_names]
+    return render_template(
+        "recruiter.html",
+        profile=profile,
+        skills=skills,
+        experiences=experiences,
+        education=education,
+        certifications=certifications,
+        featured_projects=featured_projects,
+        resume_url=resume_url,
+    )
 
 if __name__ == "__main__":
     app.run(debug=True)
