@@ -1,10 +1,9 @@
-<nav class="section-menu" aria-label="Portfolio game menus">
-  <p class="menu-overline">MENU / SELECTION</p>
-  <a href="{{ url_for('index') }}" class="menu-link"><strong>Play</strong><small>Lobby</small></a>
-  <a href="{{ url_for('projects_page') }}" class="menu-link{% if active_page == 'projects' %} is-active{% endif %}"><strong>Projects</strong><small>Project select</small></a>
+<nav class="section-menu" aria-label="Portfolio navigation">
+  <p class="menu-overline">NAVIGATION</p>
+  <a href="{{ url_for('index') }}" class="menu-link"><strong>Home</strong><small>Overview</small></a>
+  <a href="{{ url_for('projects_page') }}" class="menu-link{% if active_page == 'projects' or active_page == 'research' %} is-active{% endif %}"><strong>Projects</strong><small>Portfolio</small></a>
   <a href="{{ url_for('experience_page') }}" class="menu-link{% if active_page == 'experience' %} is-active{% endif %}"><strong>Experience</strong><small>Career</small></a>
-  <a href="{{ url_for('research_page') }}" class="menu-link{% if active_page == 'research' %} is-active{% endif %}"><strong>Research</strong><small>Premier</small></a>
-  <a href="{{ url_for('skills_page') }}" class="menu-link{% if active_page == 'skills' %} is-active{% endif %}"><strong>Collection</strong><small>Skills</small></a>
-  <a href="{{ url_for('about_page') }}" class="menu-link{% if active_page == 'about' %} is-active{% endif %}"><strong>Profile</strong><small>About</small></a>
-  <a href="{{ url_for('settings_page') }}" class="menu-link{% if active_page == 'settings' %} is-active{% endif %}"><strong>Options</strong><small>Settings</small></a>
+  <a href="{{ url_for('skills_page') }}" class="menu-link{% if active_page == 'skills' %} is-active{% endif %}"><strong>Skills</strong><small>Technologies</small></a>
+  <a href="{{ url_for('about_page') }}" class="menu-link{% if active_page == 'about' %} is-active{% endif %}"><strong>About</strong><small>Profile</small></a>
+  <a href="{{ url_for('settings_page') }}" class="menu-link{% if active_page == 'settings' %} is-active{% endif %}"><strong>Settings</strong><small>Preferences</small></a>
 </nav>
