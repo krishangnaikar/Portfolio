@@ -3,81 +3,61 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#11151d" />
+  <meta name="theme-color" content="#13202b" />
   <title>{{ profile.name }} | Portfolio</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='game-ui.css') }}?v=20261120i" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='minecraft-portfolio.css') }}?v=20261120a" />
 </head>
-<body>
-  <header><div class="game-header">
-    <a class="brand-link" href="{{ url_for('index') }}"><span class="brand-mark" aria-hidden="true"></span>{{ profile.name }}</a>
-    <span class="header-mode">PORTFOLIO / FREMONT, CA</span>
-    <a class="header-recruiter" href="{{ url_for('recruiter') }}">RECRUITER QUICK VIEW <span aria-hidden="true">↗</span></a>
-  </div></header>
-  <main id="home">
-    <section class="game-lobby" aria-label="Portfolio home">
-      <nav class="lobby-topnav" aria-label="Main menu">
-        <a class="is-active" href="{{ url_for('index') }}">Home</a>
-        <a href="{{ url_for('projects_page') }}">Projects</a>
-        <a href="{{ url_for('experience_page') }}">Experience</a>
-        <a href="{{ url_for('skills_page') }}">Skills</a>
-        <a href="{{ url_for('about_page') }}">About</a>
-        <a class="nav-settings" href="{{ url_for('settings_page') }}" aria-label="Open settings menu">Settings ⚙</a>
-      </nav>
-      <div class="lobby-main">
-        <aside class="lobby-mode" aria-label="Featured portfolio mode">
-          <p class="mode-kicker">FEATURED PROJECT // 01</p>
-          <h2>Featured<br />Work</h2>
-          <p>Explore software, AI, systems, and research projects from the current portfolio.</p>
-          <a class="mode-button" href="{{ url_for('projects_page') }}">Browse projects <span aria-hidden="true">▶</span></a>
-          <nav class="mode-subnav" aria-label="More portfolio sections">
-            <a href="{{ url_for('experience_page') }}">Experience // Career</a>
-            <a href="{{ url_for('projects_page', category='research-ideas') }}">Projects // Research & Ideas</a>
-            <a href="{{ url_for('skills_page') }}">Skills // Technologies</a>
-          </nav>
-        </aside>
-        <section class="lobby-center" aria-label="Portfolio profile">
-          <div class="party-label"><span>PROFILE / 01</span><span>OPEN TO OPPORTUNITIES</span></div>
-          <div class="party-lineup">
-            <div class="party-slot empty" aria-label="Additional profile slot"></div>
-            <div class="party-slot empty" aria-label="Additional profile slot"></div>
-            <article class="party-slot is-player" aria-label="Profile card: Krishang Naikar, Student">
-              <div class="player-card-art">
-                <img src="{{ url_for('static', filename='player-card.svg') }}" alt="Paris at sunset with an Eiffel Tower, crescent moon, and student silhouette" />
-                <span class="player-card-level">SJSU // CLASS OF 2028</span>
-                <span class="player-card-ready">READY</span>
-              </div>
-              <div class="player-card-meta">
-                <strong>Krishang Naikar</strong>
-                <span>Student</span>
-                <small>Computer Science // SJSU</small>
-              </div>
-            </article>
-            <div class="party-slot empty" aria-label="Additional profile slot"></div>
-            <div class="party-slot empty" aria-label="Additional profile slot"></div>
+<body class="mc-portfolio">
+<div class="mc-site">
+  <header class="mc-topbar">
+    <a class="mc-wordmark" href="{{ url_for('index') }}" aria-label="Krishang Naikar home">KN</a>
+    <span class="mc-topbar-note">SJSU · COMPUTER SCIENCE · CLASS OF 2028</span>
+    <a class="mc-quickview" href="{{ url_for('recruiter') }}">Recruiter Quick View</a>
+  </header>
+
+  <main class="mc-home-screen">
+    <div class="mc-home-layout">
+      <section class="mc-main-menu" aria-labelledby="home-title">
+        <div class="mc-title-area">
+          <span class="mc-title-mark">PERSONAL PORTFOLIO</span>
+          <span class="mc-splash">building something cool!</span>
+          <h1 class="mc-title" id="home-title">{{ profile.name }}</h1>
+          <p class="mc-subtitle">Computer Science Student · AI/ML Researcher</p>
+        </div>
+        <nav class="mc-menu-buttons" aria-label="Main menu">
+          <a class="mc-menu-button" href="{{ url_for('projects_page') }}" aria-label="Projects">
+            <span class="mc-menu-button__label">Singleplayer</span><span class="mc-menu-button__hint">Projects</span>
+          </a>
+          <a class="mc-menu-button" href="{{ url_for('experience_page') }}" aria-label="Experience">
+            <span class="mc-menu-button__label">Multiplayer</span><span class="mc-menu-button__hint">Experience</span>
+          </a>
+          <a class="mc-menu-button" href="{{ url_for('skills_page') }}" aria-label="Skills and coursework">
+            <span class="mc-menu-button__label">Advancements</span><span class="mc-menu-button__hint">Skills &amp; Coursework</span>
+          </a>
+          <div class="mc-menu-row">
+            <a class="mc-menu-button mc-menu-button--small" href="{{ url_for('settings_page') }}" aria-label="Options menu">
+              <span class="mc-menu-button__label">Options...</span><span class="mc-menu-button__hint">Options</span>
+            </a>
+            <a class="mc-menu-button mc-menu-button--small" href="{{ url_for('about_page') }}" aria-label="About and contact">
+              <span class="mc-menu-button__label">About</span><span class="mc-menu-button__hint">About &amp; Contact</span>
+            </a>
           </div>
-          <p class="lobby-center-foot">SOFTWARE ENGINEERING // AI, ML &amp; SYSTEMS</p>
-        </section>
-        <aside class="lobby-side" aria-label="Portfolio information">
-          <section class="side-feature">
-            <p class="right-kicker">FAST ACCESS // RECRUITER</p>
-            <h2>Recruiter<br />Quick View</h2>
-            <p>Experience, skills, education, selected work, and resume in one scan-friendly page.</p>
-            <a href="{{ url_for('recruiter') }}">Open quick view <span aria-hidden="true">↗</span></a>
-          </section>
-          <section class="side-education">
-            <p class="side-label">CURRENT MISSION // EDUCATION</p>
-            <strong>{{ education[0].school }}</strong>
-            <p>{{ education[0].degree }}<br />{{ education[0].date }}</p>
-          </section>
-          <section class="side-news">
-            <p class="side-label">ACTIVE PROFILE</p>
-            <strong>{{ profile.title }}</strong>
-            <p>Building useful software across AI, ML, automation, and systems.</p>
-          </section>
-        </aside>
-      </div>
-      <footer class="lobby-footer"><span><strong>STATUS:</strong> READY</span><span>SELECT A MENU TO EXPLORE THE PORTFOLIO</span></footer>
-    </section>
+        </nav>
+        <p class="mc-menu-meta">Building software across AI, automation, quantum computing, and apps.</p>
+        <div class="mc-home-social" aria-label="External profiles">
+          <a class="mc-social-link" href="{{ profile.github }}" target="_blank" rel="noreferrer">GitHub ↗</a>
+          <a class="mc-social-link" href="{{ profile.linkedin }}" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+        </div>
+      </section>
+
+      <aside class="mc-player-card" aria-label="Player preview">
+        <img class="mc-player-model" src="{{ url_for('static', filename='krishang-player.svg') }}" alt="Voxel avatar wearing Krishang’s Minecraft skin" />
+        <div class="mc-player-caption"><span>PLAYER PROFILE</span><strong>KRISHANG</strong><small>Student · Builder</small></div>
+      </aside>
+    </div>
   </main>
+
+  <footer class="mc-footer"><span>San José State University · Fremont, California</span><span>Portfolio · 2026</span></footer>
+</div>
 </body>
 </html>
