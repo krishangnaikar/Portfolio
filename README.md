@@ -1,6 +1,8 @@
 # Krishang Naikar - Portfolio
 
-A Flask portfolio with a menu-inspired landing page and separate screens for Projects, Experience, Skills, About, and Settings. Projects are organized by topic, including a combined Research & Ideas category. Selecting a project opens its detailed overview, tools, status, and source in a panel beside the category grid. The Recruiter Quick View remains available as a concise, print-friendly page at `/recruiter`.
+A Minecraft title-screen-inspired portfolio with connected menu pages for Projects, Experience, Skills, About, and Options. The layout takes inspiration from the menu flow and blocky visual language of Minecraft, while using original styling and portfolio content. The home screen features a voxel player preview based on Krishang's supplied Minecraft skin.
+
+Projects are organized by topic, including Research & Ideas. Selecting a project opens its overview, tools, status, and available source in a panel beside the project list. The Recruiter Quick View remains available as a concise, print-friendly page at `/recruiter`.
 
 Project content is maintained in `projects.json`; category and status labels describe the work directly. Public repository links are included where available. Local projects have no source link; private repository details are not published.
 
@@ -19,7 +21,7 @@ Edit `projects.json` or the matching data in `app.py`, then regenerate the stati
 python export_static.py
 ```
 
-The exporter writes `index.html`, `projects.html`, `experience.html`, `research.html`, `skills.html`, `about.html`, `settings.html`, and `recruiter.html`. The `research.html` page remains available as a direct view of the Research & Ideas category; the main navigation leads to Projects. Relative asset and page links support hosting under a repository subpath.
+The exporter writes `index.html`, `projects.html`, `experience.html`, `research.html`, `skills.html`, `about.html`, `settings.html`, and `recruiter.html`. The `research.html` page remains available as a direct view of the Research & Ideas category; the main menu leads to Projects. Relative asset and page links support hosting under a repository subpath.
 
 ## Catalog scope (November 3, 2026)
 
