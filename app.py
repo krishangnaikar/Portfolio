@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, jsonify, render_template, url_for
 
 app = Flask(__name__)
 
@@ -120,13 +120,18 @@ def recruiter():
         resume_url=resume_url,
     )
 
+@app.route("/projects.json")
+def project_catalog():
+    return jsonify(projects)
+
+
 @app.route("/projects")
 def projects_page():
     return render_template(
         "subpage.html",
         profile=profile,
         active_page="projects",
-        page_label="PLAY / PROJECT SELECTION",
+        page_label="COLLECTION / PROJECTS",
         page_title="Project Collection",
         page_intro="Choose a category to browse the project collection, then select a project to inspect its full brief, tools, and source.",
         page_type="projects",
