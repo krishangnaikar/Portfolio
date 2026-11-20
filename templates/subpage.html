@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0b0d10" />
   <title>{{ page_title }} | {{ profile.name }}</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='game-ui.css') }}?v=20261120i" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='game-ui.css') }}?v=20261120j" />
 </head>
 <body class="inner-page">
   {% include "partials/game-header.html" %}
@@ -25,7 +25,7 @@
           <div class="collection-category-grid">
             {% for category in ns.categories %}
             {% set items = projects | selectattr("category", "equalto", category) | list %}
-            <details class="collection-category"{% if loop.first %} open{% endif %}>
+            <details class="collection-category">
               <summary class="category-header"><span class="category-emblem" aria-hidden="true">{{ "%02d"|format(loop.index) }}</span><span class="category-title-wrap"><strong>{{ category }}</strong><small>{{ items|length }} PROJECTS</small></span><span class="category-expand" aria-hidden="true">+</span></summary>
               <div class="category-project-grid">
                 {% for item in items %}
@@ -46,7 +46,7 @@
           </aside>
         </div>
       </div>
-      <script src="{{ url_for('static', filename='project-collection.js') }}?v=20261120i" defer></script>
+      <script src="{{ url_for('static', filename='project-collection.js') }}?v=20261120j" defer></script>
       {% elif page_type == "research" %}
       <div class="select-list">
         {% for item in projects %}
