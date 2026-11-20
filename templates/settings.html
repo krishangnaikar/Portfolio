@@ -3,31 +3,26 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#111923" />
-  <title>Menu | Krishang Naikar</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='game-ui.css') }}?v=20261120i" />
+  <meta name="theme-color" content="#13202b" />
+  <title>Options | {{ profile.name }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='minecraft-portfolio.css') }}?v=20261120a" />
 </head>
-<body class="inner-page settings-page-body">
-  <main class="settings-page">
-    <section class="settings-shell" aria-labelledby="settings-title">
-      <div class="settings-titlebar">
-        <span class="settings-rule" aria-hidden="true"></span>
-        <h1 id="settings-title">Menu</h1>
-        <a class="settings-close" href="{{ url_for('index') }}" aria-label="Close menu and return home">×</a>
-      </div>
-      <div class="settings-actions">
-        <button type="button" class="settings-action" id="settings-toggle" aria-expanded="false" aria-controls="settings-preferences">Settings</button>
-        <div class="settings-preferences" id="settings-preferences" hidden>
-          <label class="settings-pref-row"><span>Reduce motion<small>Turn off interface movement and transitions.</small></span><input class="settings-switch" type="checkbox" data-preference="reduced-motion" aria-label="Reduce motion" /></label>
-          <label class="settings-pref-row"><span>High contrast<small>Strengthen text and panel contrast.</small></span><input class="settings-switch" type="checkbox" data-preference="high-contrast" aria-label="High contrast" /></label>
-        </div>
-        <a class="settings-action" href="mailto:{{ profile.email }}?subject=Portfolio%20inquiry">Contact</a>
-        <a class="settings-action" href="{{ url_for('about_page') }}">About</a>
-        <a class="settings-action return-action" href="{{ url_for('index') }}" aria-label="Return home">Back to Home</a>
-      </div>
-      <p class="settings-version">PORTFOLIO SETTINGS</p>
-    </section>
-  </main>
-  <script src="{{ url_for('static', filename='game-settings.js') }}"></script>
+<body class="mc-portfolio">
+<div class="mc-site">
+  <header class="mc-topbar"><a class="mc-wordmark" href="{{ url_for('index') }}" aria-label="Home">KN</a><span class="mc-topbar-note">OPTIONS</span><a class="mc-quickview" href="{{ url_for('recruiter') }}">Recruiter Quick View</a></header>
+  <main class="mc-page"><section class="mc-screen" aria-labelledby="options-title">
+    <div class="mc-screen-heading"><span></span><h1 id="options-title">Options</h1><span></span></div>
+    <p class="mc-screen-intro">Adjust how this portfolio menu looks and get in touch.</p>
+    <div class="mc-options-grid">
+      <div class="mc-option-row"><span class="mc-option-label">Reduce motion</span><input class="mc-pref-toggle" type="checkbox" data-preference="reduced-motion" aria-label="Reduce motion" /></div>
+      <div class="mc-option-row"><span class="mc-option-label">High contrast</span><input class="mc-pref-toggle" type="checkbox" data-preference="high-contrast" aria-label="High contrast" /></div>
+      <a class="mc-option-row mc-social-link" href="{{ url_for('about_page') }}"><span class="mc-option-label">Player Profile</span><span>Open</span></a>
+      <a class="mc-option-row mc-social-link" href="mailto:{{ profile.email }}"><span class="mc-option-label">Contact</span><span>{{ profile.email }}</span></a>
+    </div>
+    <div class="mc-done-row"><a class="mc-done" href="{{ url_for('index') }}">Done</a></div>
+  </section></main>
+  <footer class="mc-footer"><span>{{ profile.name }} · Options</span><span>Portfolio · 2026</span></footer>
+</div>
+<script src="{{ url_for('static', filename='game-settings.js') }}"></script>
 </body>
 </html>
