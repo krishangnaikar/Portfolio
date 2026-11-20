@@ -16,11 +16,15 @@
   const readUrl = () => {
     const params = new URLSearchParams(location.search);
     const categoryId = params.get("category");
-    activeCategory = categories().find((category) => slug(category) === categoryId) || activeCategory || (projects[0]?.category ?? "");
+    activeCategory = categories().find((category) => slug(category) === categoryId) || "";
     activeProject = params.get("project") || "";
+    if (categoryId && activeCategory) openCategories.add(activeCategory);
     if (activeProject) {
       const project = findProject(activeProject);
-      if (project) openCategories.add(project.category);
+      if (project) {
+        activeCategory = project.category;
+        openCategories.add(project.category);
+      }
     }
   };
   const writeUrl = (push = true) => {
@@ -34,7 +38,7 @@
 
   function render() {
     const cats = categories();
-    if (!cats.includes(activeCategory)) activeCategory = cats[0] || "";
+    if (!cats.includes(activeCategory)) activeCategory = "";
     const chosen = findProject(activeProject);
     if (chosen) openCategories.add(chosen.category);
     const filteredByCategory = new Map(cats.map((cat) => [cat, projects.filter((p) =>
@@ -96,11 +100,8 @@
     .then((response) => { if (!response.ok) throw new Error("Project catalog could not be loaded."); return response.json(); })
     .then((data) => {
       projects = data;
-      const first = categories()[0];
-      if (first) openCategories.add(first);
       readUrl();
       render();
-      writeUrl(false);
     })
     .catch(() => { root.innerHTML = '<p class="collection-error">The project collection could not be loaded. Please refresh the page.</p>'; });
   window.addEventListener("popstate", () => { readUrl(); render(); });
