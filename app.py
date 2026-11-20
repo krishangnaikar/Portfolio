@@ -5,11 +5,11 @@ app = Flask(__name__)
 # ------------ Portfolio Data ------------
 profile = {
     "name": "Krishang Naikar",
-    "title": "Software Engineering Intern (AI/ML)",
+    "title": "Computer Science Student • AI/ML Researcher",
     "summary": (
-        "Software Engineering Intern with experience in automation, data pipelines, and "
-        "workflow integrations. Comfortable shipping in Python and Java; eager to build "
-        "scalable developer tooling and AI-backed systems."
+        "Computer science student at San José State University working across AI/ML, "
+        "quantum computing, automation, and software engineering. Undergraduate research "
+        "and project work spans model evaluation, developer tools, and full-stack applications."
     ),
     "location": "Fremont, CA",
     "phone": "+1 (510) 870-7022",
@@ -19,12 +19,10 @@ profile = {
 }
 
 skills = [
-    {"label": "Languages", "items": ["Java", "Python", "C/C++", "SQL (Postgres)", "JavaScript", "HTML/CSS"]},
-    {"label": "Frameworks", "items": ["Flask", "FastAPI"]},
-    {"label": "Tools", "items": ["Git", "Docker", "Google Cloud Platform", "VS Code", "PyCharm",
-                                 "IntelliJ", "Eclipse", "Ollama", "IDE Extension Development"]},
-    {"label": "Libraries", "items": ["Pandas", "NumPy", "Matplotlib", "PyTorch", "Undetected Chromedriver",
-                                     "Selenium", "Discord.py", "LangChain", "OpenAI"]},
+    {"label": "Languages", "items": ["Python", "Java", "C", "C++", "Assembly", "JavaScript", "SQL", "HTML/CSS"]},
+    {"label": "Web & App Development", "items": ["Flask", "FastAPI", "React", "Next.js", "Node.js", "Electron", "React Native", "Tailwind CSS"]},
+    {"label": "AI, ML & Data", "items": ["PyTorch", "LangChain", "Ollama", "Qdrant", "Pinecone", "Sentence Transformers", "NumPy", "Pandas", "CUDA-Q"]},
+    {"label": "Tools", "items": ["Git", "GitHub", "Docker", "VS Code", "PyCharm", "IntelliJ IDEA", "Jupyter"]},
 ]
 
 experiences = [
@@ -126,9 +124,9 @@ def projects_page():
         "subpage.html",
         profile=profile,
         active_page="projects",
-        page_label="PROJECTS / PORTFOLIO",
-        page_title="Projects",
-        page_intro="Browse a category, select a project, and review its overview, tools, status, and source.",
+        page_label="SINGLEPLAYER",
+        page_title="Select World",
+        page_intro="Choose a project world to see what it does, the tools behind it, and where to explore the source.",
         page_type="projects",
         projects=projects,
     )
@@ -140,9 +138,9 @@ def experience_page():
         "subpage.html",
         profile=profile,
         active_page="experience",
-        page_label="EXPERIENCE / CAREER",
-        page_title="Experience",
-        page_intro="Select a role to review the work, team, and time period.",
+        page_label="MULTIPLAYER",
+        page_title="Play Multiplayer",
+        page_intro="Browse teams and roles from Krishang’s work and research experience.",
         page_type="experience",
         experiences=experiences,
     )
@@ -158,9 +156,9 @@ def research_page():
         "subpage.html",
         profile=profile,
         active_page="research",
-        page_label="RESEARCH & IDEAS",
-        page_title="Research & Ideas",
-        page_intro="Research, investigations, and concepts with status clearly labeled.",
+        page_label="PROJECT ARCHIVES",
+        page_title="Research Projects",
+        page_intro="Explore research, investigations, and concepts from the project list.",
         page_type="research",
         projects=research_projects,
     )
@@ -172,11 +170,13 @@ def skills_page():
         "subpage.html",
         profile=profile,
         active_page="skills",
-        page_label="SKILLS",
-        page_title="Skills",
-        page_intro="Browse the languages, frameworks, tools, and libraries in the current portfolio.",
+        page_label="ADVANCEMENTS",
+        page_title="Skills & Coursework",
+        page_intro="A snapshot of tools, technologies, and learning that support the work.",
         page_type="skills",
         skills=skills,
+        education=education,
+        certifications=certifications,
     )
 
 
@@ -186,9 +186,9 @@ def about_page():
         "subpage.html",
         profile=profile,
         active_page="about",
-        page_label="ABOUT / PROFILE",
-        page_title="About",
-        page_intro="A quick profile, education, certifications, and ways to get in touch.",
+        page_label="PLAYER PROFILE",
+        page_title="About Krishang",
+        page_intro="Computer science student at San José State University, building across AI, software, and research.",
         page_type="about",
         education=education,
         certifications=certifications,
