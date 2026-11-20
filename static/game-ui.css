@@ -239,3 +239,13 @@ main{max-width:none;padding:0}
 @media(prefers-reduced-motion:reduce){.inspection-banner,.inspection-content,.fallback-preview:target{animation:none}}
 
 .project-collection-page{max-width:1500px}
+
+/* Stagger the project copy after the preview panel slides in */
+.project-inspection.is-arriving .inspection-content>*{opacity:0;animation:project-copy-pop .34s cubic-bezier(.18,.72,.2,1) both}
+.project-inspection.is-arriving .inspection-content>*:nth-child(1){animation-delay:.07s}
+.project-inspection.is-arriving .inspection-content>*:nth-child(2){animation-delay:.12s}
+.project-inspection.is-arriving .inspection-content>*:nth-child(3){animation-delay:.18s}
+.project-inspection.is-arriving .inspection-content>*:nth-child(4){animation-delay:.23s}
+.project-inspection.is-arriving .inspection-content>*:nth-child(5){animation-delay:.3s}
+@keyframes project-copy-pop{from{opacity:0;transform:translateY(15px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(prefers-reduced-motion:reduce){.project-inspection.is-arriving .inspection-content>*{animation:none;opacity:1}}
