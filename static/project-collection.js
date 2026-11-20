@@ -45,7 +45,7 @@
     const totalVisible = [...filteredByCategory.values()].reduce((sum, items) => sum + items.length, 0);
     root.innerHTML = `
       <div class="collection-toolbar">
-        <label class="collection-search"><span aria-hidden="true">⌕</span><input type="search" aria-label="Search projects" placeholder="Search this collection" value="${escapeHtml(searchTerm)}"></label>
+        <label class="collection-search"><span aria-hidden="true">⌕</span><input type="search" aria-label="Search projects" placeholder="Search projects" value="${escapeHtml(searchTerm)}"></label>
         <span class="collection-count">${projects.length} PROJECTS / ${cats.length} CATEGORIES</span>
       </div>
       <div class="collection-layout">
@@ -53,7 +53,7 @@
           ${cats.map((cat, i) => {
             const items = filteredByCategory.get(cat) || [];
             return `<details class="collection-category" data-category-panel="${escapeHtml(cat)}" ${openCategories.has(cat) ? "open" : ""}>
-              <summary class="category-header"><span class="category-emblem" aria-hidden="true">${String(i + 1).padStart(2, "0")}</span><span class="category-title-wrap"><strong>${escapeHtml(cat)}</strong><small>${projects.filter((p) => p.category === cat).length} PROJECTS / COLLECTION</small></span><span class="category-expand" aria-hidden="true">+</span></summary>
+              <summary class="category-header"><span class="category-emblem" aria-hidden="true">${String(i + 1).padStart(2, "0")}</span><span class="category-title-wrap"><strong>${escapeHtml(cat)}</strong><small>${projects.filter((p) => p.category === cat).length} PROJECTS</small></span><span class="category-expand" aria-hidden="true">+</span></summary>
               <div class="category-project-grid">
                 ${items.length ? items.map((p, n) => `<button class="project-skin ${slug(p.name) === activeProject ? "is-selected" : ""}" data-project="${slug(p.name)}" data-project-category="${escapeHtml(cat)}" aria-pressed="${slug(p.name) === activeProject}">
                   <span class="skin-art" aria-hidden="true"><span class="skin-glyph">${escapeHtml(p.name.slice(0, 2).toUpperCase())}</span><span class="skin-lines"></span></span>
@@ -63,13 +63,13 @@
             </details>`;
           }).join("")}
         </section>
-        <aside class="project-inspection" aria-live="polite">
+        <aside class="project-inspection${selected ? " is-arriving" : ""}" aria-live="polite">
           ${selected ? `
             <div class="inspection-banner"><span class="inspection-kicker">${escapeHtml(selected.category)} / ${escapeHtml(selected.status)}</span><span class="inspection-mark" aria-hidden="true">${escapeHtml(selected.name.slice(0, 2).toUpperCase())}</span><h2>${escapeHtml(selected.name)}</h2></div>
-            <div class="inspection-content"><p class="inspection-label">PROJECT INTEL</p><p class="inspection-description">${escapeHtml(selected.blurb)}</p><p class="inspection-label tools-label">LOADOUT / TOOLS</p><div class="detail-tags">${selected.tech.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}</div>
-            ${selected.link ? `<a class="inspection-link" href="${escapeHtml(selected.link)}" target="_blank" rel="noreferrer">OPEN PROJECT / CONTRIBUTION <span aria-hidden="true">↗</span></a>` : '<span class="inspection-private">No public repository available</span>'}
+            <div class="inspection-content"><p class="inspection-label">PROJECT OVERVIEW</p><p class="inspection-description">${escapeHtml(selected.blurb)}</p><p class="inspection-label tools-label">TOOLS & TECHNOLOGIES</p><div class="detail-tags">${selected.tech.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}</div>
+            ${selected.link ? `<a class="inspection-link" href="${escapeHtml(selected.link)}" target="_blank" rel="noreferrer">VIEW PROJECT / CONTRIBUTION <span aria-hidden="true">↗</span></a>` : '<span class="inspection-private">No public repository available</span>'}
             </div>
-          ` : `<div class="inspection-idle"><span class="idle-mark" aria-hidden="true">＋</span><p class="inspection-label">PROJECT PREVIEW / ${totalVisible} ITEMS</p><h2>Choose a project</h2><p>Select a tile to open its full brief, status, tools, and source here.</p></div>`}
+          ` : `<div class="inspection-idle"><span class="idle-mark" aria-hidden="true">＋</span><p class="inspection-label">PROJECT DETAILS / ${totalVisible} PROJECTS</p><h2>Select a project</h2><p>Select a project tile to see its details and source here.</p></div>`}
         </aside>
       </div>`;
     root.querySelectorAll("[data-category-panel]").forEach((panel) => panel.addEventListener("toggle", () => {
