@@ -20,7 +20,7 @@ def write_static(client, route, output_name):
     html = response.get_data(as_text=True).replace('="/static/', '="static/')
     for path, filename in ROUTES.items():
         html = html.replace(f'href="{path}"', f'href="{filename}"')
-    html = "\\n".join(line.rstrip() for line in html.splitlines()) + "\\n"
+    html = "\n".join(line.rstrip() for line in html.splitlines()) + "\n"
     Path(__file__).with_name(output_name).write_text(html)
 
 
