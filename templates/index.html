@@ -1,333 +1,58 @@
 <!doctype html>
-<html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{{ profile.name }} – Portfolio</title>
-
-    <!-- Tailwind (CDN, no build step) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        darkMode: 'class',
-        theme: { extend: { borderRadius: { '2xl': '1rem' } } }
-      };
-    </script>
-
-    <!-- Brand SVGs: Bootstrap Icons (MIT), see static/brand-icons-LICENSE.txt. -->
-    <!-- Lucide icons -->
-    <script defer src="https://unpkg.com/lucide@latest"></script>
-
-    <!-- Site JS -->
-    <script defer src="{{ url_for('static', filename='site.js') }}"></script>
-      <style>
-      @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap');
-      :root { color-scheme: dark; --v-red:#ff4655; --v-bg:#0b0d10; --v-panel:#16191d; --v-border:rgba(255,255,255,.16); --v-paper:#f4f2ed; --v-muted:#aaa9a8; }
-      * { box-sizing:border-box; }
-      html { scroll-padding-top:5rem; background:var(--v-bg); }
-      body { margin:0; background:var(--v-bg)!important; color:var(--v-paper)!important; font-family:Inter,sans-serif; }
-      body::before { content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; background:radial-gradient(ellipse at 48% 22%,rgba(255,70,85,.16),transparent 38%),linear-gradient(140deg,#161317,#0b0d10 65%); }
-      header { position:sticky; top:0; z-index:30; background:rgba(10,11,14,.92)!important; border-bottom:1px solid var(--v-border)!important; backdrop-filter:blur(18px); }
-      .game-header { min-height:66px; max-width:1600px; margin:auto; padding:0 clamp(18px,3vw,48px); display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:1rem; }
-      .brand-link { display:inline-flex; align-items:center; gap:.65rem; width:max-content; color:var(--v-paper)!important; font:700 1rem 'Barlow Condensed',sans-serif; letter-spacing:.12em; text-decoration:none; text-transform:uppercase; }
-      .brand-mark { width:18px; height:22px; display:inline-block; background:var(--v-red); clip-path:polygon(0 0,100% 0,62% 100%,32% 100%); }
-      .header-mode { color:#8f8d91!important; font:600 .7rem 'Barlow Condensed',sans-serif; letter-spacing:.18em; text-align:center; }
-      .header-recruiter { justify-self:end; border:1px solid var(--v-border); padding:.65rem .85rem; color:var(--v-paper)!important; font:700 .7rem 'Barlow Condensed',sans-serif; letter-spacing:.11em; text-decoration:none; }
-      .header-recruiter:hover { border-color:var(--v-red); color:var(--v-red)!important; }
-      main { max-width:none!important; padding:0!important; }
-      #about { min-height:calc(100vh - 66px); max-width:1680px; margin:0 auto; padding:clamp(22px,3.4vw,54px); display:grid; grid-template-columns:minmax(150px,205px) minmax(0,1fr) minmax(235px,290px); gap:clamp(14px,1.8vw,28px); align-items:stretch; border:0!important; }
-      .lobby-menu { display:flex; flex-direction:column; align-items:stretch; justify-content:center; gap:.45rem; padding:1rem 0; }
-      .menu-overline,.stage-overline,.quick-overline,.stage-bottom,.menu-foot,.menu-link small,.quick-label { font-family:'Barlow Condensed',sans-serif; font-weight:700; letter-spacing:.15em; }
-      .menu-overline { margin:0 0 1rem .75rem; color:#88878c!important; font-size:.68rem; }
-      .menu-link { position:relative; min-height:62px; display:flex; flex-direction:column; justify-content:center; gap:.08rem; padding:.55rem .75rem; border-left:3px solid transparent; background:rgba(255,255,255,.055); color:var(--v-paper)!important; text-decoration:none; transition:background .18s ease,border-color .18s ease,transform .18s ease; }
-      .menu-link strong { font:700 clamp(1.3rem,2vw,1.9rem)/.95 'Barlow Condensed',sans-serif; letter-spacing:.025em; }
-      .menu-link small { color:#9f9da1!important; font-size:.58rem; }
-      .menu-link:hover { transform:translateX(4px); background:rgba(255,70,85,.12); border-left-color:var(--v-red); }
-      .menu-link.is-active { background:var(--v-red); border-left-color:#ffd1d4; color:#111!important; }
-      .menu-link.is-active small { color:#35191c!important; }
-      .menu-foot { margin:1rem 0 0 .75rem; color:#747378!important; font-size:.6rem; line-height:1.6; }
-      .center-stage { position:relative; min-height:640px; display:flex; flex-direction:column; justify-content:center; overflow:hidden; padding:clamp(28px,5vw,76px); border:1px solid rgba(255,255,255,.14); background:radial-gradient(ellipse at 49% 55%,rgba(255,70,85,.36),transparent 42%),linear-gradient(140deg,rgba(75,20,31,.93),rgba(23,19,25,.96) 50%,rgba(11,13,16,.98)); isolation:isolate; }
-      .center-stage::before { content:""; position:absolute; z-index:-1; inset:0; opacity:.42; background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px); background-size:42px 42px; mask-image:linear-gradient(to bottom,transparent,#000 22%,#000 85%,transparent); }
-      .center-stage::after { content:""; position:absolute; z-index:-1; inset:0; opacity:.82; background:linear-gradient(60deg,transparent 34%,rgba(255,70,85,.83) 34.2%,rgba(255,70,85,.83) 35.2%,transparent 35.4%),linear-gradient(120deg,transparent 61%,rgba(255,70,85,.55) 61.2%,rgba(255,70,85,.55) 62.2%,transparent 62.4%); clip-path:polygon(0 0,100% 0,100% 100%,0 100%); }
-      .stage-watermark { position:absolute; z-index:-1; right:-.03em; top:50%; transform:translateY(-50%); color:rgba(255,255,255,.075)!important; font:900 clamp(12rem,32vw,34rem)/.8 'Barlow Condensed',sans-serif; letter-spacing:-.12em; user-select:none; }
-      .stage-overline { color:#f2a4a9!important; font-size:.74rem; margin:0 0 1.5rem; }
-      .stage-title { margin:0; color:var(--v-paper)!important; font:900 clamp(4rem,9.2vw,9.3rem)/.78 'Barlow Condensed',sans-serif; letter-spacing:-.035em; text-transform:uppercase; text-shadow:0 14px 45px rgba(0,0,0,.22); }
-      .stage-title span { display:block; margin:.16em 0 0 .25em; color:var(--v-red)!important; }
-      .stage-role { margin:1.7rem 0 0; color:#ded9d7!important; font:700 clamp(1rem,1.7vw,1.35rem) 'Barlow Condensed',sans-serif; letter-spacing:.1em; text-transform:uppercase; }
-      .stage-summary { max-width:44rem; margin:1rem 0 0; color:#c2bdbd!important; font-size:.92rem; line-height:1.8; }
-      .stage-actions { display:flex; flex-wrap:wrap; gap:.65rem; margin-top:1.8rem; }
-      .stage-button { min-height:46px; display:inline-flex; align-items:center; gap:1rem; padding:.7rem 1rem; border:1px solid var(--v-border); color:var(--v-paper)!important; font:700 .76rem 'Barlow Condensed',sans-serif; letter-spacing:.12em; text-decoration:none; transition:.18s ease; }
-      .stage-button:hover { border-color:var(--v-red); transform:translateY(-2px); }
-      .stage-button-primary { border-color:var(--v-red); background:var(--v-red); color:#151013!important; }
-      .stage-button-primary:hover { background:#ff6975; color:#151013!important; }
-      .stage-bottom { display:flex; gap:.75rem; align-items:center; margin-top:clamp(2rem,5vh,4rem); color:#aaa6a8!important; font-size:.64rem; }
-      .stage-bottom i { width:42px; height:1px; background:var(--v-red); }
-      .stage-emblem { position:absolute; right:7%; bottom:7%; width:min(25%,220px); min-width:100px; opacity:.92; filter:drop-shadow(0 12px 24px rgba(0,0,0,.25)); }
-      .stage-emblem path { fill:none; stroke:rgba(255,255,255,.7); stroke-width:1.5; }
-      .stage-emblem .emblem-accent { fill:rgba(255,70,85,.88); stroke:none; }
-      .quick-panel { align-self:center; width:100%; padding:1.25rem; color:#1b1b1d!important; background:#e8e5e1; border-top:5px solid var(--v-red); box-shadow:0 24px 65px rgba(0,0,0,.27); }
-      .quick-overline { display:flex; justify-content:space-between; color:#6b6768!important; font-size:.63rem; }
-      .quick-panel h2 { margin:1.15rem 0 .4rem; color:#19191b!important; font:800 2rem/.9 'Barlow Condensed',sans-serif; letter-spacing:.03em; text-transform:uppercase; }
-      .quick-copy { color:#646164!important; font-size:.75rem; line-height:1.65; }
-      .quick-primary { min-height:46px; display:flex; align-items:center; justify-content:space-between; gap:.5rem; margin-top:1.15rem; padding:.7rem .8rem; background:#15171a; color:#f7f4f1!important; font:700 .82rem 'Barlow Condensed',sans-serif; letter-spacing:.1em; text-decoration:none; }
-      .quick-primary:hover { background:var(--v-red); color:#171315!important; }
-      .quick-resume { display:flex; justify-content:space-between; align-items:center; padding:.85rem .05rem; border-bottom:1px solid rgba(0,0,0,.16); color:#29282b!important; font:700 .8rem 'Barlow Condensed',sans-serif; letter-spacing:.08em; text-decoration:none; }
-      .quick-label { margin:1.1rem 0 .4rem; color:#777276!important; font-size:.6rem; }
-      .quick-school { color:#222!important; font:700 1rem 'Barlow Condensed',sans-serif; }
-      .quick-degree { margin:.2rem 0 0; color:#706b70!important; font-size:.68rem; line-height:1.5; }
-      .quick-links { display:grid; grid-template-columns:1fr 1fr; gap:.45rem; margin-top:1rem; }
-      .quick-links a { border:1px solid rgba(0,0,0,.18); padding:.55rem .45rem; color:#29282b!important; font:700 .66rem 'Barlow Condensed',sans-serif; letter-spacing:.08em; text-align:center; text-decoration:none; }
-      .quick-links a:hover { border-color:var(--v-red); color:#c52f3c!important; }
-      main > section:not(#about) { max-width:1320px; margin-inline:auto; padding-left:24px; padding-right:24px; border-color:var(--v-border)!important; }
-      main > section:not(#about) h2, main > section:not(#about) h3, main > section:not(#about) h4 { color:var(--v-paper)!important; font-family:'Barlow Condensed',sans-serif; letter-spacing:.045em; text-transform:uppercase; }
-      .rounded-2xl,.rounded-3xl { background:rgba(21,23,26,.92)!important; border-color:var(--v-border)!important; }
-      .rounded-xl { border-color:var(--v-border)!important; }
-      main > section:not(#about) .text-neutral-500, main > section:not(#about) .text-neutral-600, main > section:not(#about) .text-neutral-700 { color:var(--v-muted)!important; }
-      article { position:relative; overflow:hidden; transition:transform .18s ease,border-color .18s ease; }
-      article::before { content:""; position:absolute; top:0; left:0; width:38px; height:2px; background:var(--v-red); }
-      article:hover { transform:translateY(-3px); border-color:rgba(255,70,85,.55)!important; }
-      main > section:not(#about) a:hover { color:var(--v-red)!important; }
-      footer { color:var(--v-muted)!important; border-color:var(--v-border)!important; }
-      @media(max-width:1100px) { #about { grid-template-columns:165px minmax(0,1fr); } .quick-panel { grid-column:2; max-width:none; } .center-stage { min-height:580px; } }
-      @media(max-width:720px) { .game-header { grid-template-columns:1fr auto; } .header-mode { display:none; } #about { min-height:0; grid-template-columns:1fr; padding:16px; } .lobby-menu { order:2; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.4rem; padding:0; } .menu-overline,.menu-foot { grid-column:1/-1; margin:.5rem 0; } .menu-link { min-height:55px; padding:.45rem; border-left:0; border-bottom:2px solid transparent; } .menu-link strong { font-size:1rem; } .menu-link small { font-size:.52rem; } .menu-link.is-active { border-bottom-color:#ffd1d4; } .center-stage { min-height:590px; padding:28px 22px; } .stage-title { font-size:clamp(4.2rem,17vw,7.2rem); } .stage-emblem { width:28%; right:5%; bottom:5%; } .quick-panel { grid-column:auto; order:3; } }
-      @media(max-width:420px) { .header-recruiter { font-size:.62rem; padding:.55rem .58rem; } .center-stage { min-height:560px; } .stage-title { font-size:17vw; } .stage-summary { font-size:.85rem; } }
-      @media(prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; transition-duration:.01ms!important; animation-duration:.01ms!important; } }
-    </style>
-  </head>
-  <body class="bg-white text-neutral-900 selection:bg-neutral-900 selection:text-white dark:bg-neutral-950 dark:text-neutral-50">
-    <!-- Header / Nav -->
-    <header><div class="game-header">
-      <a class="brand-link" href="#home"><span class="brand-mark" aria-hidden="true"></span>{{ profile.name }}</a>
-      <span class="header-mode">PORTFOLIO HUB // SOFTWARE &amp; AI</span>
-      <a class="header-recruiter" href="{{ url_for('recruiter') }}">RECRUITER QUICK VIEW <span aria-hidden="true">↗</span></a>
-    </div></header>
-
-    <main id="home" class="max-w-6xl mx-auto px-4">
-      <!-- Hero / About -->
-      <section id="about" class="game-lobby">
-        <aside class="lobby-menu" aria-label="Portfolio navigation">
-          <p class="menu-overline">NAVIGATION / 01</p>
-          <a href="#about" class="menu-link is-active"><strong>OVERVIEW</strong><small>PROFILE / HOME</small></a>
-          <a href="#projects" class="menu-link"><strong>PROJECTS</strong><small>BUILDS / RESEARCH</small></a>
-          <a href="#experience" class="menu-link"><strong>EXPERIENCE</strong><small>WORK HISTORY</small></a>
-          <a href="#skills" class="menu-link"><strong>SKILLS</strong><small>TECH TOOLKIT</small></a>
-          <a href="#education" class="menu-link"><strong>EDUCATION</strong><small>ACADEMIC PROFILE</small></a>
-          <a href="#contact" class="menu-link"><strong>CONTACT</strong><small>START A CONVERSATION</small></a>
-          <p class="menu-foot">KRISHANG NAIKAR<br />SOFTWARE / AI / SYSTEMS</p>
-        </aside>
-
-        <div class="center-stage">
-          <div class="stage-watermark" aria-hidden="true">KN</div>
-          <p class="stage-overline">PERSONAL PORTFOLIO // FREMONT, CALIFORNIA</p>
-          <h1 class="stage-title">KRISHANG<span>NAIKAR</span></h1>
-          <p class="stage-role">{{ profile.title }} <b>//</b> AI, ML &amp; SYSTEMS</p>
-          <p class="stage-summary">{{ profile.summary }}</p>
-          <div class="stage-actions">
-            <a href="#projects" class="stage-button stage-button-primary">EXPLORE PROJECTS <span aria-hidden="true">▶</span></a>
-            <a href="#experience" class="stage-button">VIEW EXPERIENCE <span aria-hidden="true">↗</span></a>
-          </div>
-          <div class="stage-bottom"><span>SOFTWARE ENGINEERING</span><i aria-hidden="true"></i><span>RESEARCH / PRODUCT / IDEAS</span></div>
-          <svg class="stage-emblem" viewBox="0 0 220 250" fill="none" aria-hidden="true">
-            <path class="emblem-accent" d="M12 20h72L50 116H0zM135 20h73l-52 96h-70zM52 132h88l-43 78H10z"/>
-            <path d="M110 17 19 229M178 18 88 230M31 116h150M46 176h107"/>
-          </svg>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b0d10" />
+  <title>{{ profile.name }} | Portfolio</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='game-ui.css') }}" />
+</head>
+<body>
+  <header><div class="game-header">
+    <a class="brand-link" href="#home"><span class="brand-mark" aria-hidden="true"></span>{{ profile.name }}</a>
+    <span class="header-mode">PORTFOLIO HUB // SOFTWARE &amp; AI</span>
+    <a class="header-recruiter" href="{{ url_for('recruiter') }}">RECRUITER QUICK VIEW <span aria-hidden="true">↗</span></a>
+  </div></header>
+  <main id="home">
+    <section id="about" class="game-lobby">
+      <aside class="lobby-menu" aria-label="Portfolio navigation">
+        <p class="menu-overline">MAIN MENU / 01</p>
+        <a href="{{ url_for('projects_page') }}" class="menu-link"><strong>PLAY</strong><small>PROJECTS / SOLO</small></a>
+        <a href="{{ url_for('experience_page') }}" class="menu-link"><strong>MULTIPLAYER</strong><small>EXPERIENCE / TEAMS</small></a>
+        <a href="{{ url_for('research_page') }}" class="menu-link"><strong>SIDE QUESTS</strong><small>RESEARCH / IDEAS</small></a>
+        <a href="{{ url_for('skills_page') }}" class="menu-link"><strong>COLLECTION</strong><small>SKILLS / TOOLKIT</small></a>
+        <a href="{{ url_for('about_page') }}" class="menu-link"><strong>OPTIONS</strong><small>ABOUT / CONTACT</small></a>
+        <p class="menu-foot">KRISHANG NAIKAR<br />SOFTWARE / AI / SYSTEMS</p>
+      </aside>
+      <div class="center-stage">
+        <div class="stage-watermark" aria-hidden="true">KN</div>
+        <p class="stage-overline">PERSONAL PORTFOLIO // FREMONT, CALIFORNIA</p>
+        <h1 class="stage-title">KRISHANG<span>NAIKAR</span></h1>
+        <p class="stage-role">{{ profile.title }} <b>//</b> AI, ML &amp; SYSTEMS</p>
+        <p class="stage-summary">{{ profile.summary }}</p>
+        <div class="stage-actions">
+          <a href="{{ url_for('projects_page') }}" class="stage-button stage-button-primary">EXPLORE PROJECTS <span aria-hidden="true">▶</span></a>
+          <a href="{{ url_for('experience_page') }}" class="stage-button">VIEW EXPERIENCE <span aria-hidden="true">↗</span></a>
         </div>
-
-        <aside class="quick-panel">
-          <div class="quick-overline"><span>FAST ACCESS</span><span>02 / 02</span></div>
-          <h2>RECRUITER<br />QUICK VIEW</h2>
-          <p class="quick-copy">A clean, scan-friendly summary of experience, skills, education, and selected work.</p>
-          <a href="{{ url_for('recruiter') }}" class="quick-primary">OPEN RECRUITER VIEW <span aria-hidden="true">↗</span></a>
-          <a href="#projects" class="quick-resume">VIEW SELECTED WORK <span aria-hidden="true">↗</span></a>
-          <p class="quick-label">EDUCATION</p>
-          <div class="quick-school">{{ education[0].school }}</div>
-          <p class="quick-degree">{{ education[0].degree }}<br />{{ education[0].date }}</p>
-          <p class="quick-label">CORE LANGUAGES</p>
-          <div class="quick-links">
-            {% for skill in skills[0]['items'][:4] %}<a href="#skills">{{ skill }}</a>{% endfor %}
-          </div>
-        </aside>
-      </section>
-
-      <!-- Skills -->
-      <section id="skills" class="py-12 border-t border-neutral-200 dark:border-neutral-800">
-        <div class="flex items-center gap-3 mb-8">
-          <div class="p-2 rounded-2xl ring-1 ring-neutral-200 dark:ring-neutral-800">
-            <i data-lucide="code-2" class="w-5 h-5"></i>
-          </div>
-          <div>
-            <h2 class="text-xl sm:text-2xl font-semibold">Skills</h2>
-            <p class="text-sm text-neutral-500 dark:text-neutral-400">Languages, frameworks, tools & libraries</p>
-          </div>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-6">
-          {% for group in skills %}
-          <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5">
-            <h3 class="font-medium mb-3">{{ group.label }}</h3>
-            <div class="flex flex-wrap gap-2">
-              {% for item in group['items'] %}
-              <span class="inline-flex items-center rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">{{ item }}</span>
-              {% endfor %}
-            </div>
-          </div>
-          {% endfor %}
-        </div>
-      </section>
-
-      <!-- Experience -->
-      <section id="experience" class="py-12 border-top border-neutral-200 dark:border-neutral-800">
-        <div class="flex items-center gap-3 mb-8">
-          <div class="p-2 rounded-2xl ring-1 ring-neutral-200 dark:ring-neutral-800">
-            <i data-lucide="briefcase" class="w-5 h-5"></i>
-          </div>
-          <h2 class="text-xl sm:text-2xl font-semibold">Experience</h2>
-        </div>
-
-        <div class="space-y-6">
-          {% for exp in experiences %}
-          <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5">
-            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
-              <h3 class="text-base sm:text-lg font-medium">
-                {{ exp.role }} · <span class="text-neutral-600 dark:text-neutral-300">{{ exp.company }}</span>
-              </h3>
-              <div class="text-sm text-neutral-500 dark:text-neutral-400">{{ exp.location }} • {{ exp.date }}</div>
-            </div>
-            <ul class="mt-3 list-disc pl-5 space-y-2 text-sm">
-              {% for b in exp.bullets %}<li>{{ b }}</li>{% endfor %}
-            </ul>
-          </div>
-          {% endfor %}
-        </div>
-      </section>
-
-      <!-- Projects -->
-      <section id="projects" class="py-12 border-t border-neutral-200 dark:border-neutral-800">
-        <div class="flex items-center gap-3 mb-8">
-          <div class="p-2 rounded-2xl ring-1 ring-neutral-200 dark:ring-neutral-800">
-            <i data-lucide="star" class="w-5 h-5"></i>
-          </div>
-          <div>
-            <h2 class="text-xl sm:text-2xl font-semibold">Projects</h2>
-            <p class="text-sm text-neutral-500 dark:text-neutral-400">Research, software, coursework, and ideas - with status and source links where available</p>
-          </div>
-        </div>
-
-        <p class="mb-8 text-sm text-neutral-600 dark:text-neutral-300">{{ projects|length }} projects and investigations. Local work has no public source link. Concepts and plans are labeled separately.</p>
-        {% for category in project_categories %}
-        <div class="mb-10">
-          <h3 class="text-lg font-semibold mb-4">{{ category }}</h3>
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {% for p in projects if p.category == category %}
-            <article class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5 flex flex-col">
-              <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-2">{{ p.status }}</p>
-              <h4 class="font-semibold">{{ p.name }}</h4>
-              <p class="mt-3 text-sm text-neutral-700 dark:text-neutral-200">{{ p.blurb }}</p>
-              <div class="mt-4 mb-5 flex flex-wrap gap-2">
-                {% for t in p.tech %}
-                <span class="rounded-full border border-neutral-200 dark:border-neutral-800 px-3 py-1 text-xs">{{ t }}</span>
-                {% endfor %}
-              </div>
-              {% if p.link %}
-              <a href="{{ p.link }}" target="_blank" rel="noreferrer" class="mt-auto text-sm underline underline-offset-4">View source <span aria-hidden="true">&rarr;</span><span class="sr-only"> for {{ p.name }}</span></a>
-              {% else %}
-              <p class="mt-auto text-xs text-neutral-500 dark:text-neutral-400">No public repository</p>
-              {% endif %}
-            </article>
-            {% endfor %}
-          </div>
-        </div>
-        {% endfor %}
-
-        <div class="mt-6 text-sm">
-          <a href="{{ profile.github }}" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 underline decoration-neutral-400 underline-offset-4">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4" aria-hidden="true" focusable="false"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg> See more on GitHub
-          </a>
-        </div>
-      </section>
-
-      <!-- Education -->
-      <section id="education" class="py-12 border-t border-neutral-200 dark:border-neutral-800">
-        <div class="flex items-center gap-3 mb-8">
-          <div class="p-2 rounded-2xl ring-1 ring-neutral-200 dark:ring-neutral-800">
-            <i data-lucide="graduation-cap" class="w-5 h-5"></i>
-          </div>
-          <h2 class="text-xl sm:text-2xl font-semibold">Education</h2>
-        </div>
-
-        <div class="grid gap-6">
-          {% for ed in education %}
-          <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5">
-            <h3 class="font-medium">{{ ed.school }}</h3>
-            <p class="text-sm text-neutral-600 dark:text-neutral-300">{{ ed.degree }}</p>
-            <p class="text-sm text-neutral-500 dark:text-neutral-400">{{ ed.date }}</p>
-          </div>
-          {% endfor %}
-        </div>
-      </section>
-
-      <!-- Certifications -->
-      <section id="certs" class="py-12 border-t border-neutral-200 dark:border-neutral-800">
-        <div class="flex items-center gap-3 mb-8">
-          <div class="p-2 rounded-2xl ring-1 ring-neutral-200 dark:ring-neutral-800">
-            <i data-lucide="award" class="w-5 h-5"></i>
-          </div>
-          <h2 class="text-xl sm:text-2xl font-semibold">Certifications</h2>
-        </div>
-
-        <ul class="grid sm:grid-cols-2 gap-6">
-          {% for c in certifications %}
-          <li class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5">
-            <div class="font-medium">{{ c.name }}</div>
-            <div class="text-sm text-neutral-600 dark:text-neutral-300">{{ c.org }} • {{ c.year }}</div>
-          </li>
-          {% endfor %}
-        </ul>
-      </section>
-
-      <!-- Contact -->
-      <section id="contact" class="py-12 border-t border-neutral-200 dark:border-neutral-800">
-        <div class="flex items-center gap-3 mb-8">
-          <div class="p-2 rounded-2xl ring-1 ring-neutral-200 dark:ring-neutral-800">
-            <i data-lucide="mail" class="w-5 h-5"></i>
-          </div>
-        <div>
-          <h2 class="text-xl sm:text-2xl font-semibold">Contact</h2>
-          <p class="text-sm text-neutral-500 dark:text-neutral-400">Say hello or reach out for opportunities</p>
-        </div>
-        </div>
-
-        <div class="rounded-2xl border border-neutral-200 dark:border-neutral-800 p-5">
-          <div class="flex flex-col sm:flex-row sm:items-center gap-3 text-sm">
-            <a href="mailto:{{ profile.email }}" class="inline-flex items-center gap-2 rounded-xl bg-black text-white dark:bg-white dark:text-black px-4 py-2">
-              <i data-lucide="mail" class="w-4 h-4"></i> Email Me
-            </a>
-            <a href="tel:{{ profile.phone | replace(' ', '') | replace('(', '') | replace(')', '') | replace('-', '') }}" class="inline-flex items-center gap-2 rounded-xl ring-1 ring-neutral-300 dark:ring-neutral-800 px-4 py-2">
-              <i data-lucide="phone" class="w-4 h-4"></i> Call/Text
-            </a>
-            <a href="{{ profile.linkedin }}" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 rounded-xl ring-1 ring-neutral-300 dark:ring-neutral-800 px-4 py-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4" aria-hidden="true" focusable="false"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/></svg> LinkedIn
-            </a>
-            <a href="{{ profile.github }}" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 rounded-xl ring-1 ring-neutral-300 dark:ring-neutral-800 px-4 py-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4" aria-hidden="true" focusable="false"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></svg> GitHub
-            </a>
-          </div>
-          <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-3">
-            *Some scraping projects are for educational purposes only.
-          </p>
-        </div>
-      </section>
-
-      <!-- Footer -->
-      <footer class="py-12 border-t border-neutral-200 dark:border-neutral-800 text-sm text-neutral-500 dark:text-neutral-400">
-        <div class="flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p>© <span id="year"></span> {{ profile.name }}. All rights reserved.</p>
-          <a href="#home" class="hover:text-neutral-700 dark:hover:text-neutral-200">Back to top</a>
-        </div>
-      </footer>
-    </main>
-    <script>
-      document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
-  </body>
+        <div class="stage-bottom"><span>SOFTWARE ENGINEERING</span><i aria-hidden="true"></i><span>RESEARCH / PRODUCT / IDEAS</span></div>
+        <svg class="stage-emblem" viewBox="0 0 220 250" fill="none" aria-hidden="true">
+          <path class="emblem-accent" d="M12 20h72L50 116H0zM135 20h73l-52 96h-70zM52 132h88l-43 78H10z"/>
+          <path d="M110 17 19 229M178 18 88 230M31 116h150M46 176h107"/>
+        </svg>
+      </div>
+      <aside class="quick-panel">
+        <div class="quick-overline"><span>FAST ACCESS</span><span>RECRUITER</span></div>
+        <h2>RECRUITER<br />QUICK VIEW</h2>
+        <p class="quick-copy">A clean, scan-friendly summary of experience, skills, education, and selected work.</p>
+        <a href="{{ url_for('recruiter') }}" class="quick-primary">OPEN RECRUITER VIEW <span aria-hidden="true">↗</span></a>
+        <a href="{{ url_for('projects_page') }}" class="quick-resume">BROWSE PROJECTS <span aria-hidden="true">↗</span></a>
+        <p class="quick-label">EDUCATION</p>
+        <div class="quick-school">{{ education[0].school }}</div>
+        <p class="quick-degree">{{ education[0].degree }}<br />{{ education[0].date }}</p>
+        <p class="quick-label">CORE LANGUAGES</p>
+        <div class="quick-links">{% for skill in skills[0]['items'][:4] %}<a href="{{ url_for('skills_page') }}">{{ skill }}</a>{% endfor %}</div>
+      </aside>
+    </section>
+  </main>
+</body>
 </html>
