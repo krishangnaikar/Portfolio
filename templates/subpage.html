@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0b0d10" />
   <title>{{ page_title }} | {{ profile.name }}</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='game-ui.css') }}?v=20261120g" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='game-ui.css') }}?v=20261120h" />
 </head>
 <body class="inner-page">
   {% include "partials/game-header.html" %}
@@ -25,8 +25,8 @@
           <div class="collection-category-grid">
             {% for category in ns.categories %}
             {% set items = projects | selectattr("category", "equalto", category) | list %}
-            <details class="collection-category" open>
-              <summary class="category-header"><span class="category-emblem" aria-hidden="true">{{ "%02d"|format(loop.index) }}</span><span class="category-title-wrap"><strong>{{ category }}</strong><small>{{ items|length }} PROJECTS / COLLECTION</small></span><span class="category-expand" aria-hidden="true">+</span></summary>
+            <details class="collection-category"{% if loop.first %} open{% endif %}>
+              <summary class="category-header"><span class="category-emblem" aria-hidden="true">{{ "%02d"|format(loop.index) }}</span><span class="category-title-wrap"><strong>{{ category }}</strong><small>{{ items|length }} PROJECTS</small></span><span class="category-expand" aria-hidden="true">+</span></summary>
               <div class="category-project-grid">
                 {% for item in items %}
                 <a class="fallback-project-link" href="#project-{{ projects.index(item) + 1 }}"><span class="project-glyph" aria-hidden="true">{{ item.name[:2]|upper }}</span><span class="project-tile-text"><strong>{{ item.name }}</strong><small>{{ item.status }}</small></span><span class="project-open-mark" aria-hidden="true">+</span></a>
@@ -36,17 +36,17 @@
             {% endfor %}
           </div>
           <aside class="project-inspection fallback-inspection">
-            <div class="inspection-idle"><span class="idle-mark" aria-hidden="true">＋</span><p class="inspection-label">PROJECT PREVIEW</p><h2>Choose a project</h2><p>Select a tile to open its full brief, tools, and source here.</p></div>
+            <div class="inspection-idle"><span class="idle-mark" aria-hidden="true">＋</span><p class="inspection-label">PROJECT DETAILS</p><h2>Select a project</h2><p>Select a project tile to see its details and source here.</p></div>
             {% for item in projects %}
             <article class="fallback-preview" id="project-{{ loop.index }}">
               <div class="inspection-banner"><span class="inspection-kicker">{{ item.category }} / {{ item.status }}</span><span class="inspection-mark" aria-hidden="true">{{ item.name[:2]|upper }}</span><h2>{{ item.name }}</h2></div>
-              <div class="inspection-content"><p class="inspection-label">PROJECT INTEL</p><p class="inspection-description">{{ item.blurb }}</p><p class="inspection-label tools-label">LOADOUT / TOOLS</p><div class="detail-tags">{% for tag in item.tech %}<span>{{ tag }}</span>{% endfor %}</div>{% if item.link %}<a class="inspection-link" href="{{ item.link }}" target="_blank" rel="noreferrer">OPEN PROJECT / CONTRIBUTION <span aria-hidden="true">↗</span></a>{% else %}<span class="inspection-private">No public repository available</span>{% endif %}</div>
+              <div class="inspection-content"><p class="inspection-label">PROJECT OVERVIEW</p><p class="inspection-description">{{ item.blurb }}</p><p class="inspection-label tools-label">TOOLS & TECHNOLOGIES</p><div class="detail-tags">{% for tag in item.tech %}<span>{{ tag }}</span>{% endfor %}</div>{% if item.link %}<a class="inspection-link" href="{{ item.link }}" target="_blank" rel="noreferrer">VIEW PROJECT / CONTRIBUTION <span aria-hidden="true">↗</span></a>{% else %}<span class="inspection-private">No public repository available</span>{% endif %}</div>
             </article>
             {% endfor %}
           </aside>
         </div>
       </div>
-      <script src="{{ url_for('static', filename='project-collection.js') }}?v=20261120g" defer></script>
+      <script src="{{ url_for('static', filename='project-collection.js') }}?v=20261120h" defer></script>
       {% elif page_type == "research" %}
       <div class="select-list">
         {% for item in projects %}
