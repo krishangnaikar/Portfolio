@@ -120,5 +120,79 @@ def recruiter():
         resume_url=resume_url,
     )
 
+@app.route("/projects")
+def projects_page():
+    return render_template(
+        "subpage.html",
+        profile=profile,
+        active_page="projects",
+        page_label="PLAY / PROJECT SELECTION",
+        page_title="Select Project",
+        page_intro="Choose a project to inspect its status, tools, summary, and source link.",
+        page_type="projects",
+        projects=projects,
+    )
+
+
+@app.route("/experience")
+def experience_page():
+    return render_template(
+        "subpage.html",
+        profile=profile,
+        active_page="experience",
+        page_label="MULTIPLAYER / EXPERIENCE",
+        page_title="Experience",
+        page_intro="Select a role to review the work, team, and time period.",
+        page_type="experience",
+        experiences=experiences,
+    )
+
+
+@app.route("/research")
+def research_page():
+    research_projects = [
+        p for p in projects
+        if p["category"] in ("Research and quantum computing", "Concepts and plans")
+    ]
+    return render_template(
+        "subpage.html",
+        profile=profile,
+        active_page="research",
+        page_label="SIDE QUESTS / RESEARCH",
+        page_title="Research & Ideas",
+        page_intro="Research, investigations, and concepts with status clearly labeled.",
+        page_type="research",
+        projects=research_projects,
+    )
+
+
+@app.route("/skills")
+def skills_page():
+    return render_template(
+        "subpage.html",
+        profile=profile,
+        active_page="skills",
+        page_label="COLLECTION / SKILLS",
+        page_title="Skills",
+        page_intro="Browse the languages, frameworks, tools, and libraries in the current portfolio.",
+        page_type="skills",
+        skills=skills,
+    )
+
+
+@app.route("/about")
+def about_page():
+    return render_template(
+        "subpage.html",
+        profile=profile,
+        active_page="about",
+        page_label="OPTIONS / ABOUT",
+        page_title="About",
+        page_intro="A quick profile, education, certifications, and ways to get in touch.",
+        page_type="about",
+        education=education,
+        certifications=certifications,
+    )
+
 if __name__ == "__main__":
     app.run(debug=True)
