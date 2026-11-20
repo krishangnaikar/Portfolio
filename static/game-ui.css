@@ -252,8 +252,15 @@ main{max-width:none;padding:0}
 
 
 /* Larger, more legible project category headings */
-.collection-category-grid .category-header{min-height:98px}
-.collection-category-grid .category-title-wrap strong{font-size:1.55rem;line-height:1.02;letter-spacing:.012em}
-.collection-category-grid .category-title-wrap small{font-size:.82rem;letter-spacing:.1em}
-@media(max-width:1150px){.collection-category-grid .category-title-wrap strong{font-size:1.38rem}}
-@media(max-width:760px){.collection-category-grid .category-header{min-height:82px}.collection-category-grid .category-title-wrap strong{font-size:1.2rem}.collection-category-grid .category-title-wrap small{font-size:.74rem}}
+.collection-category-grid .category-header{min-height:110px}
+.collection-category-grid .category-title-wrap strong{font-size:1.8rem;line-height:1.02;letter-spacing:.012em}
+.collection-category-grid .category-title-wrap small{font-size:.9rem;letter-spacing:.1em}
+@media(max-width:1150px){.collection-category-grid .category-title-wrap strong{font-size:1.55rem}}
+@media(max-width:760px){.collection-category-grid .category-header{min-height:82px}.collection-category-grid .category-title-wrap strong{font-size:1.3rem}.collection-category-grid .category-title-wrap small{font-size:.78rem}}
+
+/* VALORANT-style menu transition: the content fades up from a dimmed state */
+.project-collection-page>.page-heading{animation:menu-heading-enter .24s ease-out both}
+.project-collection-page #project-collection{animation:menu-content-enter .48s cubic-bezier(.2,.68,.2,1) .06s both}
+@keyframes menu-heading-enter{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+@keyframes menu-content-enter{from{opacity:0;filter:brightness(.38) saturate(.75);transform:translateY(9px) scale(.99)}to{opacity:1;filter:brightness(1) saturate(1);transform:translateY(0) scale(1)}}
+@media(prefers-reduced-motion:reduce){.project-collection-page>.page-heading,.project-collection-page #project-collection{animation:none;filter:none;opacity:1;transform:none}}
