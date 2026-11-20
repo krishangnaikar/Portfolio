@@ -1,0 +1,637 @@
+{
+  "name": "Krishang Naikar",
+  "tagline": "Computer Science · AI/ML · Quantum",
+  "version": "Portfolio v1.0",
+  "splashTexts": [
+    "Also try LoRA!",
+    "Fine-tuned and proud!",
+    "Mostly harmless!",
+    "As seen on TV!",
+    "90% bug free!",
+    "Not affiliated with Mojang!",
+    "The cake is a lie!",
+    "Now with 100% more transistors!",
+    "Merged into Qiskit!",
+    "Qiskit PR 16868 merged!",
+    "|+> or |->?",
+    "Hadamard approved!",
+    "Redstone qubits!",
+    "Clifford gates only!",
+    "Gottesman-Knill says hi!",
+    "Rust never sleeps!",
+    "Built a snake language!",
+    "Tree-walking interpreter!",
+    "102 flower classes!",
+    "VGG-16 enjoyer!",
+    "Runs fully on-device!",
+    "Qdrant inside!",
+    "Retrieval-augmented!",
+    "SJSU Spartan!",
+    "Spartans, what is your profession?!",
+    "Fabric 1.21.11!",
+    "Mixins everywhere!",
+    "Local RAG in 15s!",
+    "Embeddings, embeddings!",
+    "Click me!",
+    "Try the Konami code!",
+    "Hi Mom!",
+    "True story!",
+    "Works on my machine!",
+    "git push origin main!",
+    "No agents were harmed in the making of this website."
+  ],
+  "homeWidgets": {
+    "recentNews": {
+      "text": "Qiskit PR #16868 (X/Y-basis state drawing) is merged into Qiskit main",
+      "url": "/projects"
+    },
+    "currentlyReading": [],
+    "recentMovies": [],
+    "musicRecs": [],
+    "favouriteSong": null
+  },
+  "activities": {
+    "reading": [],
+    "music": [],
+    "movies": [],
+    "travel": [],
+    "sideQuests": [
+      {
+        "id": "fabric-mods",
+        "title": "Fabric Mod Workshop",
+        "achievement": "Builder",
+        "period": "2026",
+        "description": "Java 21 client mods for Minecraft 1.21.11 on Fabric: Player Lock, Auto Mace Swap and Triple Swap. Each has a unit-tested controller layer; in-game validation is ongoing.",
+        "skills": [
+          "Java",
+          "Fabric",
+          "Mixins",
+          "Gradle",
+          "JUnit"
+        ]
+      },
+      {
+        "id": "quantum-minecraft",
+        "title": "Redstone Qubit",
+        "achievement": "1-qubit simulator built",
+        "period": "2026",
+        "description": "A classical qubit simulator built from redstone using the stabilizer (x, z, r) representation. X, Z, Hadamard and measurement are built. A 2-qubit version with CNOT is planned.",
+        "skills": [
+          "Stabilizer formalism",
+          "Redstone",
+          "Quantum computing"
+        ],
+        "links": [
+          {
+            "label": "World on GitHub",
+            "url": "https://github.com/krishangnaikar/Minecraft-Quantum-Simulator"
+          }
+        ]
+      },
+      {
+        "id": "spindle",
+        "title": "Spindle",
+        "achievement": "Rust rebuild in progress",
+        "period": "2026",
+        "description": "A Rust rewrite of an agent session manager, aiming for better Linux reliability, lower resource use and parity with native Windows. Work goes through issue, branch and pull request.",
+        "skills": [
+          "Rust",
+          "CLI",
+          "Process management"
+        ],
+        "links": [
+          {
+            "label": "Spindle on GitHub",
+            "url": "https://github.com/krishangnaikar/Spindle"
+          }
+        ]
+      },
+      {
+        "id": "android-demos",
+        "title": "Android Demo Apps",
+        "achievement": "5 apps, 24 unit tests",
+        "period": "Nov 2026",
+        "description": "Five small Android apps (cockpit replay, offline EV router, multitrack looper and more) with debug APKs built, 24 JUnit tests passing in aggregate, and emulator runs on API 35.",
+        "skills": [
+          "Android",
+          "Gradle",
+          "JUnit"
+        ]
+      },
+      {
+        "id": "canvas-todos",
+        "title": "Canvas Todos",
+        "achievement": "Daily driver",
+        "period": "Sep 2026",
+        "description": "A local-only dashboard that merges SJSU and Ohlone Canvas calendars into one page of todos, announcements and my own assignments. Python standard library only, no API tokens.",
+        "skills": [
+          "Python",
+          "HTTP server",
+          "iCal feeds"
+        ]
+      }
+    ]
+  },
+  "honors": [
+    {
+      "category": "Computer Science",
+      "title": "Qiskit contribution merged",
+      "year": 2026,
+      "detail": "PR #16868, X/Y-basis state drawing"
+    },
+    {
+      "category": "Computer Science",
+      "title": "Paid undergraduate researcher",
+      "year": 2026,
+      "detail": "Multimodal LLM fine-tuning, SJSU"
+    },
+    {
+      "category": "Computer Science",
+      "title": "CTO and co-founder",
+      "year": 2021,
+      "detail": "GradAchiever"
+    },
+    {
+      "category": "Academic",
+      "title": "B.S. Computer Science, SJSU",
+      "year": 2028,
+      "detail": "Expected graduation, GPA 3.8"
+    },
+    {
+      "category": "Academic",
+      "title": "Google Cybersecurity Certificate",
+      "year": 2024,
+      "detail": "Coursera"
+    },
+    {
+      "category": "Academic",
+      "title": "Intro to Self-Driving Cars",
+      "year": 2024,
+      "detail": "Coursera"
+    },
+    {
+      "category": "Academic",
+      "title": "Machine Learning Specialization",
+      "year": 2022,
+      "detail": "Coursera"
+    },
+    {
+      "category": "Academic",
+      "title": "AI Programming with Python",
+      "year": 2020,
+      "detail": "Udacity"
+    }
+  ],
+  "projects": [
+    {
+      "id": "transistor-ft",
+      "title": "Transistor Fine-Tuning Study",
+      "type": "Solo",
+      "lastUpdated": "2026",
+      "scope": "Research",
+      "description": "Fine-tuned Qwen2.5-VL-7B-Instruct with LoRA to predict 5 physical transistor parameters from semiconductor cross-section images, reaching MAE within 1.8-6.9% of each parameter's range on a 200-sample test set. Full fine-tuning cut error to 0.25-0.87% of range on axis-removed images versus 6.9-10.8% for LoRA.",
+      "tags": [
+        "Qwen2.5-VL",
+        "LoRA",
+        "PEFT",
+        "PyTorch",
+        "Computer Vision"
+      ],
+      "imageUrl": "/resource-packs/data-tools.png",
+      "demoUrl": "#",
+      "featured": true
+    },
+    {
+      "id": "qiskit-ket-basis",
+      "title": "Qiskit ket_basis",
+      "type": "Open Source",
+      "lastUpdated": "2026",
+      "scope": "Merged PR #16868",
+      "description": "Added X- and Y-basis LaTeX state drawing to Qiskit's Statevector.draw so developers can read states directly in the basis they care about. Handles single- and multi-qubit kets, keeps Z-basis as the default, and shipped with tests, docs and release notes after maintainer review. Addresses community request #8014.",
+      "tags": [
+        "Python",
+        "Qiskit",
+        "Quantum",
+        "Open Source"
+      ],
+      "imageUrl": "/resource-packs/physics.png",
+      "demoUrl": "https://github.com/Qiskit/qiskit/pull/16868",
+      "githubUrl": "https://github.com/Qiskit/qiskit/pull/16868",
+      "featured": true
+    },
+    {
+      "id": "multimodal-rag",
+      "title": "Multimodal Enterprise RAG",
+      "type": "Solo",
+      "lastUpdated": "2026",
+      "scope": "Local-first",
+      "description": "Retrieval-augmented generation over text, images, audio and video across 8 file formats, running fully on-device with Ollama (Mistral, LLaVA, nomic-embed-text). Qdrant hybrid keyword + vector search with OCR, captioning and transcription gives answers in about 10-15 s. Streamlit UI with auth, per-user storage and graph exploration.",
+      "tags": [
+        "Ollama",
+        "Qdrant",
+        "Streamlit",
+        "LLaVA",
+        "RAG"
+      ],
+      "imageUrl": "/resource-packs/computer-science.png",
+      "demoUrl": "https://github.com/krishangnaikar/Multimodal-Enterprise-RAG",
+      "githubUrl": "https://github.com/krishangnaikar/Multimodal-Enterprise-RAG"
+    },
+    {
+      "id": "quantum-minecraft",
+      "title": "Minecraft Quantum Simulator",
+      "type": "Solo",
+      "lastUpdated": "2026",
+      "scope": "1-qubit built",
+      "description": "A one-qubit stabilizer simulator built out of redstone. Three classical bits (x, z, r) encode the state; X, Z, Hadamard and measurement are implemented. A two-qubit version with CNOT to show entanglement is planned.",
+      "tags": [
+        "Redstone",
+        "Stabilizer formalism",
+        "Quantum Computing"
+      ],
+      "imageUrl": "/resource-packs/physics.png",
+      "demoUrl": "https://github.com/krishangnaikar/Minecraft-Quantum-Simulator",
+      "githubUrl": "https://github.com/krishangnaikar/Minecraft-Quantum-Simulator"
+    },
+    {
+      "id": "snake-lang",
+      "title": "Snake Programming Language",
+      "type": "Solo",
+      "lastUpdated": "2026",
+      "scope": "Interpreter",
+      "description": "An interpreted language in Node.js with a custom lexer, recursive-descent parser (AST) and tree-walking interpreter with scoped variables. Supports arithmetic, if/elif/else, while and for-in loops, lists with 5 built-in methods, range(), and clear lexer and parser errors.",
+      "tags": [
+        "Node.js",
+        "Compiler Design",
+        "Parsing"
+      ],
+      "imageUrl": "/resource-packs/computer-science.png",
+      "demoUrl": "https://github.com/krishangnaikar/snake-lang",
+      "githubUrl": "https://github.com/krishangnaikar/snake-lang"
+    },
+    {
+      "id": "image-classifier",
+      "title": "Flower Image Classifier",
+      "type": "Solo",
+      "lastUpdated": "2025",
+      "scope": "Course project",
+      "description": "A PyTorch VGG-16 classifier with command-line inference and GPU-accelerated training, reaching 85% accuracy on a 102-class flower dataset.",
+      "tags": [
+        "PyTorch",
+        "VGG-16",
+        "Computer Vision"
+      ],
+      "imageUrl": "/resource-packs/data-tools.png",
+      "demoUrl": "https://github.com/krishangnaikar/Image-Classifier_FinalProject",
+      "githubUrl": "https://github.com/krishangnaikar/Image-Classifier_FinalProject"
+    },
+    {
+      "id": "spindle",
+      "title": "Spindle",
+      "type": "Solo",
+      "lastUpdated": "2026",
+      "scope": "In progress",
+      "description": "A Rust rebuild of an agent session manager, targeting Linux reliability, lower resource use and native Windows parity. Built issue first, then branch and pull request.",
+      "tags": [
+        "Rust",
+        "CLI"
+      ],
+      "imageUrl": "/resource-packs/computer-science.png",
+      "demoUrl": "https://github.com/krishangnaikar/Spindle",
+      "githubUrl": "https://github.com/krishangnaikar/Spindle"
+    },
+    {
+      "id": "fabric-mods",
+      "title": "Fabric Mods",
+      "type": "Solo",
+      "lastUpdated": "2026",
+      "scope": "Client mods",
+      "description": "Fabric 1.21.11 client mods in Java 21: Player Lock, Auto Mace Swap and Triple Swap. Controller logic is unit tested (17 tests on the latest Auto Mace Swap build); in-game validation is still in progress.",
+      "tags": [
+        "Java",
+        "Fabric",
+        "Mixins",
+        "Gradle"
+      ],
+      "imageUrl": "/resource-packs/computer-science.png",
+      "demoUrl": "#"
+    },
+    {
+      "id": "canvas-todos",
+      "title": "Canvas Todos",
+      "type": "Solo",
+      "lastUpdated": "2026",
+      "scope": "Local tool",
+      "description": "A localhost dashboard that merges SJSU and Ohlone Canvas feeds into one view of todos, announcements and personal assignments. Pure Python standard library, bound to 127.0.0.1, starts at login, no API tokens.",
+      "tags": [
+        "Python",
+        "Localhost",
+        "iCal"
+      ],
+      "imageUrl": "/resource-packs/data-tools.png",
+      "demoUrl": "#"
+    },
+    {
+      "id": "llmbot",
+      "title": "LLMBot",
+      "type": "Solo",
+      "lastUpdated": "2026",
+      "scope": "Maintained",
+      "description": "A Python LLM bot project. Recently patched certifi and Pillow security alerts with lockfile updates, a Python 3.11 floor and rerun tests.",
+      "tags": [
+        "Python",
+        "Poetry",
+        "Security"
+      ],
+      "imageUrl": "/resource-packs/computer-science.png",
+      "demoUrl": "https://github.com/krishangnaikar/LLMBot",
+      "githubUrl": "https://github.com/krishangnaikar/LLMBot"
+    }
+  ],
+  "experience": [
+    {
+      "id": "sjsu-research",
+      "company": "San Jose State University",
+      "role": "Undergraduate Researcher (Paid)",
+      "team": "Advised by Prof. Hiu Yung Wong",
+      "location": "San Jose, CA",
+      "dates": "2026 - Present",
+      "description": "Multimodal LLM fine-tuning for semiconductor analysis.",
+      "imageUrl": "/resource-packs/sjsu.png",
+      "bullets": [
+        "Fine-tuned Qwen2.5-VL-7B-Instruct with LoRA to predict 5 transistor parameters from cross-section images (MAE 1.8-6.9% of range on 200 test samples)",
+        "Framed parameter extraction as a computer vision regression task with no hand-crafted features",
+        "Built multimodal datasets pairing images with gate length, poly gate thickness, substrate thickness, junction depth and spacer thickness",
+        "Benchmarked LoRA vs full fine-tuning on original, axis-removed and grayscale inputs; full fine-tuning cut error to 0.25-0.87% of range on axis-removed images vs 6.9-10.8% for LoRA"
+      ],
+      "tech": [
+        "PyTorch",
+        "LoRA",
+        "PEFT",
+        "Computer Vision"
+      ]
+    },
+    {
+      "id": "gradachiever",
+      "company": "GradAchiever",
+      "role": "CTO & Co-Founder",
+      "team": "Founding team",
+      "location": "Remote",
+      "dates": "Aug 2021 - Present",
+      "description": "Automation and data systems for a student-advising pipeline.",
+      "imageUrl": "/resource-packs/data-tools.png",
+      "bullets": [
+        "Built Python workflow-automation tools and reusable agentic task flows that replaced repetitive manual steps",
+        "Aggregated internship and volunteer listings into one deduplicated dataset using Selenium scraping and REST API pipelines",
+        "Designed data-collection systems for college metadata (test scores, tuition, admissions data) and integrated them with external advising platforms"
+      ],
+      "tech": [
+        "Python",
+        "Selenium",
+        "REST APIs"
+      ]
+    },
+    {
+      "id": "zentroq",
+      "company": "Zentroq",
+      "role": "Software Engineer Intern",
+      "team": "Engineering",
+      "location": "Remote",
+      "dates": "Jan 2025 - Aug 2025",
+      "description": "Java integrations and data pipelines for construction analytics.",
+      "imageUrl": "/resource-packs/computer-science.png",
+      "bullets": [
+        "Built Java integrations for two major construction APIs, processing about 50 records/day",
+        "Developed Java data pipelines with PostgreSQL storage for model predictions and scoring across 10 data sources",
+        "Automated lead extraction with Selenium and BeautifulSoup, generating 15 qualified leads"
+      ],
+      "tech": [
+        "Java",
+        "PostgreSQL",
+        "Selenium",
+        "BeautifulSoup"
+      ]
+    },
+    {
+      "id": "truenil",
+      "company": "TrueNil",
+      "role": "Software Engineer Intern",
+      "team": "Engineering",
+      "location": "Remote",
+      "dates": "Jan 2024 - May 2024",
+      "description": "Secure data handling for genomic data.",
+      "imageUrl": "/resource-packs/mathematics.png",
+      "bullets": [
+        "Contributed to a production team building secure data-handling protocols for 100GB+ of genomic data",
+        "Integrated backend operations with Python and AWS for scalable data workflows"
+      ],
+      "tech": [
+        "Python",
+        "AWS",
+        "Security"
+      ]
+    }
+  ],
+  "openToWork": {
+    "enabled": true,
+    "message": "Open to Summer 2027 internships!"
+  },
+  "skills": [
+    {
+      "category": "Languages",
+      "items": [
+        "C/C++",
+        "Python",
+        "Java",
+        "JavaScript",
+        "SQL",
+        "Rust"
+      ]
+    },
+    {
+      "category": "AI / ML",
+      "items": [
+        "Machine Learning",
+        "Computer Vision",
+        "Multimodal AI",
+        "LLM Fine-Tuning (LoRA/PEFT)",
+        "RAG",
+        "PyTorch",
+        "LangChain",
+        "Ollama",
+        "LLaVA",
+        "Embeddings"
+      ]
+    },
+    {
+      "category": "Frameworks & APIs",
+      "items": [
+        "Flask",
+        "FastAPI",
+        "Streamlit",
+        "REST APIs"
+      ]
+    },
+    {
+      "category": "Data",
+      "items": [
+        "PostgreSQL",
+        "Qdrant",
+        "OCR (Tesseract)",
+        "FFmpeg",
+        "NetworkX",
+        "PyVis"
+      ]
+    },
+    {
+      "category": "Cloud & Tools",
+      "items": [
+        "AWS",
+        "Docker",
+        "Git/GitHub",
+        "Selenium",
+        "VS Code",
+        "PyCharm",
+        "IntelliJ"
+      ]
+    },
+    {
+      "category": "CS Foundations",
+      "items": [
+        "Computer Architecture",
+        "TCP/IP Networking",
+        "Software Development Lifecycle",
+        "Debugging"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "school": "San Jose State University",
+      "degree": "B.S. Computer Science",
+      "dates": "Aug 2024 - May 2028",
+      "gpa": "3.8",
+      "coursework": [
+        "Computer Architecture",
+        "Introduction to Computer Systems",
+        "Object-Oriented Design",
+        "Introduction to Data Structures",
+        "Introduction to Quantum Computing"
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "id": "qiskit",
+      "title": "Qiskit PR #16868",
+      "kind": "Pull Request",
+      "description": "X/Y-basis state drawing, merged into Qiskit",
+      "url": "https://github.com/Qiskit/qiskit/pull/16868",
+      "imageUrl": "/resource-packs/physics.png"
+    },
+    {
+      "id": "rag",
+      "title": "Multimodal Enterprise RAG",
+      "kind": "Repository",
+      "description": "Fully local multimodal RAG with Qdrant",
+      "url": "https://github.com/krishangnaikar/Multimodal-Enterprise-RAG",
+      "imageUrl": "/resource-packs/computer-science.png"
+    },
+    {
+      "id": "mcq",
+      "title": "Minecraft Quantum Simulator",
+      "kind": "Repository",
+      "description": "Redstone qubit world",
+      "url": "https://github.com/krishangnaikar/Minecraft-Quantum-Simulator",
+      "imageUrl": "/resource-packs/physics.png"
+    },
+    {
+      "id": "snake",
+      "title": "Snake Language",
+      "kind": "Repository",
+      "description": "Lexer, parser and tree-walking interpreter",
+      "url": "https://github.com/krishangnaikar/snake-lang",
+      "imageUrl": "/resource-packs/computer-science.png"
+    },
+    {
+      "id": "github",
+      "title": "GitHub",
+      "kind": "Profile",
+      "description": "All repositories",
+      "url": "https://github.com/krishangnaikar",
+      "imageUrl": "/resource-packs/computer-science.png"
+    }
+  ],
+  "about": {
+    "oneLiner": "I like building things that learn, compute and sometimes run in Minecraft.",
+    "bio": "Hi, I'm Krishang, a computer science student at SJSU. I fine-tune multimodal models for semiconductor research, contribute to open source (Qiskit), and build side projects across AI, compilers, quantum computing and Minecraft.",
+    "status": "CS @ SJSU",
+    "location": "San Jose, CA",
+    "avatarUrl": "/skins/steve.png",
+    "avatarAlt": "Minecraft skin"
+  },
+  "contact": {
+    "email": "",
+    "phone": "",
+    "linkedin": "",
+    "github": "https://github.com/krishangnaikar",
+    "calendly": "",
+    "scholar": ""
+  },
+  "statistics": [
+    {
+      "label": "GPA",
+      "value": "3.8"
+    },
+    {
+      "label": "Open-source PRs merged",
+      "value": "1"
+    },
+    {
+      "label": "Internships",
+      "value": "2"
+    },
+    {
+      "label": "Transistor parameters predicted",
+      "value": "5"
+    },
+    {
+      "label": "Test samples evaluated",
+      "value": "200"
+    },
+    {
+      "label": "File formats in the local RAG",
+      "value": "8"
+    },
+    {
+      "label": "Flower classes classified",
+      "value": "102"
+    },
+    {
+      "label": "Image classifier accuracy",
+      "value": "85%"
+    },
+    {
+      "label": "Genomic data handled",
+      "value": "100GB+"
+    },
+    {
+      "label": "Qubits built in redstone",
+      "value": "1"
+    },
+    {
+      "label": "Android demo apps",
+      "value": "5"
+    },
+    {
+      "label": "Android unit tests passing",
+      "value": "24"
+    }
+  ],
+  "resume": {
+    "url": "https://github.com/krishangnaikar",
+    "updated": "Nov 2026",
+    "preview": "B.S. Computer Science at SJSU. Multimodal LLM fine-tuning research, merged Qiskit contribution, and local-first AI projects."
+  },
+  "links": []
+}

@@ -1,7 +1,9 @@
-
-# Local test artifacts
-__pycache__/
-*.py[cod]
-.pytest_cache/
-.venv-tests/
-.venv/
+node_modules
+.next
+out
+.env*.local
+*.tsbuildinfo
+next-env.d.ts
+_extract/
+/.next-dev/
+.cursor/

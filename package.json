@@ -1,0 +1,33 @@
+{
+  "name": "krishang-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "dev:fresh": "node scripts/clean-next.mjs && next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "node --test --experimental-strip-types tests/*.test.ts",
+    "generate-assets": "node scripts/generate-assets.mjs",
+    "generate-packs": "node scripts/generate-packs.mjs",
+    "generate-ui-icons": "node scripts/generate-ui-icons.mjs"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "next": "^15.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-markdown": "^9.0.1",
+    "skinview3d": "^3.4.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.16.0",
+    "eslint-config-next": "^15.1.0",
+    "sharp": "^0.35.4",
+    "typescript": "^5.7.0"
+  }
+}
