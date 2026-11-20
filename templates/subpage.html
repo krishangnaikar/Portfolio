@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#0b0d10" />
   <title>{{ page_title }} | {{ profile.name }}</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='game-ui.css') }}?v=20261120j" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='game-ui.css') }}?v=20261120k" />
 </head>
 <body class="inner-page">
   {% include "partials/game-header.html" %}
@@ -46,7 +46,7 @@
           </aside>
         </div>
       </div>
-      <script src="{{ url_for('static', filename='project-collection.js') }}?v=20261120j" defer></script>
+      <script src="{{ url_for('static', filename='project-collection.js') }}?v=20261120k" defer></script>
       {% elif page_type == "research" %}
       <div class="select-list">
         {% for item in projects %}
