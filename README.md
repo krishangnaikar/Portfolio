@@ -1,6 +1,6 @@
 # Krishang Naikar - Portfolio
 
-Flask portfolio with a generated static page. Project content is maintained in
+Flask portfolio with a generated static page and a recruiter-friendly quick view at `/recruiter`. Project content is maintained in
 `projects.json`; category and status labels distinguish research, contributions,
 software projects, coursework, and concepts. Public repository links are included
 where available. Local projects have no source link; private repository details
@@ -24,8 +24,8 @@ python export_static.py
 python -m pytest
 ```
 
-`index.html` is generated, not a second template. Its relative `static/` URLs
-support hosting under a repository subpath. Flask uses `templates/index.html`.
+`index.html` and `recruiter.html` are generated static pages, not separate hand-maintained designs. Its relative `static/` URLs
+support hosting under a repository subpath. Flask uses `templates/index.html` and `templates/recruiter.html`.
 Keep both entry points in sync by running the export after content changes.
 
 ## Catalog scope (November 3, 2026)
