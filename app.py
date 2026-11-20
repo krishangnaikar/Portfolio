@@ -88,7 +88,6 @@ project_categories = list(dict.fromkeys(p["category"] for p in projects))
 @app.route("/")
 def index():
     # Put your resume PDF at: static/resume/Krishang_Naikar_SWE_Intern_AI_ML_20250726.pdf
-    resume_url = url_for("static", filename="resume/Resume8-18-25.pdf")
     return render_template(
         "index.html",
         profile=profile,
@@ -98,7 +97,6 @@ def index():
         certifications=certifications,
         projects=projects,
         project_categories=project_categories,
-        resume_url=resume_url,
     )
 
 
