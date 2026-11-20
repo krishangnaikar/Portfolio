@@ -1,3 +1,6 @@
+import re
+from pathlib import Path
+
 import app
 
 
@@ -6,19 +9,19 @@ def test_home_has_separate_page_navigation():
     assert response.status_code == 200
     html = response.get_data(as_text=True)
     assert app.profile['name'] in html
-    for path in ('/projects', '/experience', '/research', '/skills', '/about', '/settings', '/recruiter'):
-        assert path in html
+    for path in ('/projects', '/experience', '/skills', '/about', '/settings', '/recruiter'):
+        assert f'href="{path}"' in html
 
 
 def test_each_portfolio_section_is_a_separate_page():
     client = app.app.test_client()
     expected = {
-        '/projects': ('Select Project', 'Multimodal Enterprise RAG'),
-        '/experience': ('Experience', 'Zentroq'),
+        '/projects': ('Select World', 'Research &amp; Ideas', 'Multimodal Enterprise RAG'),
+        '/experience': ('Play Multiplayer', 'Zentroq'),
         '/research': ('Research &amp; Ideas', 'Transistor Fine-Tuning and Tool-Use Evaluation'),
-        '/skills': ('Skills', 'Languages'),
-        '/about': ('About', 'San José State University'),
-        '/settings': ('Menu', 'Player Support'),
+        '/skills': ('Advancements', 'Languages'),
+        '/about': ('Player Profile', 'San José State University'),
+        '/settings': ('Options', 'Player Profile'),
         '/recruiter': ('Recruiter Quick View', app.profile['email']),
     }
     for path, markers in expected.items():
@@ -30,7 +33,6 @@ def test_each_portfolio_section_is_a_separate_page():
 
 
 def test_static_pages_are_generated_for_each_route():
-    from pathlib import Path
     root = Path(app.__file__).parent
     for filename in ('index.html', 'projects.html', 'experience.html', 'research.html', 'skills.html', 'about.html', 'settings.html', 'recruiter.html'):
         html = (root / filename).read_text()
@@ -38,7 +40,16 @@ def test_static_pages_are_generated_for_each_route():
         if filename == 'recruiter.html':
             assert 'Recruiter Quick View' in html
         else:
-            assert 'static/game-ui.css' in html
+            assert 'static/minecraft-portfolio.css' in html
+
+
+def test_recruiter_links_to_projects_in_flask_and_static():
+    client = app.app.test_client()
+    html = client.get('/recruiter').get_data(as_text=True)
+    static_html = (Path(app.__file__).parent / 'recruiter.html').read_text()
+    for page, destination in ((html, '/projects'), (static_html, 'projects.html')):
+        assert re.findall(r'<a\b[^>]*\bhref="([^"]*)"[^>]*>\s*Full project portfolio\s*</a>', page) == [destination]
+    assert client.get('/projects').status_code == 200
 
 
 def test_unknown_page_returns_404():

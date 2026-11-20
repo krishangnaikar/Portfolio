@@ -72,7 +72,7 @@
       {% elif page_type == "skills" %}
       <div class="mc-achievement-grid">
         {% for group in skills %}
-        <article class="mc-achievement"><span class="mc-achievement-icon" aria-hidden="true">{{ "%02d"|format(loop.index) }}</span><h2>{{ group.label }}</h2><p>{{ group.items|join(" · ") }}</p></article>
+        <article class="mc-achievement"><span class="mc-achievement-icon" aria-hidden="true">{{ "%02d"|format(loop.index) }}</span><h2>{{ group.label }}</h2><p>{{ group['items']|join(" · ") }}</p></article>
         {% endfor %}
       </div>
       {% if education %}

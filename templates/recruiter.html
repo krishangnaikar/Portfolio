@@ -47,7 +47,7 @@
         <p class="summary">{{ profile.summary }}</p>
         <div class="links"><a href="mailto:{{ profile.email }}">Email</a><a href="{{ profile.github }}" target="_blank" rel="noreferrer">GitHub</a><a href="{{ profile.linkedin }}" target="_blank" rel="noreferrer">LinkedIn</a></div>
       </div>
-      <div class="hero-actions"><a class="button primary" href="{{ resume_url }}">Download resume</a><a class="button" href="{{ url_for('index') }}#projects">Full project portfolio</a></div>
+      <div class="hero-actions"><a class="button primary" href="{{ resume_url }}">Download resume</a><a class="button" href="{{ url_for('projects_page') }}">Full project portfolio</a></div>
     </div>
     <div class="facts">
       <div class="fact"><strong>{{ education[0].school }}</strong><span>University</span></div>
