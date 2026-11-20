@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template, url_for
+from flask import Flask, render_template, url_for
 
 app = Flask(__name__)
 
@@ -119,11 +119,6 @@ def recruiter():
         featured_projects=featured_projects,
         resume_url=resume_url,
     )
-
-@app.route("/projects.json")
-def project_catalog():
-    return jsonify(projects)
-
 
 @app.route("/projects")
 def projects_page():
