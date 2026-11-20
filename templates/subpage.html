@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b0d10" />
+  <title>{{ page_title }} | {{ profile.name }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='game-ui.css') }}" />
+</head>
+<body class="inner-page">
+  {% include "partials/game-header.html" %}
+  <div class="subpage-layout">
+    {% include "partials/game-nav.html" %}
+    <main class="subpage-content">
+      <div class="page-heading">
+        <p class="page-kicker">{{ page_label }}</p>
+        <h1>{{ page_title }}</h1>
+        <p>{{ page_intro }}</p>
+      </div>
+      {% if page_type == "projects" or page_type == "research" %}
+      <div class="select-list">
+        {% for item in projects %}
+        <details class="select-card">
+          <summary><span class="select-number">{{ "%02d"|format(loop.index) }}</span><span><strong class="select-title">{{ item.name }}</strong><small class="select-meta">{{ item.status }} // {{ item.category }}</small></span><span class="select-toggle" aria-hidden="true">+</span></summary>
+          <div class="select-detail">
+            <p>{{ item.blurb }}</p>
+            <div class="detail-tags">{% for tag in item.tech %}<span>{{ tag }}</span>{% endfor %}</div>
+            {% if item.link %}<a class="detail-link" href="{{ item.link }}" target="_blank" rel="noreferrer">View project / contribution ↗</a>{% else %}<span class="select-meta">No public repository</span>{% endif %}
+          </div>
+        </details>
+        {% endfor %}
+      </div>
+      {% elif page_type == "experience" %}
+      <div class="select-list">
+        {% for item in experiences %}
+        <details class="select-card">
+          <summary><span class="select-number">{{ "%02d"|format(loop.index) }}</span><span><strong class="select-title">{{ item.company }}</strong><small class="select-meta">{{ item.role }} // {{ item.date }} // {{ item.location }}</small></span><span class="select-toggle" aria-hidden="true">+</span></summary>
+          <div class="select-detail"><ul>{% for bullet in item.bullets %}<li>{{ bullet }}</li>{% endfor %}</ul></div>
+        </details>
+        {% endfor %}
+      </div>
+      {% elif page_type == "skills" %}
+      <div class="skill-grid">
+        {% for group in skills %}
+        <section class="skill-panel"><h2>{{ group.label }}</h2><div class="detail-tags">{% for item in group["items"] %}<span>{{ item }}</span>{% endfor %}</div></section>
+        {% endfor %}
+      </div>
+      {% elif page_type == "about" %}
+      <div class="option-grid">
+        <a class="option-card" href="#profile"><strong>ABOUT ME</strong><span>Profile summary and focus</span></a>
+        <a class="option-card" href="#education"><strong>EDUCATION</strong><span>Degree and expected graduation</span></a>
+        <a class="option-card" href="#certifications"><strong>CERTIFICATIONS</strong><span>Professional learning</span></a>
+        <a class="option-card" href="#contact"><strong>CONTACT</strong><span>Ways to connect</span></a>
+      </div>
+      <section class="subsection" id="profile"><h2>Profile</h2><p>{{ profile.summary }}</p></section>
+      <section class="subsection" id="education"><h2>Education</h2>{% for item in education %}<p><strong>{{ item.school }}</strong><br />{{ item.degree }}<br />{{ item.date }}</p>{% endfor %}</section>
+      <section class="subsection" id="certifications"><h2>Certifications</h2>{% for item in certifications %}<p><strong>{{ item.name }}</strong><br />{{ item.org }} // {{ item.year }}</p>{% endfor %}</section>
+      <section class="subsection" id="contact"><h2>Connect</h2><div class="contact-grid"><a class="contact-link" href="mailto:{{ profile.email }}">EMAIL <span>↗</span></a><a class="contact-link" href="{{ profile.github }}" target="_blank" rel="noreferrer">GITHUB <span>↗</span></a><a class="contact-link" href="{{ profile.linkedin }}" target="_blank" rel="noreferrer">LINKEDIN <span>↗</span></a></div></section>
+      {% endif %}
+    </main>
+  </div>
+</body>
+</html>
